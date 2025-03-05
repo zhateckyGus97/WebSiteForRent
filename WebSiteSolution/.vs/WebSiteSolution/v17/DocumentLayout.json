@@ -1,12 +1,139 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\i.gusev2\\downloads\\websiteforrent-hw-2\\websiteforrent-hw-2\\websitesolution\\infrastructure\\repositories\\userinforepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\userinforepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|c:\\users\\i.gusev2\\downloads\\websiteforrent-hw-2\\websiteforrent-hw-2\\websitesolution\\api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|c:\\users\\i.gusev2\\downloads\\websiteforrent-hw-2\\websiteforrent-hw-2\\websitesolution\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|c:\\users\\i.gusev2\\downloads\\websiteforrent-hw-2\\websiteforrent-hw-2\\websitesolution\\application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|solutionrelative:application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\i.gusev2\\downloads\\websiteforrent-hw-2\\websiteforrent-hw-2\\websitesolution\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\i.gusev2\\downloads\\websiteforrent-hw-2\\websiteforrent-hw-2\\websitesolution\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|c:\\users\\i.gusev2\\downloads\\websiteforrent-hw-2\\websiteforrent-hw-2\\websitesolution\\api\\api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserInfoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Infrastructure\\Repositories\\UserInfoRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\UserInfoRepository.cs",
+              "ToolTip": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Infrastructure\\Repositories\\UserInfoRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\UserInfoRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:24:37.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:13:11.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Infrastructure",
+              "DocumentMoniker": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Infrastructure\\Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Infrastructure\\Infrastructure.csproj",
+              "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-01T09:08:11.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:08:25.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Application\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Application\\DependencyInjection.cs",
+              "RelativeToolTip": "Application\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:03:15.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\API\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\API\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "API\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAoAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T08:41:06.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "API.http",
+              "DocumentMoniker": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\API\\API.http",
+              "RelativeDocumentMoniker": "API\\API.http",
+              "ToolTip": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\API\\API.http",
+              "RelativeToolTip": "API\\API.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-03-01T08:27:43.98Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

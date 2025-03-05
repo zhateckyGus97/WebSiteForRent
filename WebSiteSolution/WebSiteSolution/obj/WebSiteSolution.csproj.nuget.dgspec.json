@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Илья\\source\\repos\\WebSite\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj": {}
+    "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Илья\\source\\repos\\WebSite\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj": {
+    "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Илья\\source\\repos\\WebSite\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj",
+        "projectUniqueName": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj",
         "projectName": "WebSiteSolution",
-        "projectPath": "C:\\Users\\Илья\\source\\repos\\WebSite\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj",
-        "packagesPath": "C:\\Users\\Илья\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Илья\\source\\repos\\WebSite\\WebSiteSolution\\WebSiteSolution\\obj\\",
+        "projectPath": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\WebSiteSolution\\WebSiteSolution.csproj",
+        "packagesPath": "C:\\Users\\i.gusev2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\WebSiteSolution\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Илья\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\i.gusev2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,8 +45,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -69,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

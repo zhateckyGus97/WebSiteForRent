@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LsRR+Rdy7kE=",
+  "dgSpecHash": "cdkIHuEIBW8MLxeX+PF1D5fQwF9rcUtnIdB/expMlDZERv4bHhtgaM/hrv74VJVB1qmtQEjFi/pSrv2zEhU1yw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Илья\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Infrastructure\\Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

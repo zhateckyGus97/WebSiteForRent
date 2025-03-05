@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "UPwIwAYg7WHJdvi8FltppOD4dl6RpxpLMo5sgKgSNLvok3lzlOQbCEBgrWmSxOvEs5O077kJtKoHTAlJfunEhg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\API\\API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\automapper.extensions.expressionmapping\\8.0.0\\automapper.extensions.expressionmapping.8.0.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\i.gusev2\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
