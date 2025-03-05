@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "UYJzQaslQusFfhHMVfBuF/icnERd2fAysMaExZlzQc8jWUVTO25w8PqSO0GYUpU6oarsz7wlUPIKN59jGg+mDA==",
+  "dgSpecHash": "toqevGUDwAw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\i.gusev2\\Downloads\\WebSiteForRent-hw-2\\WebSiteForRent-hw-2\\WebSiteSolution\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\Илья\\source\\repos\\WebSite\\WebSiteSolution\\Application\\Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\i.gusev2\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
-    "C:\\Users\\i.gusev2\\.nuget\\packages\\automapper.extensions.expressionmapping\\8.0.0\\automapper.extensions.expressionmapping.8.0.0.nupkg.sha512",
-    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
-    "C:\\Users\\i.gusev2\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    "C:\\Users\\Илья\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\Илья\\.nuget\\packages\\automapper.extensions.expressionmapping\\8.0.0\\automapper.extensions.expressionmapping.8.0.0.nupkg.sha512",
+    "C:\\Users\\Илья\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Илья\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\Илья\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

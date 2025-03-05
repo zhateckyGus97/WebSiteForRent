@@ -9,7 +9,7 @@ namespace Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfile));
-            services.AddTransient<IUserInfoService, IUserInfoService>();
+            services.AddTransient<IUserService, IUserService>();
 
             return services;
         }

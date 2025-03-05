@@ -6,10 +6,10 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserInfoController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private IUserInfoService _userService;
-        public UserInfoController(IUserInfoService userService)
+        private IUserService _userService;
+        public UserController(IUserService userService)
         {
             this._userService = userService;
         }
@@ -29,14 +29,14 @@ namespace API.Controllers
         }
 
         /*[HttpPost]
-        public async Task<IActionResult> Add([FromBody] UserInfoDTO user)
+        public async Task<IActionResult> Add([FromBody] UserDTO user)
         {
             await _userService.Add(user);
             return Created();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UserInfoDTO user)
+        public async Task<IActionResult> Update([FromBody] UserDTO user)
         {
             var result = await _userService.Update(user);
             return Ok(result);
