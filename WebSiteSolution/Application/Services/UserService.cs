@@ -1,4 +1,5 @@
 ﻿using Application.DTO;
+using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
@@ -10,20 +11,30 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class IUserService
+    public class UserService : IUserService
     {
         private IUserRepository _userRepository;
         private IMapper _mapper;
 
-        public IUserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
             this._userRepository = userRepository;
             this._mapper = mapper;
         }
 
-        public async Task<List<UserDTO>> GetAll()
+        public Task Add(UserDTO user)
         {
-            var users = await _userRepository.ReadAll();
+            throw new NotImplementedException();
+        }
+
+        public Task Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<UserDTO>> GetAll()
+        {
+            var users = await _userRepository.GetAll();
             var mappedUsers = users.Select(u => _mapper.Map<UserDTO>(u)).ToList();
             return mappedUsers;
         }
@@ -33,6 +44,11 @@ namespace Application.Services
             var user = await _userRepository.GetById(id);
             var mappedUser = _mapper.Map<UserDTO>(user);
             return mappedUser;
+        }
+
+        public Task Update(UserDTO user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

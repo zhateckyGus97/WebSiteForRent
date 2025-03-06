@@ -8,8 +8,8 @@ namespace API.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private IUserService _userService;
-        public UserController(IUserService userService)
+        private UserService _userService;
+        public UserController(UserService userService)
         {
             this._userService = userService;
         }

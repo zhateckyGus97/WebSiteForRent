@@ -9,7 +9,10 @@ namespace Infrastructure.Interfaces
 {
     public interface IUserRepository
     {
-        public Task<User> GetById(int id);
-        public Task<IEnumerable<User>> ReadAll();
+        public Task<User?> GetById(int id);
+        public Task<IEnumerable<User>> GetAll();
+        public Task Create(User user);
+        public Task Update(User user);
+        public Task Delete(User user);
     }
 }

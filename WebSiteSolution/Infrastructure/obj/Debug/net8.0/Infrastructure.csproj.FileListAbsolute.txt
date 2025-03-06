@@ -29,3 +29,5 @@ C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Infrastructure\obj\Debug\
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Infrastructure\bin\Debug\net8.0\Application.dll
+C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Infrastructure\bin\Debug\net8.0\Application.pdb

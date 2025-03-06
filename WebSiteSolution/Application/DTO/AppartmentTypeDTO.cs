@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.DTO
 {
-    internal class AppartmentTypeDTO
+    public class AppartmentTypeDTO
     {
     }
 }
