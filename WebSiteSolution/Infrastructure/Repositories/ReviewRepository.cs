@@ -10,7 +10,7 @@ namespace Infrastructure.Repositories
 {
     public class ReviewRepository : IReviewRepository
     {
-        private readonly List<Review> _reviews;
+        private readonly List<Review> _reviews = new List<Review>();
 
         public Task<int> Create(Review review)
         {

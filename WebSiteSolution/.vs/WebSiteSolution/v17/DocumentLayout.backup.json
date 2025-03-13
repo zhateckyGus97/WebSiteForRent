@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\application\\services\\apartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|solutionrelative:application\\services\\apartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|solutionrelative:application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\api\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\application\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|solutionrelative:application\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\api\\controllers\\apartmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\controllers\\apartmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\api\\controllers\\dealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\controllers\\dealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,66 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApartmentService.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\Services\\ApartmentService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\ApartmentService.cs",
-              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\Services\\ApartmentService.cs",
-              "RelativeToolTip": "Application\\Services\\ApartmentService.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAACsAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ReviewController.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\ReviewController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\ReviewController.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\ReviewController.cs",
+              "RelativeToolTip": "API\\Controllers\\ReviewController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAkwCkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T10:38:36.283Z",
+              "WhenOpened": "2025-03-13T11:36:42.225Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ReviewService.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\Services\\ReviewService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\ReviewService.cs",
-              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\Services\\ReviewService.cs",
-              "RelativeToolTip": "Application\\Services\\ReviewService.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAmwCsAAAAqAAAAAAAAAA==",
+              "Title": "ApartmentController.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\ApartmentController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\ApartmentController.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\ApartmentController.cs",
+              "RelativeToolTip": "API\\Controllers\\ApartmentController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wBsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:32:33.929Z",
+              "WhenOpened": "2025-03-13T11:31:42.603Z",
               "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "73887afa-b703-45ce-b7ef-15cfdb3c5095",
-        "Display": 0,
-        "X": 1432,
-        "Y": 120,
-        "Width": 1181,
-        "Height": 1020,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\Services\\UserService.cs",
-              "RelativeToolTip": "Application\\Services\\UserService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwC8AAAAeAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "DealController.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\DealController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\DealController.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\DealController.cs",
+              "RelativeToolTip": "API\\Controllers\\DealController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAzwC0AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T09:17:53.298Z",
+              "WhenOpened": "2025-03-13T11:15:51.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T10:54:22.084Z",
               "EditorCaption": ""
             }
           ]

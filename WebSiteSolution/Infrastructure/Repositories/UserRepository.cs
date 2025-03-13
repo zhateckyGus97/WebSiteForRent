@@ -12,7 +12,7 @@ namespace Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly List<User> _users;
+        private readonly List<User> _users = new List<User>();
         public Task<User?> GetById(int id)
         {
             var user = _users.FirstOrDefault(x => x.Id == id);

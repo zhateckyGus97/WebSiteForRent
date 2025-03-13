@@ -15,7 +15,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var user = await _userService.GetById(id);
             return Ok(user);
@@ -28,25 +28,25 @@ namespace API.Controllers
             return Ok(users);
         }
 
-        /*[HttpPost]
-        public async Task<IActionResult> Add([FromBody] UserDTO user)
+        [HttpPost]
+        public async Task<IActionResult> Add([FromQuery] UserDTO user)
         {
             await _userService.Add(user);
             return Created();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UserDTO user)
+        public async Task<IActionResult> Update([FromQuery] UserDTO user)
         {
             var result = await _userService.Update(user);
             return Ok(result);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Update([FromQuery] int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             var result = await _userService.Delete(id);
             return Ok(result);
-        }*/
+        }
     }
 }

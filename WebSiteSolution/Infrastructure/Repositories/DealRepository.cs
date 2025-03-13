@@ -11,7 +11,7 @@ namespace Infrastructure.Repositories
 {
     public class DealRepository : IDealRepository
     {
-        private readonly List<Deal> _deals;
+        private readonly List<Deal> _deals = new List<Deal>();
         public Task<Deal?> GetById(int id)
         {
             var deal = _deals.FirstOrDefault(x => x.Id == id);

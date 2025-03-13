@@ -6,7 +6,7 @@ namespace Infrastructure.Repositories
 {
     public class ApartmentRepository : IApartmentRepository
     {
-        private readonly List<Apartment> _apartments;
+        private readonly List<Apartment> _apartments = new List<Apartment>();
 
         public Task<int> Create(Apartment apartment)
         {
