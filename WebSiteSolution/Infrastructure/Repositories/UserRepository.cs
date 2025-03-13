@@ -10,43 +10,56 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class UserRepository/*(Application.AppContext context)*/ : IUserRepository
+    public class UserRepository : IUserRepository
     {
-        public readonly DbSet<User> Users;
+        private readonly List<User> _users;
         public Task<User?> GetById(int id)
         {
-            var user = Users.FirstOrDefault(x => x.Id == id);
-            //var user = context.Users.FirstOrDefault(x => x.Id == id);
+            var user = _users.FirstOrDefault(x => x.Id == id);
             return Task.FromResult(user);
         }
 
         public Task<IEnumerable<User>> GetAll()
         {
-            return Task.FromResult<IEnumerable<User>>(Users);
+            return Task.FromResult(_users.AsEnumerable());
         }
 
-        public Task Create(User user)
+        public Task<int> Create(User user)
         {
-            Users.Add(user);
-            /*context.Users.Add(user);
-            context.SaveChanges();*/
-            return Task.CompletedTask;
+            if(user == null)
+                throw new ArgumentNullException(nameof(user));
+            _users.Add(user);
+            return Task.FromResult(user.Id);
         }
 
-        public Task Update(User user)
+        public Task<bool> Update(User user)
         {
-            Users.Update(user);
-            /*context.Users.Update(user);
-            context.SaveChanges();*/
-            return Task.CompletedTask;
+            if (user == null) 
+                throw new ArgumentNullException(nameof(user));
+
+            var old_user = _users.FirstOrDefault(u => u.Id == user.Id);
+
+            if (old_user == null)
+                return Task.FromResult(false);
+
+            old_user.PhoneNumber = user.PhoneNumber;
+            old_user.DateOfBirth = user.DateOfBirth;
+            old_user.Passport = user.Passport;
+            old_user.Role = user.Role;
+            old_user.Email = user.Email;
+            old_user.FullName = user.FullName;
+
+            return Task.FromResult(true);
         }
 
-        public Task Delete(User user)
+        public Task<bool> Delete(int Id)
         {
-            Users.Remove(user);
-            /*context.Users.Remove(user);
-            context.SaveChanges();*/
-            return Task.CompletedTask;
+            var user = _users.FirstOrDefault(x => x.Id == Id);
+            if (user == null)
+                return Task.FromResult(false);
+
+            _users.Remove(user);
+            return Task.FromResult(true);
         }
     }
 }

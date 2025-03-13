@@ -9,43 +9,58 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class DealRepository/*(Application.AppContext context)*/ : IDealRepository
+    public class DealRepository : IDealRepository
     {
-        public readonly DbSet<Deal> Deals;
+        private readonly List<Deal> _deals;
         public Task<Deal?> GetById(int id)
         {
-            var deal = Deals.FirstOrDefault(x => x.Id == id);
-            //var deal = context.Deals.FirstOrDefault(x => x.Id == id);
+            var deal = _deals.FirstOrDefault(x => x.Id == id);
             return Task.FromResult(deal);
         }
 
         public Task<IEnumerable<Deal>> GetAll()
         {
-            return Task.FromResult<IEnumerable<Deal>>(Deals);
+            return Task.FromResult(_deals.AsEnumerable());
         }
 
-        public Task Create(Deal deal)
+        public Task<int> Create(Deal deal)
         {
-            Deals.Add(deal);
-            /*context.Deals.Add(deal);
-            context.SaveChanges();*/
-            return Task.CompletedTask;
+            if (deal == null)
+                throw new ArgumentNullException(nameof(deal));
+
+            _deals.Add(deal);
+            return Task.FromResult(deal.Id);
         }
 
-        public Task Update(Deal deal)
+        public Task<bool> Update(Deal deal)
         {
-            Deals.Update(deal);
-            /*context.Deals.Update(deal);
-            context.SaveChanges();*/
-            return Task.CompletedTask;
+            if(deal == null)
+                throw new ArgumentNullException(nameof(deal));
+
+            var old_deal = _deals.FirstOrDefault(d => d.Id == deal.Id);
+
+            if (old_deal == null)
+                return Task.FromResult(false);
+
+            old_deal.ApartmentId = deal.ApartmentId;
+            old_deal.UserId = deal.UserId;
+            old_deal.CheckInDate = deal.CheckInDate;
+            old_deal.CheckOutDate = deal.CheckOutDate;
+            old_deal.TotalPrice = deal.TotalPrice;
+            old_deal.UpdatedAt = DateTime.Now;
+
+            return Task.FromResult(true);
         }
 
-        public Task Delete(Deal deal)
+        public Task<bool> Delete(int Id)
         {
-            Deals.Remove(deal);
-            /*context.Deals.Remove(deal);
-            context.SaveChanges();*/
-            return Task.CompletedTask;
+            var deal = _deals.FirstOrDefault(x =>x.Id == Id);
+
+            if (deal == null)
+                return Task.FromResult(false);
+
+            _deals.Remove(deal);
+            return Task.FromResult(true);
         }
     }
 }

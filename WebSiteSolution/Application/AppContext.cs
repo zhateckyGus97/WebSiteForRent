@@ -12,9 +12,9 @@ namespace Application
         : DbContext(options)
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Appartment> Appartments { get; set; }
+        public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Deal> Deals { get; set; }
-        public DbSet<AppartmentType> AppartmentTypes { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

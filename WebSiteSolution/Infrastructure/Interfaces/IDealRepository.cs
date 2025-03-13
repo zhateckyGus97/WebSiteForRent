@@ -11,8 +11,8 @@ namespace Infrastructure.Interfaces
     {
         public Task<Deal?> GetById(int id);
         public Task<IEnumerable<Deal>> GetAll();
-        public Task Create(Deal deal);
-        public Task Update(Deal deal);
-        public Task Delete(Deal deal);
+        public Task<int> Create(Deal deal);
+        public Task<bool> Update(Deal deal);
+        public Task<bool> Delete(int Id);
     }
 }

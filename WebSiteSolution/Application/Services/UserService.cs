@@ -3,6 +3,7 @@ using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
+using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,15 @@ namespace Application.Services
             this._mapper = mapper;
         }
 
-        public Task Add(UserDTO user)
+        public async Task Add(UserDTO user)
         {
-            throw new NotImplementedException();
+            var mappedUser = _mapper.Map<User>(user);
+            await _userRepository.Create(mappedUser);
         }
 
-        public Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            return await _userRepository.Delete(id);
         }
 
         public async Task<IEnumerable<UserDTO>> GetAll()
@@ -46,7 +48,7 @@ namespace Application.Services
             return mappedUser;
         }
 
-        public Task Update(UserDTO user)
+        public Task<bool> Update(UserDTO user)
         {
             throw new NotImplementedException();
         }
