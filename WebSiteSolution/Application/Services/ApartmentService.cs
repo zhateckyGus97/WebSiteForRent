@@ -26,7 +26,7 @@ namespace Application.Services
         public async Task<int> Add(ApartmentDTO apartment)
         {
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            if (mappedApartment == null )
+            if (mappedApartment != null )
             {
                 await _apartmentRepository.Create(mappedApartment);
                 return mappedApartment.Id;

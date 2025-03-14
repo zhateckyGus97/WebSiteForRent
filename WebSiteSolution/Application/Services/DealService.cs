@@ -26,7 +26,7 @@ namespace Application.Services
         public async Task<int> Add(DealDTO deal)
         {
             var mappedDeal = _mapper.Map<Deal>(deal);
-            if (mappedDeal == null)
+            if (mappedDeal != null)
             {
                 await _dealRepository.Create(mappedDeal);
                 return mappedDeal.Id;
