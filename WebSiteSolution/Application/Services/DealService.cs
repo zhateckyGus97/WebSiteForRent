@@ -14,19 +14,25 @@ namespace Application.Services
 {
     public class DealService : IDealService
     {
-        private IDealRepository _dealRepository;
-        private IMapper _mapper;
+        private readonly IDealRepository _dealRepository;
+        private readonly IMapper _mapper;
 
         public DealService(IDealRepository dealRepository, IMapper mapper)
         {
-            this._dealRepository = dealRepository;
-            this._mapper = mapper;
+            _dealRepository = dealRepository;
+            _mapper = mapper;
         }
 
-        public async Task Add(DealDTO deal)
+        public async Task<int> Add(DealDTO deal)
         {
             var mappedDeal = _mapper.Map<Deal>(deal);
-            await _dealRepository.Create(mappedDeal);
+            if (mappedDeal == null)
+            {
+                await _dealRepository.Create(mappedDeal);
+                return mappedDeal.Id;
+            }
+
+            return -1;
         }
 
         public async Task<bool> Delete(int id)
@@ -48,9 +54,10 @@ namespace Application.Services
             return mappedDeal;
         }
 
-        public Task<bool> Update(DealDTO deal)
+        public async Task<bool> Update(DealDTO deal)
         {
-            throw new NotImplementedException();
+            var mappedDeal = _mapper.Map<Deal>(deal);
+            return await _dealRepository.Update(mappedDeal);
         }
     }
 }

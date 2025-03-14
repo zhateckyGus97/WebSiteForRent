@@ -14,19 +14,25 @@ namespace Application.Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository _userRepository;
-        private IMapper _mapper;
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
         public UserService(IUserRepository userRepository, IMapper mapper)
         {
-            this._userRepository = userRepository;
-            this._mapper = mapper;
+            _userRepository = userRepository;
+            _mapper = mapper;
         }
 
-        public async Task Add(UserDTO user)
+        public async Task<int> Add(UserDTO user)
         {
             var mappedUser = _mapper.Map<User>(user);
-            await _userRepository.Create(mappedUser);
+            if(mappedUser != null)
+            {
+                await _userRepository.Create(mappedUser);
+                return mappedUser.Id;
+            }
+
+            return -1;
         }
 
         public async Task<bool> Delete(int id)
@@ -48,9 +54,10 @@ namespace Application.Services
             return mappedUser;
         }
 
-        public Task<bool> Update(UserDTO user)
+        public async Task<bool> Update(UserDTO user)
         {
-            throw new NotImplementedException();
+            var mappedUser = _mapper.Map<User>(user);
+            return await _userRepository.Update(mappedUser);
         }
     }
 }

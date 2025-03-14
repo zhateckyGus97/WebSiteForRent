@@ -12,7 +12,7 @@ namespace API.Controllers
         private DealService _dealService;
         public DealController(DealService dealService)
         {
-            this._dealService = dealService;
+            _dealService = dealService;
         }
 
         [HttpGet("{id}")]
@@ -37,7 +37,7 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromQuery] DealDTO deal)
+        public async Task<IActionResult> Update([FromBody] DealDTO deal)
         {
             var result = await _dealService.Update(deal);
             return Ok(result);

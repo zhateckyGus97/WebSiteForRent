@@ -10,7 +10,18 @@ namespace Infrastructure.Repositories
 {
     public class ReviewRepository : IReviewRepository
     {
-        private readonly List<Review> _reviews = new List<Review>();
+        private readonly List<Review> _reviews;
+
+        public ReviewRepository()
+        {
+            _reviews = new List<Review>
+            {
+                new Review {Id = 1, ApartmentId = 1, UserId = 1, Rating = 4, Comment = "Good", CreatedAt = DateTime.Now },
+                new Review {Id = 2, ApartmentId = 2, UserId = 2, Rating = 5, Comment = "Very good", CreatedAt = DateTime.Now },
+                new Review {Id = 3, ApartmentId = 3, UserId = 3, Rating = 5, Comment = "Excelent", CreatedAt = DateTime.Now }
+            };
+        }
+
 
         public Task<int> Create(Review review)
         {

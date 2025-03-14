@@ -6,7 +6,17 @@ namespace Infrastructure.Repositories
 {
     public class ApartmentRepository : IApartmentRepository
     {
-        private readonly List<Apartment> _apartments = new List<Apartment>();
+        private readonly List<Apartment> _apartments;
+
+        public ApartmentRepository()
+        {
+            _apartments = new List<Apartment>()
+            {
+                new Apartment{Id = 1, Title = "Standart", Description = "Standart apartment", Address = "Yaroslavl", PricePerDay = 2500, NumOfFloor = 1, Square = 34, Capacity = 2 },
+                new Apartment{Id = 2, Title = "Luxe", Description = "Luxe apartment", Address = "Yaroslavl", PricePerDay = 12500, NumOfFloor = 2, Square = 105, Capacity = 8 },
+                new Apartment{Id = 3, Title = "Comfort", Description = "Comfort apartment", Address = "Yaroslavl", PricePerDay = 7500, NumOfFloor = 1, Square = 72, Capacity = 4 }
+            };
+        }
 
         public Task<int> Create(Apartment apartment)
         {

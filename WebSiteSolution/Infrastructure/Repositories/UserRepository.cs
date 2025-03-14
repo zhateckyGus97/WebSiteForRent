@@ -12,7 +12,18 @@ namespace Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly List<User> _users = new List<User>();
+        private readonly List<User> _users;
+
+        public UserRepository()
+        {
+            _users = new List<User>()
+            {
+                new User{Id = 1, FullName = "Ilya Gusev", Email = "www@123", PhoneNumber = "22-22-22", Role = "admin", Passport = "77-123", DateOfBirth = DateTime.Now},
+                new User{Id = 2, FullName = "Alex Levshinsky", Email = "www@456", PhoneNumber = "33-33-33", Role ="admin", Passport = "76-123", DateOfBirth = DateTime.Now},
+                new User{Id = 3, FullName = "Vladimir Putin", Email = "putin@777", PhoneNumber = "44-44-44", Role = "user", Passport = "77-777", DateOfBirth = DateTime.Now}
+            };
+        }
+
         public Task<User?> GetById(int id)
         {
             var user = _users.FirstOrDefault(x => x.Id == id);

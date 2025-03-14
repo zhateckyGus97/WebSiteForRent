@@ -14,7 +14,7 @@ namespace API.Controllers
 
         public ReviewController(ReviewService reviewService)
         {
-            this._reviewService = reviewService;
+            _reviewService = reviewService;
         }
 
         [HttpGet("{id}")]
@@ -39,7 +39,7 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromQuery] ReviewDTO review)
+        public async Task<IActionResult> Update([FromBody] ReviewDTO review)
         {
             var result = await _reviewService.Update(review);
             return Ok(result);

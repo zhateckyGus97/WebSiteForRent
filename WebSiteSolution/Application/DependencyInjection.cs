@@ -10,6 +10,9 @@ namespace Application
         {
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddTransient<UserService, UserService>();
+            services.AddTransient<DealService, DealService>();
+            services.AddTransient<ReviewService, ReviewService>();
+            services.AddTransient<ApartmentService, ApartmentService>();
 
             return services;
         }

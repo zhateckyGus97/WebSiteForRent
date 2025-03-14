@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace Application.DTO
         public int Id { get; set; }
         public int UserId { get; set; }
         public int ApartmentId { get; set; }
+        public User User { get; set; }
+        public Apartment Apartment { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public double TotalPrice { get; set; }

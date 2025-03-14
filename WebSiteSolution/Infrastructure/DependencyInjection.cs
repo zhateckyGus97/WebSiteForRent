@@ -14,6 +14,9 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IDealRepository, DealRepository>();
+            services.AddSingleton<IReviewRepository, ReviewRepository>();
+            services.AddSingleton<IApartmentRepository, ApartmentRepository>();
 
             return services;
         }

@@ -14,19 +14,25 @@ namespace Application.Services
 {
     public class ReviewService : IReviewService
     {
-        private IReviewRepository _reviewRepository;
-        private IMapper _mapper;
+        private readonly IReviewRepository _reviewRepository;
+        private readonly IMapper _mapper;
 
         public ReviewService(IReviewRepository reviewRepository, IMapper mapper)
         {
-            this._reviewRepository = reviewRepository;
-            this._mapper = mapper;
+            _reviewRepository = reviewRepository;
+            _mapper = mapper;
         }
 
-        public async Task Add(ReviewDTO review)
+        public async Task<int> Add(ReviewDTO review)
         {
             var mappedReview = _mapper.Map<Review>(review);
-            await _reviewRepository.Create(mappedReview);
+            if(mappedReview != null)
+            {
+                await _reviewRepository.Create(mappedReview);
+                return mappedReview.Id;
+            }
+
+            return -1;
         }
 
         public async Task<bool> Delete(int id)
@@ -50,7 +56,8 @@ namespace Application.Services
 
         public async Task<bool> Update(ReviewDTO review)
         {
-            throw new NotImplementedException();
+            var mappedReview = _mapper.Map<Review>(review);
+            return await _reviewRepository.Update(mappedReview);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Application.Interfaces
 {
     public interface IUserService
     {
-        public Task Add(UserDTO user);
+        public Task<int> Add(UserDTO user);
         public Task<bool> Delete(int id);
         public Task<UserDTO> GetById(int id);
         public Task<IEnumerable<UserDTO>> GetAll();

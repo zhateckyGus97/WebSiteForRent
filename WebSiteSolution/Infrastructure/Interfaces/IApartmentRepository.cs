@@ -13,6 +13,6 @@ namespace Infrastructure.Interfaces
         public Task<IEnumerable<Apartment>> GetAll();
         public Task<int> Create(Apartment Apartment);
         public Task<bool> Update(Apartment Apartment);
-        public Task<bool> Delete(int Id);
+        public Task<bool> Delete(int id);
     }
 }

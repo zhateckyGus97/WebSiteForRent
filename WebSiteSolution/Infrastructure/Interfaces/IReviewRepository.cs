@@ -13,6 +13,6 @@ namespace Infrastructure.Interfaces
         public Task<IEnumerable<Review>> GetAll();
         public Task<int> Create(Review review);
         public Task<bool> Update(Review review);
-        public Task<bool> Delete(int Id);
+        public Task<bool> Delete(int id);
     }
 }

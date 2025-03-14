@@ -94,3 +94,4 @@ C:\Users\Илья\source\repos\WebSite\WebSiteSolution\API\bin\Debug\net8.0\Micr
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\API\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\API\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Илья\source\repos\WebSite\WebSiteSolution\API\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.dll

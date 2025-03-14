@@ -13,6 +13,6 @@ namespace Infrastructure.Interfaces
         public Task<IEnumerable<Deal>> GetAll();
         public Task<int> Create(Deal deal);
         public Task<bool> Update(Deal deal);
-        public Task<bool> Delete(int Id);
+        public Task<bool> Delete(int id);
     }
 }

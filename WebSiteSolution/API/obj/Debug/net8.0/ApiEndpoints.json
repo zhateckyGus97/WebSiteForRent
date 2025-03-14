@@ -177,6 +177,81 @@
         "IsRequired": false
       },
       {
+        "Name": "User.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "User.FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "User.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "User.PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "User.Role",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "User.Passport",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "User.DateOfBirth",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.PricePerDay",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.NumOfFloor",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Square",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Capacity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "CheckInDate",
         "Type": "System.DateTime",
         "IsRequired": false
@@ -213,44 +288,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "ApartmentId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "CheckInDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "CheckOutDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "TotalPrice",
-        "Type": "System.Double",
-        "IsRequired": false
-      },
-      {
-        "Name": "CreatedAt",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "UpdatedAt",
-        "Type": "System.DateTime",
-        "IsRequired": false
+        "Name": "deal",
+        "Type": "Application.DTO.DealDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -316,6 +356,46 @@
         "IsRequired": false
       },
       {
+        "Name": "Apartment.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.PricePerDay",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.NumOfFloor",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Square",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "Apartment.Capacity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "UserId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -352,39 +432,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "ApartmentId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Rating",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Comment",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "CreatedAt",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "UpdatedAt",
-        "Type": "System.DateTime",
-        "IsRequired": false
+        "Name": "review",
+        "Type": "Application.DTO.ReviewDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

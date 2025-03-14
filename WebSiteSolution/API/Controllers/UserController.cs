@@ -11,7 +11,7 @@ namespace API.Controllers
         private UserService _userService;
         public UserController(UserService userService)
         {
-            this._userService = userService;
+            _userService = userService;
         }
 
         [HttpGet("{id}")]

@@ -14,43 +14,50 @@ namespace Application.Services
 {
     public class ApartmentService : IApartmentService
     {
-        private IApartmentRepository _apartRepository;
-        private IMapper _mapper;
+        private readonly IApartmentRepository _apartmentRepository;
+        private readonly IMapper _mapper;
 
         public ApartmentService(IApartmentRepository apartRepository, IMapper mapper)
         {
-            this._apartRepository = apartRepository;
-            this._mapper = mapper;
+            _apartmentRepository = apartRepository;
+            _mapper = mapper;
         }
 
-        public async Task Add(ApartmentDTO apartment)
+        public async Task<int> Add(ApartmentDTO apartment)
         {
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            await _apartRepository.Create(mappedApartment);
+            if (mappedApartment == null )
+            {
+                await _apartmentRepository.Create(mappedApartment);
+                return mappedApartment.Id;
+            }
+
+            return -1;
         }
 
         public async Task<bool> Delete(int id)
         {
-            return await _apartRepository.Delete(id);
+            return await _apartmentRepository.Delete(id);
         }
 
         public async Task<IEnumerable<ApartmentDTO>> GetAll()
         {
-            var aparts = await _apartRepository.GetAll();
+            var aparts = await _apartmentRepository.GetAll();
             var mappedAparts = aparts.Select(a => _mapper.Map<ApartmentDTO>(a)).ToList();
             return mappedAparts;
         }
 
         public async Task<ApartmentDTO> GetById(int id)
         {
-            var apart = await _apartRepository.GetById(id);
+            var apart = await _apartmentRepository.GetById(id);
             var mappedAparts = _mapper.Map<ApartmentDTO>(apart);
             return mappedAparts;
         }
 
-        public Task<bool> Update(ApartmentDTO apartment)
+        public async Task<bool> Update(ApartmentDTO apartment)
         {
-            throw new NotImplementedException();
+            var mappedApartment = _mapper.Map<Apartment>(apartment);
+            return await _apartmentRepository.Update(mappedApartment);
         }
     }
 }

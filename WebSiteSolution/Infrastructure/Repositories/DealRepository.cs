@@ -11,7 +11,18 @@ namespace Infrastructure.Repositories
 {
     public class DealRepository : IDealRepository
     {
-        private readonly List<Deal> _deals = new List<Deal>();
+        private readonly List<Deal> _deals;
+
+        public DealRepository()
+        {
+            _deals = new List<Deal>
+            {
+                new Deal{Id = 1, UserId = 1, ApartmentId = 1, CheckInDate = DateTime.Now, CheckOutDate = DateTime.Now, CreatedAt = DateTime.Now, TotalPrice = 2500 },
+                new Deal{Id = 2, UserId = 2, ApartmentId = 2, CheckInDate = DateTime.Now, CheckOutDate = DateTime.Now, CreatedAt = DateTime.Now, TotalPrice = 12500 },
+                new Deal{Id = 3, UserId = 3, ApartmentId = 3, CheckInDate = DateTime.Now, CheckOutDate = DateTime.Now, CreatedAt = DateTime.Now, TotalPrice = 7500 },
+            };
+        }
+
         public Task<Deal?> GetById(int id)
         {
             var deal = _deals.FirstOrDefault(x => x.Id == id);
