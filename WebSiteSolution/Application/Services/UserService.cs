@@ -26,7 +26,7 @@ namespace Application.Services
         public async Task<int> Add(UserDTO user)
         {
             var mappedUser = _mapper.Map<User>(user);
-            if(mappedUser != null)
+            if (mappedUser != null)
             {
                 await _userRepository.Create(mappedUser);
                 return mappedUser.Id;

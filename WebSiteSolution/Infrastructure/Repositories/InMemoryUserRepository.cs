@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class InMemoryUserRepository : IUserRepository
     {
         private readonly List<User> _users;
 
-        public UserRepository()
+        public InMemoryUserRepository()
         {
             _users = new List<User>()
             {

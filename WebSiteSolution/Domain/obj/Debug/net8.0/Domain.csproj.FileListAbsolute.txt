@@ -21,3 +21,15 @@ C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Domain\obj\Debug\net8.0\D
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\Илья\source\repos\WebSite\WebSiteSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
+H:\ASP\WebSiteSolution\Domain\bin\Debug\net8.0\Domain.deps.json
+H:\ASP\WebSiteSolution\Domain\bin\Debug\net8.0\Domain.dll
+H:\ASP\WebSiteSolution\Domain\bin\Debug\net8.0\Domain.pdb
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.dll
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\Domain.pdb
+H:\ASP\WebSiteSolution\Domain\obj\Debug\net8.0\ref\Domain.dll

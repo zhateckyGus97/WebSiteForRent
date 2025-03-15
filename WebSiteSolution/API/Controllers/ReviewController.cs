@@ -32,7 +32,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromQuery] ReviewDTO review)
+        public async Task<IActionResult> Add([FromBody] ReviewDTO review)
         {
             await _reviewService.Add(review);
             return Created();

@@ -1,6 +1,8 @@
 using Infrastructure;
 using Application;
 
+using Infrastructure.DataBase;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,12 +17,18 @@ builder.Services.AddApplication();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var migrationRunner = scope.ServiceProvider.GetRequiredService<MigrationRunner>();
+    migrationRunner.Run();
 }
+
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
 app.UseHttpsRedirection();
 

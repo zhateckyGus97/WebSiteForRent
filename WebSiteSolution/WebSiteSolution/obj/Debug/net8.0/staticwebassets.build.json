@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "k9o6pXF6bmFeThilBJNT/Lb047DRXQvVCkpoAwYGyYk=",
+  "Hash": "eaw/rkjmSKAFm71Q6uN04BCMNB5f9XoCxJkj31VCV+s=",
   "Source": "WebSiteSolution",
   "BasePath": "_content/WebSiteSolution",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

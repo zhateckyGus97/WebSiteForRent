@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class DealRepository : IDealRepository
+    public class InMemoryDealRepository : IDealRepository
     {
         private readonly List<Deal> _deals;
 
-        public DealRepository()
+        public InMemoryDealRepository()
         {
             _deals = new List<Deal>
             {

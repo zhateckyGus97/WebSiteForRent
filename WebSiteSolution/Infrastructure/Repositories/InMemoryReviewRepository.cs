@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class ReviewRepository : IReviewRepository
+    public class InMemoryReviewRepository : IReviewRepository
     {
         private readonly List<Review> _reviews;
 
-        public ReviewRepository()
+        public InMemoryReviewRepository()
         {
             _reviews = new List<Review>
             {
@@ -21,7 +21,6 @@ namespace Infrastructure.Repositories
                 new Review {Id = 3, ApartmentId = 3, UserId = 3, Rating = 5, Comment = "Excelent", CreatedAt = DateTime.Now }
             };
         }
-
 
         public Task<int> Create(Review review)
         {

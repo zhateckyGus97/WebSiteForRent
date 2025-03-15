@@ -31,14 +31,14 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromQuery] ApartmentDTO apart)
+        public async Task<IActionResult> Add([FromBody] ApartmentDTO apart)
         {
             await _apartmentService.Add(apart);
             return Created();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromQuery] ApartmentDTO apart)
+        public async Task<IActionResult> Update([FromBody] ApartmentDTO apart)
         {
             var result = await _apartmentService.Update(apart);
             return Ok(result);

@@ -26,7 +26,7 @@ namespace Application.Services
         public async Task<int> Add(ReviewDTO review)
         {
             var mappedReview = _mapper.Map<Review>(review);
-            if(mappedReview != null)
+            if (mappedReview != null)
             {
                 await _reviewRepository.Create(mappedReview);
                 return mappedReview.Id;

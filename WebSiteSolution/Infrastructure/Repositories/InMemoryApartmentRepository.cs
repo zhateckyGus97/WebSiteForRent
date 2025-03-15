@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class ApartmentRepository : IApartmentRepository
+    public class InMemoryApartmentRepository : IApartmentRepository
     {
         private readonly List<Apartment> _apartments;
 
-        public ApartmentRepository()
+        public InMemoryApartmentRepository()
         {
             _apartments = new List<Apartment>()
             {

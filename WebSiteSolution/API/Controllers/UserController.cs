@@ -1,5 +1,6 @@
 using Application.DTO;
 using Application.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -18,7 +19,10 @@ namespace API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var user = await _userService.GetById(id);
-            return Ok(user);
+            if(user != null)
+                return Ok(user);
+
+            return NotFound();
         }
 
         [HttpGet]
@@ -29,24 +33,36 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromQuery] UserDTO user)
+        public async Task<IActionResult> Add([FromBody] UserDTO user)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             await _userService.Add(user);
-            return Created();
+            return Created(); // return id
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromQuery] UserDTO user)
+        public async Task<IActionResult> Update([FromBody] UserDTO user)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var result = await _userService.Update(user);
-            return Ok(result);
+            if (!result)
+                return NotFound();
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _userService.Delete(id);
-            return Ok(result);
+            if (!result)
+                return NotFound();
+
+            return NoContent();
         }
     }
 }

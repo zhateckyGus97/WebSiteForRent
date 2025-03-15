@@ -30,7 +30,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromQuery]DealDTO deal)
+        public async Task<IActionResult> Add([FromBody]DealDTO deal)
         {
             await _dealService.Add(deal);
             return Created();
