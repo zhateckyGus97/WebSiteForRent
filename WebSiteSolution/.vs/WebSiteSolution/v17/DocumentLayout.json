@@ -27,20 +27,20 @@
       "RelativeMoniker": "D:0:0:{4A87948C-3CA6-4392-9005-6D5C1019C436}|API\\API.csproj|solutionrelative:api\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\reviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\reviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\ReviewRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Repositories\\ReviewRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\dealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\dealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\DealRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Repositories\\DealRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\apartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\apartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Repositories\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\ApartmentRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Repositories\\ApartmentRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -75,8 +75,7 @@
               "RelativeToolTip": "Application\\Services\\DealService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAACIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T08:30:52.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T08:30:52.265Z"
             },
             {
               "$type": "Document",
@@ -88,8 +87,7 @@
               "RelativeToolTip": "Application\\Services\\ReviewService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T08:30:29.473Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T08:30:29.473Z"
             },
             {
               "$type": "Document",
@@ -101,8 +99,7 @@
               "RelativeToolTip": "Application\\Services\\UserService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAxwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T08:29:40.758Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T08:29:40.758Z"
             },
             {
               "$type": "Document",
@@ -114,8 +111,7 @@
               "RelativeToolTip": "API\\Controllers\\DealController.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAwwDIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T08:26:33.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T08:26:33.556Z"
             },
             {
               "$type": "Document",
@@ -127,8 +123,7 @@
               "RelativeToolTip": "API\\Controllers\\ReviewController.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAowCkAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T08:26:19.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T08:26:19.937Z"
             },
             {
               "$type": "Document",
@@ -140,8 +135,7 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\ReviewRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T08:22:19.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T08:22:19.927Z"
             },
             {
               "$type": "Document",
@@ -153,12 +147,11 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\DealRepository.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T08:18:34.359Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T08:18:34.359Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\UserRepository.cs",
@@ -166,12 +159,11 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T07:33:32.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T07:33:32.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ApartmentRepository.cs",
               "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\ApartmentRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\ApartmentRepository.cs",
@@ -179,8 +171,7 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\ApartmentRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAgwBUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T07:20:11.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T07:20:11.322Z"
             }
           ]
         }
