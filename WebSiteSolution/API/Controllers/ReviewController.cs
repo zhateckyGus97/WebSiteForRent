@@ -21,7 +21,10 @@ namespace API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var review = await _reviewService.GetById(id);
-            return Ok(review);
+            if (review != null)
+                return Ok(review);
+
+            return NotFound();
         }
 
         [HttpGet]
@@ -34,22 +37,35 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] ReviewDTO review)
         {
-            await _reviewService.Add(review);
-            return Created();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var reviewId = await _reviewService.Add(review);
+            var res = new { Id = reviewId };
+            return CreatedAtAction(nameof(GetById), new { id = reviewId }, res);
         }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] ReviewDTO review)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var result = await _reviewService.Update(review);
-            return Ok(result);
+            if (!result)
+                return NotFound();
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _reviewService.Delete(id);
-            return Ok(result);
+            if (!result)
+                return NotFound();
+
+            return NoContent();
         }
     }
 }

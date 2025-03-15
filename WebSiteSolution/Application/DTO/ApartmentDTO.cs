@@ -9,6 +9,8 @@ namespace Application.DTO
     public class ApartmentDTO
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
+        public UserDTO Apartment_user { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }

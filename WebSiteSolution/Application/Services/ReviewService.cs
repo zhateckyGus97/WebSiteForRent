@@ -56,6 +56,11 @@ namespace Application.Services
 
         public async Task<bool> Update(ReviewDTO review)
         {
+            if (review == null)
+            {
+                return false;
+            }
+
             var mappedReview = _mapper.Map<Review>(review);
             return await _reviewRepository.Update(mappedReview);
         }

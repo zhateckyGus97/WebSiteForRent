@@ -12,8 +12,8 @@ namespace Application.DTO
         public int Id { get; set; }
         public int UserId { get; set; }
         public int ApartmentId { get; set; }
-        public User User { get; set; }
-        public Apartment Apartment { get; set; }
+        public User Deal_user { get; set; }
+        public Apartment Deal_apartment { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public double TotalPrice { get; set; }

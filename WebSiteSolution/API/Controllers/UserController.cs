@@ -1,5 +1,6 @@
 using Application.DTO;
 using Application.Services;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,8 +39,9 @@ namespace API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await _userService.Add(user);
-            return Created(); // return id
+            var userId = await _userService.Add(user);
+            var res = new { Id = userId };
+            return CreatedAtAction(nameof(GetById), new { id = userId }, res);
         }
 
         [HttpPut]

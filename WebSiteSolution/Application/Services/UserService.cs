@@ -26,13 +26,12 @@ namespace Application.Services
         public async Task<int> Add(UserDTO user)
         {
             var mappedUser = _mapper.Map<User>(user);
-            if (mappedUser != null)
+            if (mappedUser == null)
             {
-                await _userRepository.Create(mappedUser);
-                return mappedUser.Id;
+                return -1;
             }
 
-            return -1;
+            return await _userRepository.Create(mappedUser);
         }
 
         public async Task<bool> Delete(int id)
@@ -56,6 +55,11 @@ namespace Application.Services
 
         public async Task<bool> Update(UserDTO user)
         {
+            if (user == null)
+            {
+                return false;
+            }
+
             var mappedUser = _mapper.Map<User>(user);
             return await _userRepository.Update(mappedUser);
         }
