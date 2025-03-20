@@ -3,11 +3,11 @@ using Infrastructure.Interfaces;
 
 namespace Infrastructure.Repositories
 {
-    public class InMemoryUserRepository : IUserRepository
+    public class UserRepositoryInMemory : IUserRepository
     {
         private readonly List<User> _users;
 
-        public InMemoryUserRepository()
+        public UserRepositoryInMemory()
         {
             _users = new List<User>()
             {

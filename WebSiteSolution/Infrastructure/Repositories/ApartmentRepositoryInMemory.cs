@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class InMemoryApartmentRepository : IApartmentRepository
+    public class ApartmentRepositoryInMemory : IApartmentRepository
     {
         private readonly List<Apartment> _apartments;
 
-        public InMemoryApartmentRepository()
+        public ApartmentRepositoryInMemory()
         {
             _apartments = new List<Apartment>()
             {
@@ -65,6 +65,7 @@ namespace Infrastructure.Repositories
             old_apart.Address = apartment.Address;
             old_apart.NumOfFloor = apartment.NumOfFloor;
             old_apart.Square = apartment.Square;
+            old_apart.PhotoURLs = apartment.PhotoURLs;
 
             return Task.FromResult(true);
         }

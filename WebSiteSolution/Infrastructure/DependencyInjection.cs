@@ -29,12 +29,15 @@ namespace Infrastructure
                 return datasource.CreateConnection();
             });
 
-            services.AddTransient<IUserRepository, PostgresUserRepository>(); //еще 3 таких
+            services.AddTransient<IUserRepository, UserRepositoryPostgres>(); //еще 3 таких
+            services.AddTransient<IDealRepository, DealRepositoryPostgres>();
+            services.AddTransient<IApartmentRepository, ApartmentRepositoryPostgres>();
+            services.AddTransient<IReviewRepository, ReviewRepositoryPostgres>();
 
             /*services.AddSingleton<IUserRepository, InMemoryUserRepository>();*/
-            services.AddSingleton<IDealRepository, InMemoryDealRepository>();
-            services.AddSingleton<IReviewRepository, InMemoryReviewRepository>();
-            services.AddSingleton<IApartmentRepository, InMemoryApartmentRepository>();
+            services.AddSingleton<IDealRepository, DealRepositoryInMemory>();
+            services.AddSingleton<IReviewRepository, ReviewRepositoryInMemory>();
+            services.AddSingleton<IApartmentRepository, ApartmentRepositoryInMemory>();
 
             services.AddFluentMigratorCore()
                 .ConfigureRunner(

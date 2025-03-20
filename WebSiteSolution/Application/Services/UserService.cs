@@ -36,6 +36,7 @@ namespace Application.Services
 
         public async Task<bool> Delete(int id)
         {
+
             return await _userRepository.Delete(id);
         }
 

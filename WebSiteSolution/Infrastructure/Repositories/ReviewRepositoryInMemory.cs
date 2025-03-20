@@ -3,11 +3,11 @@ using Infrastructure.Interfaces;
 
 namespace Infrastructure.Repositories
 {
-    public class InMemoryReviewRepository : IReviewRepository
+    public class ReviewRepositoryInMemory : IReviewRepository
     {
         private readonly List<Review> _reviews;
 
-        public InMemoryReviewRepository()
+        public ReviewRepositoryInMemory()
         {
             _reviews = new List<Review>
             {
@@ -63,6 +63,7 @@ namespace Infrastructure.Repositories
             old_review.Rating = review.Rating;
             old_review.Comment = review.Comment;
             old_review.UpdatedAt = DateTime.Now;
+            old_review.PhotoURLs = review.PhotoURLs;
 
             return Task.FromResult(true);
         }

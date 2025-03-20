@@ -5,10 +5,10 @@ using Dapper;
 
 namespace Infrastructure.Repositories
 {
-    public class PostgresUserRepository : IUserRepository
+    public class UserRepositoryPostgres : IUserRepository
     {
         private readonly NpgsqlConnection _connection;
-        public PostgresUserRepository(NpgsqlConnection connection)
+        public UserRepositoryPostgres(NpgsqlConnection connection)
         {
             _connection = connection;
         }
