@@ -2,7 +2,6 @@
 using Infrastructure.Interfaces;
 using Npgsql;
 using Dapper;
-using System.Data;
 
 namespace Infrastructure.Repositories
 {
