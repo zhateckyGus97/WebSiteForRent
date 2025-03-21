@@ -65,7 +65,6 @@ namespace Infrastructure.Repositories
             old_apart.Address = apartment.Address;
             old_apart.NumOfFloor = apartment.NumOfFloor;
             old_apart.Square = apartment.Square;
-            old_apart.PhotoURLs = apartment.PhotoURLs;
 
             return Task.FromResult(true);
         }

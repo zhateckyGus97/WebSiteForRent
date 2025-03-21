@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var users = await _connection.QueryAsync<User>(
-                    @"SELECT * FROM User");
+                    @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM User");
 
             await _connection.CloseAsync();
 
@@ -56,7 +56,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var user = await _connection.QueryFirstOrDefaultAsync<User>(
-                    @"SELECT * FROM User WHERE id = @Id", new { Id = id });
+                    @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM User WHERE id = @Id", new { Id = id });
 
             await _connection.CloseAsync();
 

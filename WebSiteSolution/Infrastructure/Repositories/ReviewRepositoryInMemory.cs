@@ -63,7 +63,6 @@ namespace Infrastructure.Repositories
             old_review.Rating = review.Rating;
             old_review.Comment = review.Comment;
             old_review.UpdatedAt = DateTime.Now;
-            old_review.PhotoURLs = review.PhotoURLs;
 
             return Task.FromResult(true);
         }

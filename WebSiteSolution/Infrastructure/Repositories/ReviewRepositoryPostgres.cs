@@ -18,10 +18,10 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var reviewId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO Review (ApartmentId, UserId, Rating, Comment, PhotoURLs, CreatedAt)
-                      VAlUES (@ApartmentId, @UserId, @Rating, @Comment, @PhotoURLs, @CreatedAt)
+                    @"INSERT INTO Review (ApartmentId, UserId, Rating, Comment, CreatedAt)
+                      VAlUES (@ApartmentId, @UserId, @Rating, @Comment, @CreatedAt)
                       RETURNING Id",
-                    new { review.ApartmentId, review.UserId, review.Rating, review.Comment, review.PhotoURLs, review.CreatedAt });
+                    new { review.ApartmentId, review.UserId, review.Rating, review.Comment, review.CreatedAt });
             await _connection.CloseAsync();
             return reviewId;
         }
@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var users = await _connection.QueryAsync<Review>(
-                    @"SELECT * FROM Review");
+                    @"SELECT ID, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Review");
 
             await _connection.CloseAsync();
 
@@ -56,7 +56,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var review = await _connection.QueryFirstOrDefaultAsync<Review>(
-                    @"SELECT * FROM Review WHERE id = @Id", new { Id = id });
+                    @"SELECT Id, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Review WHERE id = @Id", new { Id = id });
 
             await _connection.CloseAsync();
 
@@ -72,7 +72,6 @@ namespace Infrastructure.Repositories
                                       UserId = @UserId,
                                       Rating = @Rating, 
                                       Comment = @Comment,
-                                      PhotoURLs = @PhotoURLs,
                                       UpdatedAt = DateTime.Now
                     WHERE id = @Id");
 

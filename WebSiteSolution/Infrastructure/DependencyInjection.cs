@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentMigrator.Runner;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
-using FluentMigrator.Runner;
 using System.Reflection;
 namespace Infrastructure
 {
@@ -19,7 +14,7 @@ namespace Infrastructure
             services.AddSingleton(sp =>
             {
                 var configuration = sp.GetRequiredService<IConfiguration>();
-                var connectionstring = configuration.GetConnectionString("PostgreDB");
+                var connectionstring = configuration.GetConnectionString("PostgresDB");
                 return new NpgsqlDataSourceBuilder(connectionstring).Build();
             });
 
@@ -29,15 +24,15 @@ namespace Infrastructure
                 return datasource.CreateConnection();
             });
 
-            services.AddTransient<IUserRepository, UserRepositoryPostgres>(); //еще 3 таких
+            services.AddTransient<IUserRepository, UserRepositoryPostgres>();
             services.AddTransient<IDealRepository, DealRepositoryPostgres>();
             services.AddTransient<IApartmentRepository, ApartmentRepositoryPostgres>();
             services.AddTransient<IReviewRepository, ReviewRepositoryPostgres>();
 
-            /*services.AddSingleton<IUserRepository, InMemoryUserRepository>();*/
+            /*services.AddSingleton<IUserRepository, InMemoryUserRepository>();
             services.AddSingleton<IDealRepository, DealRepositoryInMemory>();
             services.AddSingleton<IReviewRepository, ReviewRepositoryInMemory>();
-            services.AddSingleton<IApartmentRepository, ApartmentRepositoryInMemory>();
+            services.AddSingleton<IApartmentRepository, ApartmentRepositoryInMemory>();*/
 
             services.AddFluentMigratorCore()
                 .ConfigureRunner(

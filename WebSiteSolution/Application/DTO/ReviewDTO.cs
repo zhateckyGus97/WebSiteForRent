@@ -15,7 +15,6 @@ namespace Application.DTO
         public int UserId { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }
-        public string PhotoURLs { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

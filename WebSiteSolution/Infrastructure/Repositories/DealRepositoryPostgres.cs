@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var deals = await _connection.QueryAsync<Deal>(
-                    @"SELECT * FROM Deal");
+                    @"SELECT Id, UserId, ApartmentId, CheckInDate, CheckOutDate, TotalPrice, CreatedAt, UpdatedAt FROM Deal");
 
             await _connection.CloseAsync();
 
@@ -56,7 +56,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var deal = await _connection.QueryFirstOrDefaultAsync<Deal>(
-                    @"SELECT * FROM Deal WHERE id = @Id", new { Id = id });
+                    @"SELECT Id, UserId, ApartmentId, CheckInDate, CheckOutDate, TotalPrice, CreatedAt, UpdatedAt FROM Deal WHERE id = @Id", new { Id = id });
 
             await _connection.CloseAsync();
 

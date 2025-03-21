@@ -18,11 +18,11 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var apartmentId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO Apartment (Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity, PhotoURLs)
-                      VAlUES (@Title, @Description, @Address, @PricePerDay, @NumOfFloor, @Square, @Capacity, @PhotoURLs)
+                    @"INSERT INTO Apartment (Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity)
+                      VAlUES (@Title, @Description, @Address, @PricePerDay, @NumOfFloor, @Square, @Capacity)
                       RETURNING Id",
                     new { apartment.Title, apartment.Description, apartment.Address, apartment.PricePerDay, 
-                            apartment.NumOfFloor, apartment.Square, apartment.Capacity, apartment.PhotoURLs });
+                            apartment.NumOfFloor, apartment.Square, apartment.Capacity });
             await _connection.CloseAsync();
             return apartmentId;
         }
@@ -45,7 +45,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var apartments = await _connection.QueryAsync<Apartment>(
-                    @"SELECT * FROM Apartment");
+                    @"SELECT Id, Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity FROM Apartment");
 
             await _connection.CloseAsync();
 
@@ -57,7 +57,7 @@ namespace Infrastructure.Repositories
             await _connection.OpenAsync();
 
             var apartment = await _connection.QueryFirstOrDefaultAsync<Apartment>(
-                    @"SELECT * FROM Apartment WHERE id = @Id", new { Id = id });
+                    @"SELECT Id, Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity FROM Apartment WHERE id = @Id", new { Id = id });
 
             await _connection.CloseAsync();
 
@@ -75,8 +75,7 @@ namespace Infrastructure.Repositories
                                            PricePerDay = @PricePerDay,     
                                            NumOfFloor = @NumOfFloor, 
                                            Square = @Square, 
-                                           Capacity = @Capacity, 
-                                           PhotoURLs = @PhotoURLs
+                                           Capacity = @Capacity 
                     WHERE id = @Id");
 
             await _connection.CloseAsync();
