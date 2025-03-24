@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.InMemoryRepositories
 {
-    public class DealRepositoryInMemory : IDealRepository
+    public class DealInMemoryRepository : IDealRepository
     {
         private readonly List<Deal> _deals;
 
-        public DealRepositoryInMemory()
+        public DealInMemoryRepository()
         {
             _deals = new List<Deal>
             {
@@ -45,7 +45,7 @@ namespace Infrastructure.Repositories
 
         public Task<bool> Update(Deal deal)
         {
-            if(deal == null)
+            if (deal == null)
                 throw new ArgumentNullException(nameof(deal));
 
             var old_deal = _deals.FirstOrDefault(d => d.Id == deal.Id);
@@ -65,7 +65,7 @@ namespace Infrastructure.Repositories
 
         public Task<bool> Delete(int Id)
         {
-            var deal = _deals.FirstOrDefault(x =>x.Id == Id);
+            var deal = _deals.FirstOrDefault(x => x.Id == Id);
 
             if (deal == null)
                 return Task.FromResult(false);

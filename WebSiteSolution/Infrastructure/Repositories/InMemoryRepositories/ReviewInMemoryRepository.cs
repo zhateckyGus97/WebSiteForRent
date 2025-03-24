@@ -1,13 +1,13 @@
 ﻿using Domain.Entities;
 using Infrastructure.Interfaces;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.InMemoryRepositories
 {
-    public class ReviewRepositoryInMemory : IReviewRepository
+    public class ReviewInMemoryRepository : IReviewRepository
     {
         private readonly List<Review> _reviews;
 
-        public ReviewRepositoryInMemory()
+        public ReviewInMemoryRepository()
         {
             _reviews = new List<Review>
             {
@@ -28,7 +28,7 @@ namespace Infrastructure.Repositories
 
         public Task<bool> Delete(int Id)
         {
-            var review = _reviews.FirstOrDefault(r =>  r.Id == Id);
+            var review = _reviews.FirstOrDefault(r => r.Id == Id);
 
             if (review == null)
                 return Task.FromResult(false);
@@ -50,12 +50,12 @@ namespace Infrastructure.Repositories
 
         public Task<bool> Update(Review review)
         {
-            if(review == null)
+            if (review == null)
                 throw new ArgumentNullException(nameof(review));
 
             var old_review = _reviews.FirstOrDefault(r => r.Id == review.Id);
 
-            if(old_review == null)
+            if (old_review == null)
                 return Task.FromResult(false);
 
             old_review.ApartmentId = review.ApartmentId;

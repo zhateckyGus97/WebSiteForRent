@@ -1,6 +1,6 @@
 ﻿using FluentMigrator.Runner;
 using Infrastructure.Interfaces;
-using Infrastructure.Repositories;
+using Infrastructure.Repositories.PostgresRepositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
@@ -24,15 +24,10 @@ namespace Infrastructure
                 return datasource.CreateConnection();
             });
 
-            services.AddTransient<IUserRepository, UserRepositoryPostgres>();
-            services.AddTransient<IDealRepository, DealRepositoryPostgres>();
-            services.AddTransient<IApartmentRepository, ApartmentRepositoryPostgres>();
-            services.AddTransient<IReviewRepository, ReviewRepositoryPostgres>();
-
-            /*services.AddSingleton<IUserRepository, InMemoryUserRepository>();
-            services.AddSingleton<IDealRepository, DealRepositoryInMemory>();
-            services.AddSingleton<IReviewRepository, ReviewRepositoryInMemory>();
-            services.AddSingleton<IApartmentRepository, ApartmentRepositoryInMemory>();*/
+            services.AddTransient<IUserRepository, UserPostgresRepository>();
+            services.AddTransient<IDealRepository, DealPostgresRepository>();
+            services.AddTransient<IApartmentRepository, ApartmentPostgresRepository>();
+            services.AddTransient<IReviewRepository, ReviewPostgresRepository>();
 
             services.AddFluentMigratorCore()
                 .ConfigureRunner(

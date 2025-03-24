@@ -22,11 +22,6 @@ namespace Infrastructure.DataBase.Migrations
                 .WithColumn("Role").AsString(20).NotNullable()
                 .WithColumn("Passport").AsString(20).NotNullable()
                 .WithColumn("DateOfBirth").AsDate().NotNullable();
-            //.ForeignKey("TableName", "ColumnName")
-
-            Insert.IntoTable("User")
-                .Row(new { FullName = "Ilya", Email = "ggg@123.ru", PhoneNumber = "22-22-22", Role = "Admin", 
-                    Passport = "7865-123456", DateOfBirth = DateTime.Now });
 
             Create.Table("Apartment")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
@@ -38,10 +33,6 @@ namespace Infrastructure.DataBase.Migrations
                 .WithColumn("Square").AsDouble()
                 .WithColumn("Capacity").AsInt32().NotNullable();
 
-            Insert.IntoTable("Apartment")
-                .Row(new {Title = "Luxe Apartment", Description = "No description", Address = "Russia, Yaroslavl", PricePerDay = 15000,
-                    NumOfFloor = 2, Square = 76, Capacity = 6 });
-
             Create.Table("Deal")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("UserId").AsInt32().ForeignKey("User", "Id")
@@ -52,10 +43,6 @@ namespace Infrastructure.DataBase.Migrations
                 .WithColumn("CreatedAt").AsDateTime().NotNullable()
                 .WithColumn("UpdatedAt").AsDateTime().Nullable();
 
-            Insert.IntoTable("Deal")
-                .Row(new { UserId = 1, ApartmentId = 1, CheckInDate = new DateTime(2025, 1, 15), CheckOutDate = new DateTime(2025, 1, 25), 
-                    TotalPrice = 150000, CreatedAt = DateTime.Now });
-
             Create.Table("Review")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("UserId").AsInt32().ForeignKey("User", "Id")
@@ -65,16 +52,57 @@ namespace Infrastructure.DataBase.Migrations
                 .WithColumn("CreatedAt").AsDateTime().NotNullable()
                 .WithColumn("UpdatedAt").AsDateTime().Nullable();
 
+            Insert.IntoTable("User")
+                .Row(new
+                {
+                    FullName = "Ilya",
+                    Email = "ggg@123.ru",
+                    PhoneNumber = "22-22-22",
+                    Role = "Admin",
+                    Passport = "7865-123456",
+                    DateOfBirth = DateTime.Now
+                });
+
+            Insert.IntoTable("Apartment")
+                .Row(new
+                {
+                    Title = "Luxe Apartment",
+                    Description = "No description",
+                    Address = "Russia, Yaroslavl",
+                    PricePerDay = 15000,
+                    NumOfFloor = 2,
+                    Square = 76,
+                    Capacity = 6
+                });
+
+            Insert.IntoTable("Deal")
+               .Row(new
+               {
+                   UserId = 1,
+                   ApartmentId = 1,
+                   CheckInDate = new DateTime(2025, 1, 15),
+                   CheckOutDate = new DateTime(2025, 1, 25),
+                   TotalPrice = 150000,
+                   CreatedAt = DateTime.Now
+               });
+
             Insert.IntoTable("Review")
-                .Row(new { UserId = 1, ApartmentId = 1, Rating = 5, Comment = "Perfect apartment", CreatedAt = DateTime.Now });
+                .Row(new 
+                { 
+                    UserId = 1, 
+                    ApartmentId = 1, 
+                    Rating = 5, 
+                    Comment = "Perfect apartment", 
+                    CreatedAt = DateTime.Now
+                });
         }
 
         public override void Down()
         {
-            Delete.Table("User");
-            Delete.Table("Apartment");
-            Delete.Table("Deal");
             Delete.Table("Review");
+            Delete.Table("Deal");
+            Delete.Table("Apartment");
+            Delete.Table("User");
         }
 
     }

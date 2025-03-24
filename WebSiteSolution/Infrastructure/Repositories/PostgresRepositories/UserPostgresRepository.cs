@@ -3,70 +3,60 @@ using Infrastructure.Interfaces;
 using Npgsql;
 using Dapper;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.PostgresRepositories
 {
-    public class UserRepositoryPostgres : IUserRepository
+    public class UserPostgresRepository : IUserRepository
     {
         private readonly NpgsqlConnection _connection;
-        public UserRepositoryPostgres(NpgsqlConnection connection)
+        public UserPostgresRepository(NpgsqlConnection connection)
         {
             _connection = connection;
         }
 
         public async Task<int> Create(User user)
         {
-            await _connection.OpenAsync();
-
             var userId = await _connection.QuerySingleAsync<int>(
                     @"INSERT INTO User (FullName, Email, PhoneNumber, Role, Passport, DateOfBirth)
                       VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth)
-                      RETURNING Id", 
-                    new { user.FullName, user.Email, user.PhoneNumber, user.Role, user.Passport, user.DateOfBirth });
-            await _connection.CloseAsync();
+                      RETURNING Id",
+                    new { user.FullName, 
+                        user.Email, 
+                        user.PhoneNumber, 
+                        user.Role, 
+                        user.Passport, 
+                        user.DateOfBirth 
+                    });
+            
             return userId;
         }
 
         public async Task<bool> Delete(int id)
         {
-            await _connection.OpenAsync();
-
             var affectedRows = await _connection.ExecuteAsync(
                     @"DELETE FROM User WHERE id = @Id",
                     new { Id = id });
-
-            await _connection.CloseAsync();
 
             return affectedRows > 0;
         }
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            await _connection.OpenAsync();
-
             var users = await _connection.QueryAsync<User>(
                     @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM User");
-
-            await _connection.CloseAsync();
 
             return users;
         }
 
         public async Task<User?> GetById(int id)
         {
-            await _connection.OpenAsync();
-
             var user = await _connection.QueryFirstOrDefaultAsync<User>(
                     @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM User WHERE id = @Id", new { Id = id });
-
-            await _connection.CloseAsync();
 
             return user;
         }
 
         public async Task<bool> Update(User user)
         {
-            await _connection.OpenAsync();
-
             var affectedRows = await _connection.ExecuteAsync(
                     @"UPDATE User SET FullName = @FullName,
                                       Email = @Email,
@@ -76,8 +66,6 @@ namespace Infrastructure.Repositories
                                       DateOfBirth = @DateOfBirth
                                       
                     WHERE id = @Id");
-
-            await _connection.CloseAsync();
 
             return affectedRows > 0;
         }
