@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\database\\migrations\\202503151108_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\database\\migrations\\202503151108_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\postgresrepositories\\reviewpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\postgresrepositories\\reviewpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\postgresrepositories\\userpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\postgresrepositories\\userpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\postgresrepositories\\apartmentpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\postgresrepositories\\apartmentpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\infrastructure\\repositories\\postgresrepositories\\dealpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9314D45-0DCC-47CC-8265-04B81C452E19}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\postgresrepositories\\dealpostgresrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserPostgresRepository.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\UserPostgresRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\PostgresRepositories\\UserPostgresRepository.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\UserPostgresRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\PostgresRepositories\\UserPostgresRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:20:18.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApartmentPostgresRepository.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\ApartmentPostgresRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\PostgresRepositories\\ApartmentPostgresRepository.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\ApartmentPostgresRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\PostgresRepositories\\ApartmentPostgresRepository.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowCQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T18:52:20.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DealPostgresRepository.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\DealPostgresRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\PostgresRepositories\\DealPostgresRepository.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\DealPostgresRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\PostgresRepositories\\DealPostgresRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T18:52:01.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReviewPostgresRepository.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\ReviewPostgresRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\PostgresRepositories\\ReviewPostgresRepository.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\Repositories\\PostgresRepositories\\ReviewPostgresRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\PostgresRepositories\\ReviewPostgresRepository.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowBUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T18:51:33.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "202503151108_InitialMigration.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\DataBase\\Migrations\\202503151108_InitialMigration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DataBase\\Migrations\\202503151108_InitialMigration.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Infrastructure\\DataBase\\Migrations\\202503151108_InitialMigration.cs",
+              "RelativeToolTip": "Infrastructure\\DataBase\\Migrations\\202503151108_InitialMigration.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T18:15:28.04Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

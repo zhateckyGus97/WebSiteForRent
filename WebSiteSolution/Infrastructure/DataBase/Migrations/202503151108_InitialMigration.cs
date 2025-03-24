@@ -14,95 +14,95 @@ namespace Infrastructure.DataBase.Migrations
     {
         public override void Up()
         {
-            Create.Table("User")
-                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("FullName").AsString(100).NotNullable()
-                .WithColumn("Email").AsString(50).NotNullable()
-                .WithColumn("PhoneNumber").AsString(20).NotNullable()
-                .WithColumn("Role").AsString(20).NotNullable()
-                .WithColumn("Passport").AsString(20).NotNullable()
-                .WithColumn("DateOfBirth").AsDate().NotNullable();
+            Create.Table("users")
+                .WithColumn("id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("fullname").AsString(100).NotNullable()
+                .WithColumn("email").AsString(50).NotNullable()
+                .WithColumn("phonenumber").AsString(20).NotNullable()
+                .WithColumn("role").AsString(20).NotNullable()
+                .WithColumn("passport").AsString(20).NotNullable()
+                .WithColumn("dateofbirth").AsDate().NotNullable();
 
-            Create.Table("Apartment")
-                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("Title").AsString(100).NotNullable()
-                .WithColumn("Description").AsString(500).NotNullable()
-                .WithColumn("Address").AsString(150).NotNullable()
-                .WithColumn("PricePerDay").AsDouble().NotNullable()
-                .WithColumn("NumOfFloor").AsInt32()
-                .WithColumn("Square").AsDouble()
-                .WithColumn("Capacity").AsInt32().NotNullable();
+            Create.Table("apartments")
+                .WithColumn("id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("title").AsString(100).NotNullable()
+                .WithColumn("description").AsString(500).NotNullable()
+                .WithColumn("address").AsString(150).NotNullable()
+                .WithColumn("priceperday").AsDouble().NotNullable()
+                .WithColumn("numoffloor").AsInt32()
+                .WithColumn("square").AsDouble()
+                .WithColumn("capacity").AsInt32().NotNullable();
 
-            Create.Table("Deal")
-                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("UserId").AsInt32().ForeignKey("User", "Id")
-                .WithColumn("ApartmentId").AsInt32().ForeignKey("Apartment", "Id")
-                .WithColumn("CheckInDate").AsDateTime().NotNullable()
-                .WithColumn("CheckOutDate").AsDateTime().NotNullable()
-                .WithColumn("TotalPrice").AsDouble().NotNullable()
-                .WithColumn("CreatedAt").AsDateTime().NotNullable()
-                .WithColumn("UpdatedAt").AsDateTime().Nullable();
+            Create.Table("deals")
+                .WithColumn("id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("userid").AsInt32().ForeignKey("users", "id")
+                .WithColumn("apartmentid").AsInt32().ForeignKey("apartments", "id")
+                .WithColumn("checkindate").AsDateTime().NotNullable()
+                .WithColumn("checkoutdate").AsDateTime().NotNullable()
+                .WithColumn("totalprice").AsDouble().NotNullable()
+                .WithColumn("createdat").AsDateTime().NotNullable()
+                .WithColumn("updatedat").AsDateTime().Nullable();
 
-            Create.Table("Review")
-                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("UserId").AsInt32().ForeignKey("User", "Id")
-                .WithColumn("ApartmentId").AsInt32().ForeignKey("Apartment", "Id")
-                .WithColumn("Rating").AsInt32().NotNullable()
-                .WithColumn("Comment").AsString().WithDefaultValue("")
-                .WithColumn("CreatedAt").AsDateTime().NotNullable()
-                .WithColumn("UpdatedAt").AsDateTime().Nullable();
+            Create.Table("reviews")
+                .WithColumn("id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("userid").AsInt32().ForeignKey("users", "id")
+                .WithColumn("apartmentid").AsInt32().ForeignKey("apartments", "id")
+                .WithColumn("rating").AsInt32().NotNullable()
+                .WithColumn("comment").AsString().WithDefaultValue("")
+                .WithColumn("createdat").AsDateTime().NotNullable()
+                .WithColumn("updatedat").AsDateTime().Nullable();
 
-            Insert.IntoTable("User")
+            Insert.IntoTable("users")
                 .Row(new
                 {
-                    FullName = "Ilya",
-                    Email = "ggg@123.ru",
-                    PhoneNumber = "22-22-22",
-                    Role = "Admin",
-                    Passport = "7865-123456",
-                    DateOfBirth = DateTime.Now
+                    fullname = "Ilya",
+                    email = "ggg@123.ru",
+                    phonenumber = "22-22-22",
+                    role = "Admin",
+                    passport = "7865-123456",
+                    dateofbirth = DateTime.Now
                 });
 
-            Insert.IntoTable("Apartment")
+            Insert.IntoTable("apartments")
                 .Row(new
                 {
-                    Title = "Luxe Apartment",
-                    Description = "No description",
-                    Address = "Russia, Yaroslavl",
-                    PricePerDay = 15000,
-                    NumOfFloor = 2,
-                    Square = 76,
-                    Capacity = 6
+                    title = "Luxe Apartment",
+                    description = "No description",
+                    address = "Russia, Yaroslavl",
+                    priceperday = 15000,
+                    numoffloor = 2,
+                    square = 76,
+                    capacity = 6
                 });
 
-            Insert.IntoTable("Deal")
+            Insert.IntoTable("deals")
                .Row(new
                {
-                   UserId = 1,
-                   ApartmentId = 1,
-                   CheckInDate = new DateTime(2025, 1, 15),
-                   CheckOutDate = new DateTime(2025, 1, 25),
-                   TotalPrice = 150000,
-                   CreatedAt = DateTime.Now
+                   userid = 1,
+                   apartmentid = 1,
+                   checkindate = new DateTime(2025, 1, 15),
+                   checkoutdate = new DateTime(2025, 1, 25),
+                   totalprice = 150000,
+                   createdat = DateTime.Now
                });
 
-            Insert.IntoTable("Review")
+            Insert.IntoTable("reviews")
                 .Row(new 
-                { 
-                    UserId = 1, 
-                    ApartmentId = 1, 
-                    Rating = 5, 
-                    Comment = "Perfect apartment", 
-                    CreatedAt = DateTime.Now
+                {
+                    userid = 1,
+                    apartmentid = 1, 
+                    rating = 5, 
+                    comment = "Perfect apartment",
+                    createdat = DateTime.Now
                 });
         }
 
         public override void Down()
         {
-            Delete.Table("Review");
-            Delete.Table("Deal");
-            Delete.Table("Apartment");
-            Delete.Table("User");
+            Delete.Table("reviews");
+            Delete.Table("deals");
+            Delete.Table("apartments");
+            Delete.Table("users");
         }
 
     }

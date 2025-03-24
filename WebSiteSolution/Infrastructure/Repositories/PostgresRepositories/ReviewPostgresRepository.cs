@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(Review review)
         {
             var reviewId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO Review (ApartmentId, UserId, Rating, Comment, CreatedAt)
+                    @"INSERT INTO Reviews (ApartmentId, UserId, Rating, Comment, CreatedAt)
                       VAlUES (@ApartmentId, @UserId, @Rating, @Comment, @CreatedAt)
                       RETURNING Id",
                     new { 
@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Delete(int id)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"DELETE FROM Review WHERE id = @Id",
+                    @"DELETE FROM Reviews WHERE id = @Id",
                     new { Id = id });
 
             return affectedRows > 0;
@@ -42,7 +42,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<IEnumerable<Review>> GetAll()
         {
             var users = await _connection.QueryAsync<Review>(
-                    @"SELECT ID, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Review");
+                    @"SELECT ID, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Reviews");
 
             return users;
         }
@@ -50,7 +50,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<Review?> GetById(int id)
         {
             var review = await _connection.QueryFirstOrDefaultAsync<Review>(
-                    @"SELECT Id, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Review WHERE id = @Id", new { Id = id });
+                    @"SELECT Id, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Reviews WHERE id = @Id", new { Id = id });
 
             return review;
         }
@@ -58,7 +58,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Update(Review review)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"UPDATE Review SET ApartmentId = @ApartmentId,
+                    @"UPDATE Reviews SET ApartmentId = @ApartmentId,
                                       UserId = @UserId,
                                       Rating = @Rating, 
                                       Comment = @Comment,

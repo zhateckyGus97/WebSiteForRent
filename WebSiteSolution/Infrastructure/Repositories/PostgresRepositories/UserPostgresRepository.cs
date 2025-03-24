@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(User user)
         {
             var userId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO User (FullName, Email, PhoneNumber, Role, Passport, DateOfBirth)
+                    @"INSERT INTO Users (FullName, Email, PhoneNumber, Role, Passport, DateOfBirth)
                       VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth)
                       RETURNING Id",
                     new { user.FullName, 
@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Delete(int id)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"DELETE FROM User WHERE id = @Id",
+                    @"DELETE FROM Users WHERE id = @Id",
                     new { Id = id });
 
             return affectedRows > 0;
@@ -42,7 +42,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<IEnumerable<User>> GetAll()
         {
             var users = await _connection.QueryAsync<User>(
-                    @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM User");
+                    @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM Users");
 
             return users;
         }
@@ -50,7 +50,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<User?> GetById(int id)
         {
             var user = await _connection.QueryFirstOrDefaultAsync<User>(
-                    @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM User WHERE id = @Id", new { Id = id });
+                    @"SELECT Id, FullName, Email, PhoneNumber, Role, Passport, DateOfBirth FROM Users WHERE id = @Id", new { Id = id });
 
             return user;
         }
@@ -58,13 +58,12 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Update(User user)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"UPDATE User SET FullName = @FullName,
+                    @"UPDATE Users SET FullName = @FullName,
                                       Email = @Email,
                                       PhoneNumber = @PhoneNumber, 
                                       Role = @Role,
                                       Passport = @Passport,
                                       DateOfBirth = @DateOfBirth
-                                      
                     WHERE id = @Id");
 
             return affectedRows > 0;

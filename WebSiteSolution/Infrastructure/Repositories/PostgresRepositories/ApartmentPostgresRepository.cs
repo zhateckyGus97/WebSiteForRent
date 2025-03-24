@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(Apartment apartment)
         {
             var apartmentId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO Apartment (Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity)
+                    @"INSERT INTO Apartments (Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity)
                       VAlUES (@Title, @Description, @Address, @PricePerDay, @NumOfFloor, @Square, @Capacity)
                       RETURNING Id",
                     new
@@ -35,7 +35,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Delete(int id)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"DELETE FROM Apartment WHERE id = @Id",
+                    @"DELETE FROM Apartments WHERE id = @Id",
                     new { Id = id });
 
             return affectedRows > 0;
@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<IEnumerable<Apartment>> GetAll()
         {
             var apartments = await _connection.QueryAsync<Apartment>(
-                    @"SELECT Id, Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity FROM Apartment");
+                    @"SELECT Id, Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity FROM Apartments");
 
             return apartments;
         }
@@ -52,7 +52,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<Apartment?> GetById(int id)
         {
             var apartment = await _connection.QueryFirstOrDefaultAsync<Apartment>(
-                    @"SELECT Id, Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity FROM Apartment WHERE id = @Id", new { Id = id });
+                    @"SELECT Id, Title, Description, Address, PricePerDay, NumOfFloor, Square, Capacity FROM Apartments WHERE id = @Id", new { Id = id });
 
             return apartment;
         }
@@ -60,7 +60,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Update(Apartment apartment)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"UPDATE Apartment SET Title = @Title, 
+                    @"UPDATE Apartments SET Title = @Title, 
                                            Description = @Description, 
                                            Address = @Address, 
                                            PricePerDay = @PricePerDay,     
