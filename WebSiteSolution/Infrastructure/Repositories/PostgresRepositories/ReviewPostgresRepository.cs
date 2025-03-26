@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(Review review)
         {
             var reviewId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO Reviews (ApartmentId, UserId, Rating, Comment, CreatedAt)
+                    @"INSERT INTO reviews (apartment_id, user_id, rating, comment, created_at)
                       VAlUES (@ApartmentId, @UserId, @Rating, @Comment, @CreatedAt)
                       RETURNING Id",
                     new { 
@@ -33,24 +33,49 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Delete(int id)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"DELETE FROM Reviews WHERE id = @Id",
-                    new { Id = id });
+                    @"DELETE 
+                      FROM reviews 
+                      WHERE id = @Id",
+                    new { 
+                        Id = id 
+                    });
 
             return affectedRows > 0;
         }
 
         public async Task<IEnumerable<Review>> GetAll()
         {
-            var users = await _connection.QueryAsync<Review>(
-                    @"SELECT ID, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Reviews");
+            var reviews = await _connection.QueryAsync<Review>(
+                    @"SELECT 
+                        id,
+                        apartment_id, 
+                        user_id, 
+                        rating, 
+                        comment, 
+                        created_at, 
+                        updated_at 
+                      FROM reviews"
+                    );
 
-            return users;
+            return reviews;
         }
 
         public async Task<Review?> GetById(int id)
         {
             var review = await _connection.QueryFirstOrDefaultAsync<Review>(
-                    @"SELECT Id, ApartmentId, UserId, Rating, Comment, CreatedAt, UpdatedAt FROM Reviews WHERE id = @Id", new { Id = id });
+                    @"SELECT 
+                        id,
+                        apartment_id, 
+                        user_id, 
+                        rating, 
+                        comment, 
+                        created_at, 
+                        updated_at
+                      FROM reviews 
+                      WHERE id = @Id", 
+                    new { 
+                        Id = id 
+                    });
 
             return review;
         }
@@ -58,12 +83,21 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Update(Review review)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"UPDATE Reviews SET ApartmentId = @ApartmentId,
-                                      UserId = @UserId,
-                                      Rating = @Rating, 
-                                      Comment = @Comment,
-                                      UpdatedAt = DateTime.Now
-                    WHERE id = @Id");
+                    @"UPDATE reviews SET apartment_id = @ApartmentId,
+                                      user_id = @UserId,
+                                      rating = @Rating, 
+                                      comment = @Comment,
+                                      updated_at = @UpdatedAt
+                    WHERE id = @Id",
+                    new
+                    {
+                        Id = review.Id,
+                        review.ApartmentId,
+                        review.UserId,
+                        review.Rating,
+                        review.Comment,
+                        DateTime.Now
+                    });
 
             return affectedRows > 0;
         }

@@ -9,58 +9,58 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.DataBase.Migrations
 {
-    [Migration(202503151108)]
+    [Migration(202503261235)]
     public class InitialMigration : FluentMigrator.Migration
     {
         public override void Up()
         {
             Create.Table("users")
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("fullname").AsString(100).NotNullable()
+                .WithColumn("full_name").AsString(100).NotNullable()
                 .WithColumn("email").AsString(50).NotNullable()
-                .WithColumn("phonenumber").AsString(20).NotNullable()
+                .WithColumn("phone_number").AsString(20).NotNullable()
                 .WithColumn("role").AsString(20).NotNullable()
                 .WithColumn("passport").AsString(20).NotNullable()
-                .WithColumn("dateofbirth").AsDate().NotNullable();
+                .WithColumn("date_of_birth").AsDate().NotNullable();
 
             Create.Table("apartments")
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("title").AsString(100).NotNullable()
                 .WithColumn("description").AsString(500).NotNullable()
                 .WithColumn("address").AsString(150).NotNullable()
-                .WithColumn("priceperday").AsDouble().NotNullable()
-                .WithColumn("numoffloor").AsInt32()
+                .WithColumn("price_per_day").AsDouble().NotNullable()
+                .WithColumn("num_of_floor").AsInt32()
                 .WithColumn("square").AsDouble()
                 .WithColumn("capacity").AsInt32().NotNullable();
 
             Create.Table("deals")
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("userid").AsInt32().ForeignKey("users", "id")
-                .WithColumn("apartmentid").AsInt32().ForeignKey("apartments", "id")
-                .WithColumn("checkindate").AsDateTime().NotNullable()
-                .WithColumn("checkoutdate").AsDateTime().NotNullable()
-                .WithColumn("totalprice").AsDouble().NotNullable()
-                .WithColumn("createdat").AsDateTime().NotNullable()
-                .WithColumn("updatedat").AsDateTime().Nullable();
+                .WithColumn("user_id").AsInt32().ForeignKey("users", "id")
+                .WithColumn("apartment_id").AsInt32().ForeignKey("apartments", "id")
+                .WithColumn("check_in_date").AsDateTime().NotNullable()
+                .WithColumn("check_out_date").AsDateTime().NotNullable()
+                .WithColumn("total_price").AsDouble().NotNullable()
+                .WithColumn("created_at").AsDateTime().NotNullable()
+                .WithColumn("updated_at").AsDateTime().Nullable();
 
             Create.Table("reviews")
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("userid").AsInt32().ForeignKey("users", "id")
-                .WithColumn("apartmentid").AsInt32().ForeignKey("apartments", "id")
+                .WithColumn("user_id").AsInt32().ForeignKey("users", "id")
+                .WithColumn("apartment_id").AsInt32().ForeignKey("apartments", "id")
                 .WithColumn("rating").AsInt32().NotNullable()
                 .WithColumn("comment").AsString().WithDefaultValue("")
-                .WithColumn("createdat").AsDateTime().NotNullable()
-                .WithColumn("updatedat").AsDateTime().Nullable();
+                .WithColumn("created_at").AsDateTime().NotNullable()
+                .WithColumn("updated_at").AsDateTime().Nullable();
 
             Insert.IntoTable("users")
                 .Row(new
                 {
-                    fullname = "Ilya",
+                    full_name = "Ilya",
                     email = "ggg@123.ru",
-                    phonenumber = "22-22-22",
+                    phone_number = "22-22-22",
                     role = "Admin",
                     passport = "7865-123456",
-                    dateofbirth = DateTime.Now
+                    date_of_birth = DateTime.Now
                 });
 
             Insert.IntoTable("apartments")
@@ -69,8 +69,8 @@ namespace Infrastructure.DataBase.Migrations
                     title = "Luxe Apartment",
                     description = "No description",
                     address = "Russia, Yaroslavl",
-                    priceperday = 15000,
-                    numoffloor = 2,
+                    price_per_day = 15000,
+                    num_of_floor = 2,
                     square = 76,
                     capacity = 6
                 });
@@ -78,22 +78,22 @@ namespace Infrastructure.DataBase.Migrations
             Insert.IntoTable("deals")
                .Row(new
                {
-                   userid = 1,
-                   apartmentid = 1,
-                   checkindate = new DateTime(2025, 1, 15),
-                   checkoutdate = new DateTime(2025, 1, 25),
-                   totalprice = 150000,
-                   createdat = DateTime.Now
+                   user_id = 1,
+                   apartment_id = 1,
+                   check_in_date = new DateTime(2025, 1, 15),
+                   check_out_date = new DateTime(2025, 1, 25),
+                   total_price = 150000,
+                   created_at = DateTime.Now
                });
 
             Insert.IntoTable("reviews")
                 .Row(new 
                 {
-                    userid = 1,
-                    apartmentid = 1, 
+                    user_id = 1,
+                    apartment_id = 1, 
                     rating = 5, 
                     comment = "Perfect apartment",
-                    createdat = DateTime.Now
+                    created_at = DateTime.Now
                 });
         }
 

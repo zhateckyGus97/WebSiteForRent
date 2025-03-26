@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(Deal deal)
         {
             var dealId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO Deals (UserId, ApartmentId, CheckInDate, CheckOutDate, TotalPrice, CreatedAt)
+                    @"INSERT INTO deals (user_id, apartment_id, check_in_date, check_out_date, total_price, created_at)
                       VAlUES (@UserId, @ApartmentId, @CheckInDate, @CheckOutDate, @TotalPrice, @CreatedAt)
                       RETURNING Id",
                     new { 
@@ -34,8 +34,12 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Delete(int id)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"DELETE FROM Deals WHERE id = @Id",
-                    new { Id = id });
+                    @"DELETE 
+                      FROM deals 
+                      WHERE id = @Id",
+                    new { 
+                        Id = id 
+                    });
 
             return affectedRows > 0;
         }
@@ -43,7 +47,17 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<IEnumerable<Deal>> GetAll()
         {
             var deals = await _connection.QueryAsync<Deal>(
-                    @"SELECT Id, UserId, ApartmentId, CheckInDate, CheckOutDate, TotalPrice, CreatedAt, UpdatedAt FROM Deals");
+                    @"SELECT 
+                        id,
+                        user_id, 
+                        apartment_id, 
+                        check_in_date, 
+                        check_out_date, 
+                        total_price, 
+                        created_at, 
+                        updated_at 
+                      FROM deals"
+                    );
 
             return deals;
         }
@@ -51,7 +65,20 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<Deal?> GetById(int id)
         {
             var deal = await _connection.QueryFirstOrDefaultAsync<Deal>(
-                    @"SELECT Id, UserId, ApartmentId, CheckInDate, CheckOutDate, TotalPrice, CreatedAt, UpdatedAt FROM Deals WHERE id = @Id", new { Id = id });
+                    @"SELECT 
+                        id,
+                        user_id, 
+                        apartment_id, 
+                        check_in_date, 
+                        check_out_date, 
+                        total_price, 
+                        created_at, 
+                        updated_at 
+                      FROM deals 
+                      WHERE id = @Id", 
+                    new { 
+                        Id = id 
+                    });
 
             return deal;
         }
@@ -59,13 +86,23 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Update(Deal deal)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"UPDATE Deals SET UserId = @UserId,
+                    @"UPDATE deals SET UserId = @UserId,
                                       ApartmentId = @ApartmentId, 
                                       CheckInDate = @CheckInDate, 
                                       CheckOutDate = @CheckOutDate, 
                                       TotalPrice = @TotalPrice, 
-                                      UpdatedAt = DateTime.Now
-                    WHERE id = @Id");
+                                      UpdatedAt = @UpdatedAt
+                    WHERE id = @Id",
+                    new
+                    {
+                        Id = deal.Id,
+                        deal.UserId,
+                        deal.ApartmentId,
+                        deal.CheckInDate,
+                        deal.CheckOutDate,
+                        deal.TotalPrice,
+                        DateTime.Now
+                    });
 
             return affectedRows > 0;
         }

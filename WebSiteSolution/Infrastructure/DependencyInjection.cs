@@ -29,6 +29,7 @@ namespace Infrastructure
             services.AddTransient<IApartmentRepository, ApartmentPostgresRepository>();
             services.AddTransient<IReviewRepository, ReviewPostgresRepository>();
 
+            DapperConfig.Configure();
             services.AddFluentMigratorCore()
                 .ConfigureRunner(
                     rb => rb.AddPostgres()
