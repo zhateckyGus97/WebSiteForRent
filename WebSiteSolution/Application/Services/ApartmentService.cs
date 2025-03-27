@@ -3,12 +3,6 @@ using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
-using Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services
 {
@@ -28,13 +22,13 @@ namespace Application.Services
         public async Task<int> Add(ApartmentDTO apartment)
         {
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            if (mappedApartment == null )
+            if (mappedApartment == null)
             {
                 return -1;
             }
 
             var user = _userRepository.GetById(apartment.UserId);
-            if (user == null )
+            if (user == null)
             {
                 return -1;
             }

@@ -73,9 +73,10 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         square,  
                         capacity  
                       FROM apartments
-                      WHERE id = @Id", 
-                    new { 
-                        Id = id 
+                      WHERE id = @Id",
+                    new
+                    {
+                        Id = id
                     });
 
             return apartment;

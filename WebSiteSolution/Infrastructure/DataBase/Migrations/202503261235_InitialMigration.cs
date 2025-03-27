@@ -1,11 +1,4 @@
-﻿using Domain.Entities;
-using FluentMigrator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentMigrator;
 
 namespace Infrastructure.DataBase.Migrations
 {
@@ -87,11 +80,11 @@ namespace Infrastructure.DataBase.Migrations
                });
 
             Insert.IntoTable("reviews")
-                .Row(new 
+                .Row(new
                 {
                     user_id = 1,
-                    apartment_id = 1, 
-                    rating = 5, 
+                    apartment_id = 1,
+                    rating = 5,
                     comment = "Perfect apartment",
                     created_at = DateTime.Now
                 });

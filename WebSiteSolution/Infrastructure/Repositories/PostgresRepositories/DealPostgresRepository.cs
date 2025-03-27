@@ -19,15 +19,16 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     @"INSERT INTO deals (user_id, apartment_id, check_in_date, check_out_date, total_price, created_at)
                       VAlUES (@UserId, @ApartmentId, @CheckInDate, @CheckOutDate, @TotalPrice, @CreatedAt)
                       RETURNING Id",
-                    new { 
-                        deal.UserId, 
-                        deal.ApartmentId, 
-                        deal.CheckInDate, 
-                        deal.CheckOutDate, 
-                        deal.TotalPrice, 
-                        DateTime.Now 
+                    new
+                    {
+                        deal.UserId,
+                        deal.ApartmentId,
+                        deal.CheckInDate,
+                        deal.CheckOutDate,
+                        deal.TotalPrice,
+                        DateTime.Now
                     });
-            
+
             return dealId;
         }
 
@@ -37,8 +38,9 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     @"DELETE 
                       FROM deals 
                       WHERE id = @Id",
-                    new { 
-                        Id = id 
+                    new
+                    {
+                        Id = id
                     });
 
             return affectedRows > 0;
@@ -75,9 +77,10 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         created_at, 
                         updated_at 
                       FROM deals 
-                      WHERE id = @Id", 
-                    new { 
-                        Id = id 
+                      WHERE id = @Id",
+                    new
+                    {
+                        Id = id
                     });
 
             return deal;

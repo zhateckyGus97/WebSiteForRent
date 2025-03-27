@@ -1,6 +1,5 @@
-using Infrastructure;
 using Application;
-
+using Infrastructure;
 using Infrastructure.DataBase;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,12 +22,12 @@ using (var scope = app.Services.CreateScope())
     migrationRunner.Run();
 }
 
-    // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 
