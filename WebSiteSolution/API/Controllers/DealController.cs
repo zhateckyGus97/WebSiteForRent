@@ -1,7 +1,5 @@
 ﻿using Application.DTO;
-using Application.Interfaces;
 using Application.Services;
-using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -34,7 +32,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody]DealDTO deal)
+        public async Task<IActionResult> Add([FromBody] DealDTO deal)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

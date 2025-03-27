@@ -1,7 +1,5 @@
 using Application.DTO;
 using Application.Services;
-using Domain.Entities;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -20,7 +18,7 @@ namespace API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var user = await _userService.GetById(id);
-            if(user != null)
+            if (user != null)
                 return Ok(user);
 
             return NotFound();

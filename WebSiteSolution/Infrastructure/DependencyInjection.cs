@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentMigrator.Runner;
 using Infrastructure.Interfaces;
-using Infrastructure.Repositories;
-using Microsoft.Extensions.DependencyInjection;
+using Infrastructure.Repositories.PostgresRepositories;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
-using FluentMigrator.Runner;
 using System.Reflection;
 namespace Infrastructure
 {
@@ -19,7 +14,7 @@ namespace Infrastructure
             services.AddSingleton(sp =>
             {
                 var configuration = sp.GetRequiredService<IConfiguration>();
-                var connectionstring = configuration.GetConnectionString("PostgreDB");
+                var connectionstring = configuration.GetConnectionString("PostgresDB");
                 return new NpgsqlDataSourceBuilder(connectionstring).Build();
             });
 
@@ -29,13 +24,12 @@ namespace Infrastructure
                 return datasource.CreateConnection();
             });
 
-            services.AddTransient<IUserRepository, PostgresUserRepository>(); //еще 3 таких
+            services.AddTransient<IUserRepository, UserPostgresRepository>();
+            services.AddTransient<IDealRepository, DealPostgresRepository>();
+            services.AddTransient<IApartmentRepository, ApartmentPostgresRepository>();
+            services.AddTransient<IReviewRepository, ReviewPostgresRepository>();
 
-            /*services.AddSingleton<IUserRepository, InMemoryUserRepository>();*/
-            services.AddSingleton<IDealRepository, InMemoryDealRepository>();
-            services.AddSingleton<IReviewRepository, InMemoryReviewRepository>();
-            services.AddSingleton<IApartmentRepository, InMemoryApartmentRepository>();
-
+            DapperConfig.Configure();
             services.AddFluentMigratorCore()
                 .ConfigureRunner(
                     rb => rb.AddPostgres()

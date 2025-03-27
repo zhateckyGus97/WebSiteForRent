@@ -2,13 +2,13 @@
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.InMemoryRepositories
 {
-    public class InMemoryApartmentRepository : IApartmentRepository
+    public class ApartmentInMemoryRepository : IApartmentRepository
     {
         private readonly List<Apartment> _apartments;
 
-        public InMemoryApartmentRepository()
+        public ApartmentInMemoryRepository()
         {
             _apartments = new List<Apartment>()
             {
@@ -20,7 +20,7 @@ namespace Infrastructure.Repositories
 
         public Task<int> Create(Apartment apartment)
         {
-            if(apartment == null) 
+            if (apartment == null)
                 throw new ArgumentNullException(nameof(apartment));
 
             _apartments.Add(apartment);
@@ -30,7 +30,7 @@ namespace Infrastructure.Repositories
         public Task<bool> Delete(int Id)
         {
             var apart = _apartments.FirstOrDefault(a => a.Id == Id);
-            if(apart == null)
+            if (apart == null)
                 return Task.FromResult(false);
 
             _apartments.Remove(apart);

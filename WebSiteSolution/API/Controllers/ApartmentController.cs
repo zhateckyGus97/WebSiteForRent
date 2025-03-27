@@ -1,7 +1,5 @@
 ﻿using Application.DTO;
-using Application.Interfaces;
 using Application.Services;
-using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

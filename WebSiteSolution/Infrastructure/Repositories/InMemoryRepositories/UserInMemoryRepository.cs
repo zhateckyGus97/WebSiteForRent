@@ -1,13 +1,13 @@
 ﻿using Domain.Entities;
 using Infrastructure.Interfaces;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.InMemoryRepositories
 {
-    public class InMemoryUserRepository : IUserRepository
+    public class UserInMemoryRepository : IUserRepository
     {
         private readonly List<User> _users;
 
-        public InMemoryUserRepository()
+        public UserInMemoryRepository()
         {
             _users = new List<User>()
             {
@@ -30,7 +30,7 @@ namespace Infrastructure.Repositories
 
         public Task<int> Create(User user)
         {
-            if(user == null)
+            if (user == null)
                 throw new ArgumentNullException(nameof(user));
             _users.Add(user);
             return Task.FromResult(user.Id);
@@ -38,7 +38,7 @@ namespace Infrastructure.Repositories
 
         public Task<bool> Update(User user)
         {
-            if (user == null) 
+            if (user == null)
                 throw new ArgumentNullException(nameof(user));
 
             var old_user = _users.FirstOrDefault(u => u.Id == user.Id);
