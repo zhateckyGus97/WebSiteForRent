@@ -97,6 +97,5 @@ namespace Infrastructure.DataBase.Migrations
             Delete.Table("apartments");
             Delete.Table("users");
         }
-
     }
 }
