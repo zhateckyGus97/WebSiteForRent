@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
+using Application.Requests.DealRequests;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
@@ -21,7 +22,7 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<int> Add(DealDTO deal)
+        public async Task<int> Add(CreateDealRequest deal)
         {
             var mappedDeal = _mapper.Map<Deal>(deal);
             if (mappedDeal == null)
@@ -49,21 +50,21 @@ namespace Application.Services
             return await _dealRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<DealDTO>> GetAll()
+        public async Task<IEnumerable<CreateDealRequest>> GetAll()
         {
             var deals = await _dealRepository.GetAll();
-            var mappedDeals = deals.Select(d => _mapper.Map<DealDTO>(d)).ToList();
+            var mappedDeals = deals.Select(d => _mapper.Map<CreateDealRequest>(d)).ToList();
             return mappedDeals;
         }
 
-        public async Task<DealDTO> GetById(int id)
+        public async Task<CreateDealRequest> GetById(int id)
         {
             var deal = await _dealRepository.GetById(id);
-            var mappedDeal = _mapper.Map<DealDTO>(deal);
+            var mappedDeal = _mapper.Map<CreateDealRequest>(deal);
             return mappedDeal;
         }
 
-        public async Task<bool> Update(DealDTO deal)
+        public async Task<bool> Update(UpdateDealRequest deal)
         {
             if (deal == null)
             {

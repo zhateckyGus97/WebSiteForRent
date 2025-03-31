@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
+using Application.Requests.UserReauests;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
@@ -17,7 +18,7 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<int> Add(UserDTO user)
+        public async Task<int> Add(CreateUserRequest user)
         {
             var mappedUser = _mapper.Map<User>(user);
             if (mappedUser == null)
@@ -33,21 +34,21 @@ namespace Application.Services
             return await _userRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<UserDTO>> GetAll()
+        public async Task<IEnumerable<CreateUserRequest>> GetAll()
         {
             var users = await _userRepository.GetAll();
-            var mappedUsers = users.Select(u => _mapper.Map<UserDTO>(u)).ToList();
+            var mappedUsers = users.Select(u => _mapper.Map<CreateUserRequest>(u)).ToList();
             return mappedUsers;
         }
 
-        public async Task<UserDTO?> GetById(int id)
+        public async Task<CreateUserRequest?> GetById(int id)
         {
             var user = await _userRepository.GetById(id);
-            var mappedUser = _mapper.Map<UserDTO>(user);
+            var mappedUser = _mapper.Map<CreateUserRequest>(user);
             return mappedUser;
         }
 
-        public async Task<bool> Update(UserDTO user)
+        public async Task<bool> Update(UpdateUserRequest user)
         {
             if (user == null)
             {

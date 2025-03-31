@@ -1,4 +1,5 @@
 using Application.DTO;
+using Application.Requests.UserReauests;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +33,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] UserDTO user)
+        public async Task<IActionResult> Add([FromBody] CreateUserRequest user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -43,7 +44,7 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UserDTO user)
+        public async Task<IActionResult> Update([FromBody] UpdateUserRequest user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

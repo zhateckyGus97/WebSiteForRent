@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
+using Application.Requests.ApartmentRequests;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
@@ -19,7 +20,7 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<int> Add(ApartmentDTO apartment)
+        public async Task<int> Add(CreateApartmentRequest apartment)
         {
             var mappedApartment = _mapper.Map<Apartment>(apartment);
             if (mappedApartment == null)
@@ -41,21 +42,21 @@ namespace Application.Services
             return await _apartmentRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<ApartmentDTO>> GetAll()
+        public async Task<IEnumerable<CreateApartmentRequest>> GetAll()
         {
             var aparts = await _apartmentRepository.GetAll();
-            var mappedAparts = aparts.Select(a => _mapper.Map<ApartmentDTO>(a)).ToList();
+            var mappedAparts = aparts.Select(a => _mapper.Map<CreateApartmentRequest>(a)).ToList();
             return mappedAparts;
         }
 
-        public async Task<ApartmentDTO> GetById(int id)
+        public async Task<CreateApartmentRequest> GetById(int id)
         {
             var apart = await _apartmentRepository.GetById(id);
-            var mappedAparts = _mapper.Map<ApartmentDTO>(apart);
+            var mappedAparts = _mapper.Map<CreateApartmentRequest>(apart);
             return mappedAparts;
         }
 
-        public async Task<bool> Update(ApartmentDTO apartment)
+        public async Task<bool> Update(UpdateApartmentRequest apartment)
         {
             if (apartment == null)
             {
