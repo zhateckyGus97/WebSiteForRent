@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Requests.DealRequests;
+using Application.Responses;
 
 namespace Application.Interfaces
 {
@@ -7,8 +8,8 @@ namespace Application.Interfaces
     {
         public Task<int> Add(CreateDealRequest deal);
         public Task<bool> Delete(int id);
-        public Task<CreateDealRequest> GetById(int id);
-        public Task<IEnumerable<CreateDealRequest>> GetAll();
+        public Task<DealResponse> GetById(int id);
+        public Task<IEnumerable<DealResponse>> GetAll();
         public Task<bool> Update(UpdateDealRequest deal);
     }
 }

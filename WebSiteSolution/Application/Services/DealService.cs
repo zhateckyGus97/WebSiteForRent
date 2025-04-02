@@ -1,6 +1,8 @@
 ﻿using Application.DTO;
+using Application.Exceptions;
 using Application.Interfaces;
 using Application.Requests.DealRequests;
+using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
@@ -24,6 +26,12 @@ namespace Application.Services
 
         public async Task<int> Add(CreateDealRequest deal)
         {
+            var deals = await _userRepository.GetAll();
+            if (deals.Select(x => x.Id == deal.Id).ToList().Count() > 0)
+            {
+                throw new KeyAlreadyExistsException($"Id with value {deal.Id} already exists!");
+            }
+
             var mappedDeal = _mapper.Map<Deal>(deal);
             if (mappedDeal == null)
             {
@@ -42,7 +50,8 @@ namespace Application.Services
                 return -1;
             }
 
-            return await _dealRepository.Create(mappedDeal);
+            await _dealRepository.Create(mappedDeal);
+            return mappedDeal.Id;
         }
 
         public async Task<bool> Delete(int id)
@@ -50,18 +59,22 @@ namespace Application.Services
             return await _dealRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<CreateDealRequest>> GetAll()
+        public async Task<IEnumerable<DealResponse>> GetAll()
         {
             var deals = await _dealRepository.GetAll();
-            var mappedDeals = deals.Select(d => _mapper.Map<CreateDealRequest>(d)).ToList();
+            var mappedDeals = deals.Select(d => _mapper.Map<DealResponse>(d)).ToList();
             return mappedDeals;
         }
 
-        public async Task<CreateDealRequest> GetById(int id)
+        public async Task<DealResponse> GetById(int id)
         {
             var deal = await _dealRepository.GetById(id);
-            var mappedDeal = _mapper.Map<CreateDealRequest>(deal);
-            return mappedDeal;
+            if(deal == null)
+            {
+                throw new NotFoundApplicationException($"Deal with id {id} not found!");
+            }
+            
+            return _mapper.Map<DealResponse>(deal);
         }
 
         public async Task<bool> Update(UpdateDealRequest deal)

@@ -28,14 +28,32 @@ namespace Application.Requests.ApartmentRequests
     {
         public CreateApartmentRequestValidaor()
         {
-            RuleFor(x => x.UserId).NotEmpty().NotNull();
-            RuleFor(x => x.Title).MaximumLength(100).NotEmpty().WithMessage("{PropertyName} has max 100 length");
-            RuleFor(x => x.Description).MaximumLength(500).NotEmpty().WithMessage("{PropertyName} has max 500 length");
-            RuleFor(x => x.Address).MaximumLength(150).NotEmpty().WithMessage("{PropertyName} has max 100 length");
-            RuleFor(x => x.PricePerDay).GreaterThan(0).NotEmpty().WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.NumOfFloor).GreaterThan(0).NotEmpty().WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.Square).GreaterThan(0).NotEmpty().WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.Capacity).GreaterThan(0).NotEmpty().WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("Id has been more then 0");
+            RuleFor(x => x.UserId)
+                .NotEmpty().WithMessage("{PropertyName} is required");
+            RuleFor(x => x.Title)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .MaximumLength(100).WithMessage("{PropertyName} has max 100 length");
+            RuleFor(x => x.Description)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .MaximumLength(500).WithMessage("{PropertyName} has max 500 length");                
+            RuleFor(x => x.Address)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .MaximumLength(150).WithMessage("{PropertyName} has max 100 length");
+            RuleFor(x => x.PricePerDay)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.NumOfFloor)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.Square)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.Capacity)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
         }
     }
 }

@@ -24,12 +24,25 @@ namespace Application.Requests.ReviewRequests
     {
         public UpdateReviewRequestValidaor()
         {
-            RuleFor(x => x.ApartmentId).NotEmpty().GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.UserId).NotEmpty().GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.Rating).NotEmpty().GreaterThan(0).LessThan(6).WithMessage("{PropertyName} has been from 1 to 5");
-            RuleFor(x => x.Comment).MaximumLength(300).WithMessage("{PropertyName} has 300 maxlength");
-            RuleFor(x => x.CreatedAt).NotEmpty().GreaterThan(DateTime.MinValue).LessThan(DateTime.Now);
-            RuleFor(x => x.UpdatedAt).GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue);
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("Id has been more then 0");
+            RuleFor(x => x.ApartmentId)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.UserId)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.Rating)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).LessThan(6).WithMessage("{PropertyName} has been from 1 to 5");
+            RuleFor(x => x.Comment)
+                .MaximumLength(300).WithMessage("{PropertyName} has 300 maxlength ");
+            RuleFor(x => x.CreatedAt)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(DateTime.MinValue).LessThan(DateTime.Now).WithMessage("Enter the correct date");
+            RuleFor(x => x.UpdatedAt)
+                .GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
         }
     }
 }

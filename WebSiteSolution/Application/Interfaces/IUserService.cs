@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Requests.UserReauests;
+using Application.Responses;
 
 namespace Application.Interfaces
 {
@@ -7,8 +8,8 @@ namespace Application.Interfaces
     {
         public Task<int> Add(CreateUserRequest user);
         public Task<bool> Delete(int id);
-        public Task<CreateUserRequest> GetById(int id);
-        public Task<IEnumerable<CreateUserRequest>> GetAll();
+        public Task<UserResponse> GetById(int id);
+        public Task<IEnumerable<UserResponse>> GetAll();
         public Task<bool> Update(UpdateUserRequest user);
     }
 }

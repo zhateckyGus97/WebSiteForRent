@@ -1,6 +1,8 @@
 ﻿using Application.DTO;
+using Application.Exceptions;
 using Application.Interfaces;
 using Application.Requests.ApartmentRequests;
+using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
@@ -22,6 +24,12 @@ namespace Application.Services
 
         public async Task<int> Add(CreateApartmentRequest apartment)
         {
+            var apartments = await _userRepository.GetAll();
+            if (apartments.Select(x => x.Id == apartment.Id).ToList().Count() > 0)
+            {
+                throw new KeyAlreadyExistsException($"Id with value {apartment.Id} already exists!");
+            }
+
             var mappedApartment = _mapper.Map<Apartment>(apartment);
             if (mappedApartment == null)
             {
@@ -34,7 +42,8 @@ namespace Application.Services
                 return -1;
             }
 
-            return await _apartmentRepository.Create(mappedApartment);
+            await _apartmentRepository.Create(mappedApartment);
+            return mappedApartment.Id;
         }
 
         public async Task<bool> Delete(int id)
@@ -42,18 +51,22 @@ namespace Application.Services
             return await _apartmentRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<CreateApartmentRequest>> GetAll()
+        public async Task<IEnumerable<ApartmentResponse>> GetAll()
         {
             var aparts = await _apartmentRepository.GetAll();
-            var mappedAparts = aparts.Select(a => _mapper.Map<CreateApartmentRequest>(a)).ToList();
+            var mappedAparts = aparts.Select(a => _mapper.Map<ApartmentResponse>(a)).ToList();
             return mappedAparts;
         }
 
-        public async Task<CreateApartmentRequest> GetById(int id)
+        public async Task<ApartmentResponse> GetById(int id)
         {
             var apart = await _apartmentRepository.GetById(id);
-            var mappedAparts = _mapper.Map<CreateApartmentRequest>(apart);
-            return mappedAparts;
+            if (apart == null)
+            {
+                throw new NotFoundApplicationException($"Apartment with id {id} not found!");
+            }
+            
+            return _mapper.Map<ApartmentResponse>(apart);
         }
 
         public async Task<bool> Update(UpdateApartmentRequest apartment)

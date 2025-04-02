@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Requests.ApartmentRequests;
+using Application.Responses;
 
 namespace Application.Interfaces
 {
@@ -7,8 +8,8 @@ namespace Application.Interfaces
     {
         public Task<int> Add(CreateApartmentRequest Apartment);
         public Task<bool> Delete(int id);
-        public Task<CreateApartmentRequest> GetById(int id);
-        public Task<IEnumerable<CreateApartmentRequest>> GetAll();
+        public Task<ApartmentResponse> GetById(int id);
+        public Task<IEnumerable<ApartmentResponse>> GetAll();
         public Task<bool> Update(UpdateApartmentRequest Apartment);
     }
 }

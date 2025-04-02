@@ -27,13 +27,29 @@ namespace Application.Requests.DealRequests
     {
         public CreateDealRequestValidaor()
         {
-            RuleFor(x => x.UserId).NotEmpty().NotNull().GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.ApartmentId).NotEmpty().NotNull().GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.CheckInDate).NotEmpty().GreaterThan(DateTime.MinValue).LessThan(DateTime.MaxValue);
-            RuleFor(x => x.CheckOutDate).NotEmpty().GreaterThan(x => x.CheckInDate).LessThan(DateTime.MaxValue);
-            RuleFor(x => x.TotalPrice).NotEmpty().GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.CreatedAt).NotEmpty().GreaterThan(DateTime.MinValue).LessThan(DateTime.Now);
-            RuleFor(x => x.CreatedAt).GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue);
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("Id has been more then 0");
+            RuleFor(x => x.UserId)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.ApartmentId)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.CheckInDate)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(DateTime.MinValue).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
+            RuleFor(x => x.CheckOutDate)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(x => x.CheckInDate).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
+            RuleFor(x => x.TotalPrice)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+            RuleFor(x => x.CreatedAt)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .GreaterThan(DateTime.MinValue).LessThan(DateTime.Now).WithMessage("Enter the correct date");
+            RuleFor(x => x.CreatedAt)
+                .GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Requests.ReviewRequests;
+using Application.Responses;
 
 namespace Application.Interfaces
 {
@@ -7,8 +8,8 @@ namespace Application.Interfaces
     {
         public Task<int> Add(CreateReviewRequest review);
         public Task<bool> Delete(int id);
-        public Task<CreateReviewRequest> GetById(int id);
-        public Task<IEnumerable<CreateReviewRequest>> GetAll();
+        public Task<ReviewResponse> GetById(int id);
+        public Task<IEnumerable<ReviewResponse>> GetAll();
         public Task<bool> Update(UpdateReviewRequest review);
     }
 }
