@@ -28,7 +28,4 @@ jobs:
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
-<<<<<<< HEAD
       working-directory: WebSiteSolution/
-=======
->>>>>>> 8363eb2a8318cf40baf485ec34e2872907c1255a
