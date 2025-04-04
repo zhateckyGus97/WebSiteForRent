@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Requests.DealRequests;
+﻿using Application.Requests.DealRequests;
 using Application.Responses;
 
 namespace Application.Interfaces

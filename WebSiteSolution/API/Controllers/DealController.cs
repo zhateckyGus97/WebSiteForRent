@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Requests.DealRequests;
+﻿using Application.Requests.DealRequests;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,20 +34,13 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateDealRequest deal)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var dealId = await _dealService.Add(deal);
-            var res = new { Id = dealId };
-            return CreatedAtAction(nameof(GetById), new { id = dealId }, res);
+            return Created($"/deal/{dealId}", new { Id = dealId });
         }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateDealRequest deal)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var result = await _dealService.Update(deal);
             if (!result)
                 return NotFound();

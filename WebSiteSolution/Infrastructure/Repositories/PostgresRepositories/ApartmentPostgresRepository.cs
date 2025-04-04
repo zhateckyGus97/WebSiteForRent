@@ -11,6 +11,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public ApartmentPostgresRepository(NpgsqlConnection connection)
         {
             _connection = connection;
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
         }
 
         public async Task<int> Create(Apartment apartment)

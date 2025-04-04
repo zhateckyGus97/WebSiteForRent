@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Exceptions;
+﻿using Application.Exceptions;
 using Application.Interfaces;
 using Application.Requests.ApartmentRequests;
 using Application.Responses;
@@ -24,26 +23,11 @@ namespace Application.Services
 
         public async Task<int> Add(CreateApartmentRequest apartment)
         {
-            var apartments = await _userRepository.GetAll();
-            if (apartments.Select(x => x.Id == apartment.Id).ToList().Count() > 0)
-            {
-                throw new KeyAlreadyExistsException($"Id with value {apartment.Id} already exists!");
-            }
-
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            if (mappedApartment == null)
-            {
-                return -1;
-            }
 
             var user = _userRepository.GetById(apartment.UserId);
-            if (user == null)
-            {
-                return -1;
-            }
 
-            await _apartmentRepository.Create(mappedApartment);
-            return mappedApartment.Id;
+            return await _apartmentRepository.Create(mappedApartment);
         }
 
         public async Task<bool> Delete(int id)
@@ -79,11 +63,6 @@ namespace Application.Services
             var mappedApartment = _mapper.Map<Apartment>(apartment);
 
             var user = _userRepository.GetById(apartment.UserId);
-            if (user == null)
-            {
-                return false;
-            }
-
             return await _apartmentRepository.Update(mappedApartment);
         }
     }

@@ -1,10 +1,4 @@
-﻿using Application.DTO;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Application.Requests.ApartmentRequests
 {
@@ -12,7 +6,6 @@ namespace Application.Requests.ApartmentRequests
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public UserDTO Apartment_user { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }

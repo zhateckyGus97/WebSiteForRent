@@ -1,6 +1,6 @@
-﻿using Application.DTO;
-using Application.Requests.ApartmentRequests;
+﻿using Application.Requests.ApartmentRequests;
 using Application.Services;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -36,20 +36,13 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateApartmentRequest apartment)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var apartmentId = await _apartmentService.Add(apartment);
-            var res = new { Id = apartmentId };
-            return CreatedAtAction(nameof(GetById), new { id = apartmentId }, res);
+            return Created($"/apartment/{apartmentId}", new { Id = apartmentId });
         }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateApartmentRequest apartment)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var result = await _apartmentService.Update(apartment);
             if (!result)
                 return NotFound();

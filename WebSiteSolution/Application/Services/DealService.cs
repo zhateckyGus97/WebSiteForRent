@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Exceptions;
+﻿using Application.Exceptions;
 using Application.Interfaces;
 using Application.Requests.DealRequests;
 using Application.Responses;
@@ -26,32 +25,13 @@ namespace Application.Services
 
         public async Task<int> Add(CreateDealRequest deal)
         {
-            var deals = await _userRepository.GetAll();
-            if (deals.Select(x => x.Id == deal.Id).ToList().Count() > 0)
-            {
-                throw new KeyAlreadyExistsException($"Id with value {deal.Id} already exists!");
-            }
-
             var mappedDeal = _mapper.Map<Deal>(deal);
-            if (mappedDeal == null)
-            {
-                return -1;
-            }
 
             var user = _userRepository.GetById(deal.UserId);
-            if (user == null)
-            {
-                return -1;
-            }
 
             var apartment = _apartmentRepository.GetById(deal.ApartmentId);
-            if (apartment == null)
-            {
-                return -1;
-            }
 
-            await _dealRepository.Create(mappedDeal);
-            return mappedDeal.Id;
+            return await _dealRepository.Create(mappedDeal);
         }
 
         public async Task<bool> Delete(int id)
@@ -79,11 +59,6 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateDealRequest deal)
         {
-            if (deal == null)
-            {
-                return false;
-            }
-
             var mappedDeal = _mapper.Map<Deal>(deal);
             return await _dealRepository.Update(mappedDeal);
         }

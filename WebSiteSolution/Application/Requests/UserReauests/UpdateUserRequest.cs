@@ -18,7 +18,7 @@ namespace Application.Requests.UserReauests
         public DateTime DateOfBirth { get; set; }
     }
 
-    public class UpdateUserRequestValidaor : AbstractValidator<CreateUserRequest>
+    public class UpdateUserRequestValidaor : AbstractValidator<UpdateUserRequest>
     {
         public UpdateUserRequestValidaor()
         {

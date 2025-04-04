@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Requests.ReviewRequests;
+﻿using Application.Requests.ReviewRequests;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,20 +35,13 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateReviewRequest review)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var reviewId = await _reviewService.Add(review);
-            var res = new { Id = reviewId };
-            return CreatedAtAction(nameof(GetById), new { id = reviewId }, res);
+            return Created($"/review/{reviewId}", new { Id = reviewId });
         }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateReviewRequest review)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var result = await _reviewService.Update(review);
             if (!result)
                 return NotFound();

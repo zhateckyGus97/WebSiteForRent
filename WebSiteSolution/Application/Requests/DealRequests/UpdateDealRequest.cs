@@ -13,13 +13,9 @@ namespace Application.Requests.DealRequests
         public int Id { get; set; }
         public int UserId { get; set; }
         public int ApartmentId { get; set; }
-        public User Deal_user { get; set; }
-        public Apartment Deal_apartment { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public double TotalPrice { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
     }
 
     public class UpdateDealRequestValidaor : AbstractValidator<UpdateDealRequest>
@@ -44,11 +40,11 @@ namespace Application.Requests.DealRequests
             RuleFor(x => x.TotalPrice)
                 .NotEmpty().WithMessage("{PropertyName} is required")
                 .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
-            RuleFor(x => x.CreatedAt)
+            /*RuleFor(x => x.CreatedAt)
                 .NotEmpty().WithMessage("{PropertyName} is required")
                 .GreaterThan(DateTime.MinValue).LessThan(DateTime.Now).WithMessage("Enter the correct date");
-            RuleFor(x => x.CreatedAt)
-                .GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
+            RuleFor(x => x.UpdatedAt)
+                .GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");*/
         }
     }
 }

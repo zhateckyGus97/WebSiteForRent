@@ -1,4 +1,3 @@
-using Application.DTO;
 using Application.Requests.UserReauests;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -35,20 +34,13 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateUserRequest user)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var userId = await _userService.Add(user);
-            var res = new { Id = userId };
-            return CreatedAtAction(nameof(GetById), new { id = userId }, res);
+            return Created($"/user/{userId}", new {Id = userId});
         }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateUserRequest user)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var result = await _userService.Update(user);
             if (!result)
                 return NotFound();

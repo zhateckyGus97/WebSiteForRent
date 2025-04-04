@@ -11,20 +11,21 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public ReviewPostgresRepository(NpgsqlConnection connection)
         {
             _connection = connection;
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
         }
 
         public async Task<int> Create(Review review)
         {
             var reviewId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO reviews (apartment_id, user_id, rating, comment, created_at)
-                      VAlUES (@ApartmentId, @UserId, @Rating, @Comment, @CreatedAt)
+                    @"INSERT INTO reviews (user_id, apartment_id, rating, comment, created_at)
+                      VAlUES (@UserId, @ApartmentId, @Rating, @Comment, @CreatedAt)
                       RETURNING Id",
                     new { 
                         review.ApartmentId, 
                         review.UserId, 
                         review.Rating, 
-                        review.Comment, 
-                        DateTime.Now 
+                        review.Comment,
+                        CreatedAt = DateTime.Now
                     });
             
             return reviewId;
@@ -91,12 +92,12 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     WHERE id = @Id",
                     new
                     {
-                        Id = review.Id,
                         review.ApartmentId,
                         review.UserId,
                         review.Rating,
                         review.Comment,
-                        DateTime.Now
+                        UpdatedAt = DateTime.Now,
+                        review.Id
                     });
 
             return affectedRows > 0;

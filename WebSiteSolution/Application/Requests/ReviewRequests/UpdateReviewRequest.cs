@@ -12,12 +12,9 @@ namespace Application.Requests.ReviewRequests
     {
         public int Id { get; set; }
         public int ApartmentId { get; set; }
-        public Apartment Apartment { get; set; }
         public int UserId { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
     }
 
     public class UpdateReviewRequestValidaor : AbstractValidator<UpdateReviewRequest>
@@ -38,11 +35,6 @@ namespace Application.Requests.ReviewRequests
                 .GreaterThan(0).LessThan(6).WithMessage("{PropertyName} has been from 1 to 5");
             RuleFor(x => x.Comment)
                 .MaximumLength(300).WithMessage("{PropertyName} has 300 maxlength ");
-            RuleFor(x => x.CreatedAt)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(DateTime.MinValue).LessThan(DateTime.Now).WithMessage("Enter the correct date");
-            RuleFor(x => x.UpdatedAt)
-                .GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
         }
     }
 }

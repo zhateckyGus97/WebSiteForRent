@@ -11,6 +11,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public DealPostgresRepository(NpgsqlConnection connection)
         {
             _connection = connection;
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
         }
 
         public async Task<int> Create(Deal deal)
@@ -26,7 +27,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         deal.CheckInDate,
                         deal.CheckOutDate,
                         deal.TotalPrice,
-                        DateTime.Now
+                        CreatedAt = DateTime.Now
                     });
 
             return dealId;
@@ -98,13 +99,13 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     WHERE id = @Id",
                     new
                     {
-                        Id = deal.Id,
                         deal.UserId,
                         deal.ApartmentId,
                         deal.CheckInDate,
                         deal.CheckOutDate,
                         deal.TotalPrice,
-                        DateTime.Now
+                        UpdatedAt = DateTime.Now,
+                        deal.Id
                     });
 
             return affectedRows > 0;

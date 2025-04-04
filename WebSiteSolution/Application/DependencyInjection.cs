@@ -1,6 +1,10 @@
-﻿using Application.Mapping;
+﻿using Application.Interfaces;
+using Application.Mapping;
 using Application.Services;
 using Microsoft.Extensions.DependencyInjection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using System.Reflection;
 
 namespace Application
 {
@@ -13,6 +17,10 @@ namespace Application
             services.AddTransient<DealService, DealService>();
             services.AddTransient<ReviewService, ReviewService>();
             services.AddTransient<ApartmentService, ApartmentService>();
+
+            services.AddFluentValidationAutoValidation();
+            services.AddFluentValidationClientsideAdapters();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }

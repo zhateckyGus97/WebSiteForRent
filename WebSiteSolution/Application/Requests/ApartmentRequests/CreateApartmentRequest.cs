@@ -1,19 +1,10 @@
-﻿using Application.DTO;
-using Application.Requests.UserReauests;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Application.Requests.ApartmentRequests
 {
     public class CreateApartmentRequest
     {
-        public int Id { get; set; }
         public int UserId { get; set; }
-        public UserDTO Apartment_user { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
@@ -28,9 +19,6 @@ namespace Application.Requests.ApartmentRequests
     {
         public CreateApartmentRequestValidaor()
         {
-            RuleFor(x => x.Id)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("Id has been more then 0");
             RuleFor(x => x.UserId)
                 .NotEmpty().WithMessage("{PropertyName} is required");
             RuleFor(x => x.Title)

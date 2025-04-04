@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Exceptions;
+﻿using Application.Exceptions;
 using Application.Interfaces;
 using Application.Requests.ReviewRequests;
 using Application.Responses;
@@ -22,21 +21,8 @@ namespace Application.Services
 
         public async Task<int> Add(CreateReviewRequest review)
         {
-            var reviews = await _reviewRepository.GetAll();
-            if (reviews.Select(x => x.Id == review.Id).ToList().Count() > 0)
-            {
-                throw new KeyAlreadyExistsException($"Id with value {review.Id} already exists!");
-            }
-
             var mappedReview = _mapper.Map<Review>(review);
-            if (mappedReview == null)
-            {
-                return -1;
-                
-            }
-
-            await _reviewRepository.Create(mappedReview);
-            return mappedReview.Id;
+            return await _reviewRepository.Create(mappedReview);
         }
 
         public async Task<bool> Delete(int id)
@@ -64,11 +50,6 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateReviewRequest review)
         {
-            if (review == null)
-            {
-                return false;
-            }
-
             var mappedReview = _mapper.Map<Review>(review);
             return await _reviewRepository.Update(mappedReview);
         }

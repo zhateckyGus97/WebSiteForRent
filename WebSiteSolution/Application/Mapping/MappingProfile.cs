@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Requests.ApartmentRequests;
+﻿using Application.Requests.ApartmentRequests;
 using Application.Requests.DealRequests;
 using Application.Requests.ReviewRequests;
 using Application.Requests.UserReauests;

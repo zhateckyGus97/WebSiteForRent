@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Requests.UserReauests;
+﻿using Application.Requests.UserReauests;
 using Application.Responses;
 
 namespace Application.Interfaces

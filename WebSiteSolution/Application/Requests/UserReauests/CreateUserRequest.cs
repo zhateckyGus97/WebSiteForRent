@@ -9,7 +9,6 @@ namespace Application.Requests.UserReauests
 {
     public class CreateUserRequest
     {
-        public int Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -22,9 +21,6 @@ namespace Application.Requests.UserReauests
     {
         public CreateUserRequestValidaor()
         {
-            RuleFor(x => x.Id)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("Id has been more than 0");
             RuleFor(x => x.FullName)
                 .NotEmpty().WithMessage("{PropertyName} is required")
                 .MaximumLength(100).WithMessage("{PropertyName} has 100 maxlength");
