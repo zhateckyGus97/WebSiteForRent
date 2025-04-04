@@ -24,7 +24,6 @@ namespace Application.Services
         public async Task<int> Add(CreateApartmentRequest apartment)
         {
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-
             var user = _userRepository.GetById(apartment.UserId);
 
             return await _apartmentRepository.Create(mappedApartment);
@@ -61,8 +60,8 @@ namespace Application.Services
             }
 
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-
             var user = _userRepository.GetById(apartment.UserId);
+
             return await _apartmentRepository.Update(mappedApartment);
         }
     }

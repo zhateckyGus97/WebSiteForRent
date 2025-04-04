@@ -90,12 +90,12 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<bool> Update(Deal deal)
         {
             var affectedRows = await _connection.ExecuteAsync(
-                    @"UPDATE deals SET UserId = @UserId,
-                                      ApartmentId = @ApartmentId, 
-                                      CheckInDate = @CheckInDate, 
-                                      CheckOutDate = @CheckOutDate, 
-                                      TotalPrice = @TotalPrice, 
-                                      UpdatedAt = @UpdatedAt
+                    @"UPDATE deals SET user_id = @UserId,
+                                      apartment_id = @ApartmentId, 
+                                      check_in_date = @CheckInDate, 
+                                      check_out_date = @CheckOutDate, 
+                                      total_price = @TotalPrice, 
+                                      updated_at = @UpdatedAt
                     WHERE id = @Id",
                     new
                     {
