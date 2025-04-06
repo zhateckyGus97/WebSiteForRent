@@ -12,21 +12,21 @@ namespace Application.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<CreateUserRequest, User>().ReverseMap();
-            CreateMap<UpdateUserRequest, User>().ReverseMap();
-            CreateMap<UserResponse, User>().ReverseMap();
+            CreateMap<CreateUserRequest, User>();
+            CreateMap<UpdateUserRequest, User>();
+            CreateMap<UserResponse, User>();
 
-            CreateMap<CreateReviewRequest, Review>().ReverseMap();
-            CreateMap<UpdateReviewRequest, Review>().ReverseMap();
-            CreateMap<ReviewResponse, Review>().ReverseMap();
+            CreateMap<CreateReviewRequest, Review>();
+            CreateMap<UpdateReviewRequest, Review>();
+            CreateMap<ReviewResponse, Review>();
 
-            CreateMap<CreateDealRequest, Deal>().ReverseMap();
-            CreateMap<UpdateDealRequest, Deal>().ReverseMap();
-            CreateMap<DealResponse, Deal>().ReverseMap();
+            CreateMap<CreateDealRequest, Deal>();
+            CreateMap<UpdateDealRequest, Deal>();
+            CreateMap<DealResponse, Deal>();
 
-            CreateMap<CreateApartmentRequest, Apartment>().ReverseMap();
-            CreateMap<UpdateApartmentRequest, Apartment>().ReverseMap();
-            CreateMap<ApartmentResponse, Apartment>().ReverseMap();
+            CreateMap<CreateApartmentRequest, Apartment>();
+            CreateMap<UpdateApartmentRequest, Apartment>();
+            CreateMap<ApartmentResponse, Apartment>();
         }
     }
 }
