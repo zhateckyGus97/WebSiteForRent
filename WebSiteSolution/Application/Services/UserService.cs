@@ -1,6 +1,6 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces;
-using Application.Requests.UserReauests;
+using Application.Requests.UserRequests;
 using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
@@ -28,6 +28,9 @@ namespace Application.Services
         public async Task<bool> Delete(int id)
         {
             var user = await _userRepository.GetById(id);
+            if(user == null)
+                throw new NotFoundApplicationException($"User with id {id} not found!");
+
             return await _userRepository.Delete(id);
         }
 

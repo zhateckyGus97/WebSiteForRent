@@ -1,4 +1,4 @@
-using Application.Requests.UserReauests;
+using Application.Requests.UserRequests;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,9 +42,6 @@ namespace API.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateUserRequest user)
         {
             var result = await _userService.Update(user);
-            if (!result)
-                return NotFound();
-
             return NoContent();
         }
 

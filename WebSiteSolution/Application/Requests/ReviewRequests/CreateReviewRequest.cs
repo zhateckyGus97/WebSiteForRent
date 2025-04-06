@@ -1,11 +1,4 @@
-﻿using Application.Requests.UserReauests;
-using Domain.Entities;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Application.Requests.ReviewRequests
 {
@@ -17,24 +10,21 @@ namespace Application.Requests.ReviewRequests
         public string Comment { get; set; }
     }
 
-    public class CreateReviewRequestValidaor : AbstractValidator<CreateReviewRequest>
+    public class CreateReviewRequestValidator : AbstractValidator<CreateReviewRequest>
     {
-        public CreateReviewRequestValidaor()
+        public CreateReviewRequestValidator()
         {
             RuleFor(x => x.ApartmentId)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.UserId)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.Rating)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).LessThan(6).WithMessage("{PropertyName} has been from 1 to 5");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).LessThan(6).WithMessage("{PropertyName} must be from 1 to 5.");
             RuleFor(x => x.Comment)
-                .MaximumLength(300).WithMessage("{PropertyName} has 300 maxlength ");
-            /*RuleFor(x => x.CreatedAt)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(DateTime.MinValue).LessThan(DateTime.Now).WithMessage("Enter the correct date");*/
+                .MaximumLength(300).WithMessage("{PropertyName} must be at most 300 characters long.");
         }
     }
 }

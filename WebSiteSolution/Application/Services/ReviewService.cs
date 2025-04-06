@@ -27,6 +27,10 @@ namespace Application.Services
 
         public async Task<bool> Delete(int id)
         {
+            var review = await _reviewRepository.GetById(id);
+            if (review == null)
+                throw new NotFoundApplicationException($"Review with id {id} not found!");
+
             return await _reviewRepository.Delete(id);
         }
 

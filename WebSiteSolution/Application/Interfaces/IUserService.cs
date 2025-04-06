@@ -1,4 +1,4 @@
-﻿using Application.Requests.UserReauests;
+﻿using Application.Requests.UserRequests;
 using Application.Responses;
 
 namespace Application.Interfaces

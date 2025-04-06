@@ -17,7 +17,7 @@ namespace API.ExceptionHandlers
 
             httpContext.Response.StatusCode = (int)e.StatusCode;
             httpContext.Response.ContentType = "application/json";
-
+            
             var problemDetails = new ProblemDetails
             {
                 Status = (int)e.StatusCode,

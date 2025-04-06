@@ -42,9 +42,6 @@ namespace API.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateDealRequest deal)
         {
             var result = await _dealService.Update(deal);
-            if (!result)
-                return NotFound();
-
             return NoContent();
         }
 

@@ -1,7 +1,7 @@
 ﻿using Application.Requests.ApartmentRequests;
 using Application.Requests.DealRequests;
 using Application.Requests.ReviewRequests;
-using Application.Requests.UserReauests;
+using Application.Requests.UserRequests;
 using Application.Responses;
 using AutoMapper;
 using Domain.Entities;

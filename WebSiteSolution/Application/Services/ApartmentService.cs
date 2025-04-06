@@ -31,6 +31,10 @@ namespace Application.Services
 
         public async Task<bool> Delete(int id)
         {
+            var apartment = await _apartmentRepository.GetById(id);
+            if (apartment == null)
+                throw new NotFoundApplicationException($"Apartment with id {id} not found!");
+
             return await _apartmentRepository.Delete(id);
         }
 
@@ -54,14 +58,7 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateApartmentRequest apartment)
         {
-            if (apartment == null)
-            {
-                return false;
-            }
-
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            var user = _userRepository.GetById(apartment.UserId);
-
             return await _apartmentRepository.Update(mappedApartment);
         }
     }

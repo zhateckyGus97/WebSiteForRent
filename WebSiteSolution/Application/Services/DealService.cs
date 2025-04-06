@@ -36,6 +36,10 @@ namespace Application.Services
 
         public async Task<bool> Delete(int id)
         {
+            var deal = await _dealRepository.GetById(id);
+            if(deal == null)
+                throw new NotFoundApplicationException($"Deal with id {id} not found!");
+
             return await _dealRepository.Delete(id);
         }
 

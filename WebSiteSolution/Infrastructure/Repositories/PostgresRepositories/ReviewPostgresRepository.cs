@@ -11,7 +11,6 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public ReviewPostgresRepository(NpgsqlConnection connection)
         {
             _connection = connection;
-            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
         }
 
         public async Task<int> Create(Review review)

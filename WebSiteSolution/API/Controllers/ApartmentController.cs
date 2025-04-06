@@ -44,9 +44,6 @@ namespace API.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateApartmentRequest apartment)
         {
             var result = await _apartmentService.Update(apartment);
-            if (!result)
-                return NotFound();
-
             return NoContent();
         }
 

@@ -18,33 +18,28 @@ namespace Application.Requests.DealRequests
         public double TotalPrice { get; set; }
     }
 
-    public class UpdateDealRequestValidaor : AbstractValidator<UpdateDealRequest>
+    public class UpdateDealRequestValidator : AbstractValidator<UpdateDealRequest>
     {
-        public UpdateDealRequestValidaor()
+        public UpdateDealRequestValidator()
         {
             RuleFor(x => x.Id)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("Id has been more then 0");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.UserId)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.ApartmentId)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.CheckInDate)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(DateTime.MinValue).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .ExclusiveBetween(DateTime.Now, DateTime.MaxValue).WithMessage("Enter the correct date.");
             RuleFor(x => x.CheckOutDate)
                 .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(x => x.CheckInDate).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");
+                .ExclusiveBetween(DateTime.Now, DateTime.MaxValue).WithMessage("Enter the correct date.");
             RuleFor(x => x.TotalPrice)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(0).WithMessage("{PropertyName} has been more than 0");
-            /*RuleFor(x => x.CreatedAt)
-                .NotEmpty().WithMessage("{PropertyName} is required")
-                .GreaterThan(DateTime.MinValue).LessThan(DateTime.Now).WithMessage("Enter the correct date");
-            RuleFor(x => x.UpdatedAt)
-                .GreaterThan(x => x.CreatedAt).LessThan(DateTime.MaxValue).WithMessage("Enter the correct date");*/
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
         }
     }
 }

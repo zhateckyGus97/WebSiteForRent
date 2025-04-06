@@ -43,9 +43,6 @@ namespace API.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateReviewRequest review)
         {
             var result = await _reviewService.Update(review);
-            if (!result)
-                return NotFound();
-
             return NoContent();
         }
 
