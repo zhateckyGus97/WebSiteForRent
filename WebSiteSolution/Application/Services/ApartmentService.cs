@@ -11,21 +11,22 @@ namespace Application.Services
     public class ApartmentService : IApartmentService
     {
         private readonly IApartmentRepository _apartmentRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly IDealRepository _dealRepository;
+        private readonly IReviewRepository _reviewRepository;
         private readonly IMapper _mapper;
 
-        public ApartmentService(IApartmentRepository apartRepository, IUserRepository userRepository, IMapper mapper)
+        public ApartmentService(IApartmentRepository apartRepository, IReviewRepository reviewRepository, 
+            IDealRepository dealRepository, IMapper mapper)
         {
             _apartmentRepository = apartRepository;
-            _userRepository = userRepository;
+            _reviewRepository = reviewRepository;
+            _dealRepository = dealRepository;
             _mapper = mapper;
         }
 
         public async Task<int> Add(CreateApartmentRequest apartment)
         {
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            var user = _userRepository.GetById(apartment.UserId);
-
             return await _apartmentRepository.Create(mappedApartment);
         }
 
@@ -34,6 +35,9 @@ namespace Application.Services
             var apartment = await _apartmentRepository.GetById(id);
             if (apartment == null)
                 throw new NotFoundApplicationException($"Apartment with id {id} not found!");
+
+            await _reviewRepository.DeleteByApartmentId(id);
+            await _dealRepository.DeleteByApartmentId(id);
 
             return await _apartmentRepository.Delete(id);
         }
@@ -58,6 +62,9 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateApartmentRequest apartment)
         {
+            if (apartment == null)
+                throw new NotFoundApplicationException($"Apartment not found!");
+
             var mappedApartment = _mapper.Map<Apartment>(apartment);
             return await _apartmentRepository.Update(mappedApartment);
         }

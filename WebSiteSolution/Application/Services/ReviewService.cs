@@ -44,7 +44,7 @@ namespace Application.Services
         public async Task<ReviewResponse> GetById(int id)
         {
             var review = await _reviewRepository.GetById(id);
-            if(review == null)
+            if (review == null)
             {
                 throw new NotFoundApplicationException($"Review with id {id} not found!");
             }
@@ -54,6 +54,9 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateReviewRequest review)
         {
+            if (review == null)
+                throw new NotFoundApplicationException($"Review not found!");
+
             var mappedReview = _mapper.Map<Review>(review);
             return await _reviewRepository.Update(mappedReview);
         }

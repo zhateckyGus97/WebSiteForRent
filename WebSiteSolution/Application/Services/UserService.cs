@@ -11,11 +11,18 @@ namespace Application.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IApartmentRepository _apartmentRepository;
+        private readonly IDealRepository _dealRepository;
+        private readonly IReviewRepository _reviewRepository;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IUserRepository userRepository, IApartmentRepository apartmentRepository, IDealRepository dealRepository,
+            IReviewRepository reviewRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _apartmentRepository = apartmentRepository;
+            _dealRepository = dealRepository;
+            _reviewRepository = reviewRepository;
             _mapper = mapper;
         }
 
@@ -28,8 +35,12 @@ namespace Application.Services
         public async Task<bool> Delete(int id)
         {
             var user = await _userRepository.GetById(id);
-            if(user == null)
+            if (user == null)
                 throw new NotFoundApplicationException($"User with id {id} not found!");
+
+            await _apartmentRepository.DeleteByOwnerId(id);
+            await _reviewRepository.DeleteByUserId(id);
+            await _dealRepository.DeleteByUserId(id);
 
             return await _userRepository.Delete(id);
         }
@@ -54,6 +65,9 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateUserRequest user)
         {
+            if (user == null)
+                throw new NotFoundApplicationException($"User not found!");
+
             var mappedUser = _mapper.Map<User>(user);
             return await _userRepository.Update(mappedUser);
         }

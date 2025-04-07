@@ -26,7 +26,7 @@ namespace Application.Requests.ReviewRequests
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.Rating)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .GreaterThan(0).LessThan(6).WithMessage("{PropertyName} must be from 1 to 5.");
+                .ExclusiveBetween(0, 6).WithMessage("{PropertyName} must be from 1 to 5.");
             RuleFor(x => x.Comment)
                 .MaximumLength(300).WithMessage("{PropertyName} must be at most 300 characters long.");
         }

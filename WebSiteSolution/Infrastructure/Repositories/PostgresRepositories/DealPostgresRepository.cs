@@ -46,6 +46,16 @@ namespace Infrastructure.Repositories.PostgresRepositories
             return affectedRows > 0;
         }
 
+        public async Task DeleteByApartmentId(int apartment_id)
+        {
+            await _connection.ExecuteAsync("DELETE FROM deals WHERE apartment_id = @ApartmentId", new { ApartmentId = apartment_id });
+        }
+
+        public async Task DeleteByUserId(int user_id)
+        {
+            await _connection.ExecuteAsync("DELETE FROM deals WHERE user_id = @UserId", new { UserId = user_id });
+        }
+
         public async Task<IEnumerable<Deal>> GetAll()
         {
             var deals = await _connection.QueryAsync<Deal>(

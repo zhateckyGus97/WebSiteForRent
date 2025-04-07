@@ -14,19 +14,19 @@ namespace Application.Mapping
         {
             CreateMap<CreateUserRequest, User>();
             CreateMap<UpdateUserRequest, User>();
-            CreateMap<UserResponse, User>();
+            CreateMap<User, UserResponse>();
 
             CreateMap<CreateReviewRequest, Review>();
             CreateMap<UpdateReviewRequest, Review>();
-            CreateMap<ReviewResponse, Review>();
+            CreateMap<Review, ReviewResponse>();
 
             CreateMap<CreateDealRequest, Deal>();
             CreateMap<UpdateDealRequest, Deal>();
-            CreateMap<DealResponse, Deal>();
+            CreateMap<Deal, DealResponse>();
 
             CreateMap<CreateApartmentRequest, Apartment>();
             CreateMap<UpdateApartmentRequest, Apartment>();
-            CreateMap<ApartmentResponse, Apartment>();
+            CreateMap<Apartment, ApartmentResponse>();
         }
     }
 }

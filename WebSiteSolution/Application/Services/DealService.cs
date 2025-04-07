@@ -11,33 +11,24 @@ namespace Application.Services
     public class DealService : IDealService
     {
         private readonly IDealRepository _dealRepository;
-        private readonly IUserRepository _userRepository;
-        private readonly IApartmentRepository _apartmentRepository;
         private readonly IMapper _mapper;
 
-        public DealService(IDealRepository dealRepository, IUserRepository userRepository, IApartmentRepository apartmentRepository, IMapper mapper)
+        public DealService(IDealRepository dealRepository, IMapper mapper)
         {
             _dealRepository = dealRepository;
-            _userRepository = userRepository;
-            _apartmentRepository = apartmentRepository;
             _mapper = mapper;
         }
 
         public async Task<int> Add(CreateDealRequest deal)
         {
             var mappedDeal = _mapper.Map<Deal>(deal);
-
-            var user = _userRepository.GetById(deal.UserId);
-
-            var apartment = _apartmentRepository.GetById(deal.ApartmentId);
-
             return await _dealRepository.Create(mappedDeal);
         }
 
         public async Task<bool> Delete(int id)
         {
             var deal = await _dealRepository.GetById(id);
-            if(deal == null)
+            if (deal == null)
                 throw new NotFoundApplicationException($"Deal with id {id} not found!");
 
             return await _dealRepository.Delete(id);
@@ -53,7 +44,7 @@ namespace Application.Services
         public async Task<DealResponse> GetById(int id)
         {
             var deal = await _dealRepository.GetById(id);
-            if(deal == null)
+            if (deal == null)
             {
                 throw new NotFoundApplicationException($"Deal with id {id} not found!");
             }
@@ -63,6 +54,9 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateDealRequest deal)
         {
+            if (deal == null)
+                throw new NotFoundApplicationException($"Deal not found!");
+
             var mappedDeal = _mapper.Map<Deal>(deal);
             return await _dealRepository.Update(mappedDeal);
         }

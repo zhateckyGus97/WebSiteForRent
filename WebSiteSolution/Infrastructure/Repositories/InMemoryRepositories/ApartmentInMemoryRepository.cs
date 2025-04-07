@@ -37,9 +37,14 @@ namespace Infrastructure.Repositories.InMemoryRepositories
             return Task.FromResult(true);
         }
 
+        public Task DeleteByOwnerId(int owner_id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IEnumerable<Apartment>> GetAll()
         {
-            return Task.FromResult(_apartments.AsEnumerable());
+            throw new NotImplementedException();
         }
 
         public Task<Apartment?> GetById(int id)

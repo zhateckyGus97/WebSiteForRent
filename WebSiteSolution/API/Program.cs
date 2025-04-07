@@ -1,4 +1,3 @@
-using API.ExceptionHandler;
 using API.ExceptionHandlers;
 using Application;
 using Infrastructure;

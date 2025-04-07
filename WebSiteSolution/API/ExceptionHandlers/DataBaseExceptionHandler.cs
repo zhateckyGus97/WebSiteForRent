@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
 
-namespace API.ExceptionHandler
+namespace API.ExceptionHandlers
 {
     public class DatabaseExceptionHandler(IProblemDetailsService problemDetailsService) : IExceptionHandler
     {

@@ -5,7 +5,7 @@ namespace Application.Requests.ApartmentRequests
     public class UpdateApartmentRequest
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int Owner_id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
@@ -22,7 +22,7 @@ namespace Application.Requests.ApartmentRequests
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
-            RuleFor(x => x.UserId)
+            RuleFor(x => x.Owner_id)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.Title)

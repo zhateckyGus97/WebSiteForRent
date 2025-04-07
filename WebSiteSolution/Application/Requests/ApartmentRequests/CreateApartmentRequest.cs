@@ -4,7 +4,7 @@ namespace Application.Requests.ApartmentRequests
 {
     public class CreateApartmentRequest
     {
-        public int UserId { get; set; }
+        public int Owner_id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
@@ -18,7 +18,7 @@ namespace Application.Requests.ApartmentRequests
     {
         public CreateApartmentRequestValidator()
         {
-            RuleFor(x => x.UserId)
+            RuleFor(x => x.Owner_id)
             .NotEmpty().WithMessage("{PropertyName} is required.");
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
