@@ -7,7 +7,7 @@ namespace Application.Requests.ReviewRequests
         public int ApartmentId { get; set; }
         public int UserId { get; set; }
         public int Rating { get; set; }
-        public string Comment { get; set; }
+        public string Comment { get; set; } = null!;
     }
 
     public class CreateReviewRequestValidator : AbstractValidator<CreateReviewRequest>
@@ -22,9 +22,9 @@ namespace Application.Requests.ReviewRequests
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.Rating)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .ExclusiveBetween(0, 6).WithMessage("{PropertyName} must be from 1 to 5.");
+                .InclusiveBetween(0, 6).WithMessage("{PropertyName} must be from 1 to 5.");
             RuleFor(x => x.Comment)
-                .MaximumLength(300).WithMessage("{PropertyName} must be at most 300 characters long.");
+                .MaximumLength(ValidationConstants.MaxCommentLength).WithMessage("{PropertyName} must be at most 500 characters long.");
         }
     }
 }

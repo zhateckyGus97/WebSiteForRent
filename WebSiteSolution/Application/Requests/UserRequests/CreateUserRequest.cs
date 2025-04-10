@@ -9,11 +9,11 @@ namespace Application.Requests.UserRequests
 {
     public class CreateUserRequest
     {
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Role { get; set; }
-        public string Passport { get; set; }
+        public string FullName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
+        public string Role { get; set; } = null!;
+        public string Passport { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
     }
 
@@ -23,20 +23,20 @@ namespace Application.Requests.UserRequests
         {
             RuleFor(x => x.FullName)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(100).WithMessage("{PropertyName} must be at most 100 characters long.");
+                .MaximumLength(ValidationConstants.MaxFullNameLength).WithMessage("{PropertyName} must be at most 100 characters long.");
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(50).WithMessage("{PropertyName} must be at most 50 characters long.")
+                .MaximumLength(ValidationConstants.MaxEmailLength).WithMessage("{PropertyName} must be at most 50 characters long.")
                 .EmailAddress().WithMessage("Enter the correct email.");
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(20).WithMessage("{PropertyName} must be at most 20 characters long.");
+                .MaximumLength(ValidationConstants.MaxPhoneNumberLength).WithMessage("{PropertyName} must be at most 20 characters long.");
             RuleFor(x => x.Role)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(15).WithMessage("{PropertyName} must be at most 15 characters long.");
+                .MaximumLength(ValidationConstants.MaxRoleLength).WithMessage("{PropertyName} must be at most 15 characters long.");
             RuleFor(x => x.Passport)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .Matches("^\\d{4}-\\d{6}$").WithMessage("{PropertyName} must be as xxxx-xxxxxx format.");
+                .Matches(ValidationConstants.PassportPattern).WithMessage("{PropertyName} must be as xxxx-xxxxxx format.");
             RuleFor(x => x.DateOfBirth)
                 .NotEmpty().WithMessage("{PropertyName} is required.");
         }

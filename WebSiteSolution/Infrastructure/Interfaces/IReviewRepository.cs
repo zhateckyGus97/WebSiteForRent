@@ -9,7 +9,7 @@ namespace Infrastructure.Interfaces
         public Task<int> Create(Review review);
         public Task<bool> Update(Review review);
         public Task<bool> Delete(int id);
-        public Task DeleteByUserId(int user_id);
-        public Task DeleteByApartmentId(int apartment_id);
+        public Task DeleteByUserId(int userid);
+        public Task DeleteByApartmentId(int apartmentid);
     }
 }

@@ -1,0 +1,18 @@
+﻿namespace Application
+{
+    public static class ValidationConstants
+    {
+        public const int MaxFullNameLength = 100;
+        public const int MaxEmailLength = 50;
+        public const int MaxPhoneNumberLength = 20;
+        public const int MaxRoleLength = 15;
+
+        public const int MaxTitleLength = 100;
+        public const int MaxDescriptionLength = 1000;
+        public const int MaxAddressLength = 150;
+
+        public const int MaxCommentLength = 500;
+
+        public const string PassportPattern = "^\\d{4}-\\d{6}$";
+    }
+}

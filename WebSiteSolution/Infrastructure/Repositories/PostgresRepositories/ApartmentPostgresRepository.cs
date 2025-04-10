@@ -17,19 +17,11 @@ namespace Infrastructure.Repositories.PostgresRepositories
         {
             var apartmentId = await _connection.QuerySingleAsync<int>(
                     @"INSERT INTO apartments (owner_id, title, description, address, price_per_day, num_of_floor, square, capacity)
-                      VAlUES (@Title, @Description, @Address, @PricePerDay, @NumOfFloor, @Square, @Capacity)
+                      VAlUES (@OwnerId, @Title, @Description, @Address, @PricePerDay, @NumOfFloor, @Square, @Capacity)
                       RETURNING Id",
-                    new
-                    {
-                        apartment.Owner_id,
-                        apartment.Title,
-                        apartment.Description,
-                        apartment.Address,
-                        apartment.PricePerDay,
-                        apartment.NumOfFloor,
-                        apartment.Square,
-                        apartment.Capacity
-                    });
+                    apartment
+                    );
+
             return apartmentId;
         }
 
@@ -44,9 +36,9 @@ namespace Infrastructure.Repositories.PostgresRepositories
             return affectedRows > 0;
         }
 
-        public async Task DeleteByOwnerId(int owner_id)
+        public async Task DeleteByOwnerId(int ownerid)
         {
-            await _connection.ExecuteAsync("DELETE FROM apartments WHERE owner_id = @OwnerId", new { OwnerId = owner_id });
+            await _connection.ExecuteAsync("DELETE FROM apartments WHERE owner_id = @OwnerId", new { OwnerId = ownerid });
         }
 
         public async Task<IEnumerable<Apartment>> GetAll()
