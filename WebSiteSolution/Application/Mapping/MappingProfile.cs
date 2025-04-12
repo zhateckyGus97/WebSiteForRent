@@ -12,7 +12,7 @@ namespace Application.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<CreateUserRequest, User>();
+            CreateMap<RegistrationUserRequest, User>();
             CreateMap<UpdateUserRequest, User>();
             CreateMap<User, UserResponse>();
 

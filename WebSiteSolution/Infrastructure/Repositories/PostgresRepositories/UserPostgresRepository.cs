@@ -16,15 +16,17 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(User user)
         {
             var userId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth)
-                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth)
+                    @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth, password_hash)
+                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth, @PasswordHash)
                       RETURNING Id",
-                    new { user.FullName, 
+                    new { 
+                        user.FullName, 
                         user.Email, 
                         user.PhoneNumber, 
                         user.Role, 
                         user.Passport, 
-                        user.DateOfBirth 
+                        user.DateOfBirth,
+                        user.PasswordHash
                     });
             
             return userId;
@@ -86,7 +88,8 @@ namespace Infrastructure.Repositories.PostgresRepositories
                                       phone_number = @PhoneNumber, 
                                       role = @Role,
                                       passport = @Passport,
-                                      date_of_birth = @DateOfBirth
+                                      date_of_birth = @DateOfBirth,
+                                      password_hash = @PasswordHash
                     WHERE id = @Id",
                     new
                     {
@@ -96,7 +99,8 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         user.PhoneNumber,
                         user.Role,
                         user.Passport,
-                        user.DateOfBirth
+                        user.DateOfBirth,
+                        user.PasswordHash
                     });
 
             return affectedRows > 0;

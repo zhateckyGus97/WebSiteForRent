@@ -32,7 +32,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateUserRequest user)
+        public async Task<IActionResult> Add([FromBody] RegistrationUserRequest user)
         {
             var userId = await _userService.Add(user);
             return Created($"/user/{userId}", new {Id = userId});
