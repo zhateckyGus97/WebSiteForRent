@@ -16,15 +16,15 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(Review review)
         {
             var reviewId = await _connection.QuerySingleAsync<int>(
-                    @"INSERT INTO reviews (apartment_id, user_id, rating, comment, created_at)
-                      VAlUES (@ApartmentId, @UserId, @Rating, @Comment, @CreatedAt)
+                    @"INSERT INTO reviews (user_id, apartment_id, rating, comment, created_at)
+                      VAlUES (@UserId, @ApartmentId, @Rating, @Comment, @CreatedAt)
                       RETURNING Id",
                     new { 
                         review.ApartmentId, 
                         review.UserId, 
                         review.Rating, 
-                        review.Comment, 
-                        DateTime.Now 
+                        review.Comment,
+                        CreatedAt = DateTime.Now
                     });
             
             return reviewId;
@@ -41,6 +41,16 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     });
 
             return affectedRows > 0;
+        }
+
+        public async Task DeleteByApartmentId(int apartmentid)
+        {
+            await _connection.ExecuteAsync("DELETE FROM reviews WHERE apartment_id = @ApartmentId", new { ApartmentId = apartmentid });
+        }
+
+        public async Task DeleteByUserId(int userid)
+        {
+            await _connection.ExecuteAsync("DELETE FROM reviews WHERE user_id = @UserId", new { UserId = userid });
         }
 
         public async Task<IEnumerable<Review>> GetAll()
@@ -91,12 +101,12 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     WHERE id = @Id",
                     new
                     {
-                        Id = review.Id,
                         review.ApartmentId,
                         review.UserId,
                         review.Rating,
                         review.Comment,
-                        DateTime.Now
+                        UpdatedAt = DateTime.Now,
+                        review.Id
                     });
 
             return affectedRows > 0;

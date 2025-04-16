@@ -1,13 +1,14 @@
-﻿using Application.DTO;
+﻿using Application.Requests.UserRequests;
+using Application.Responses;
 
 namespace Application.Interfaces
 {
     public interface IUserService
     {
-        public Task<int> Add(UserDTO user);
+        public Task<int> Add(CreateUserRequest user);
         public Task<bool> Delete(int id);
-        public Task<UserDTO> GetById(int id);
-        public Task<IEnumerable<UserDTO>> GetAll();
-        public Task<bool> Update(UserDTO user);
+        public Task<UserResponse> GetById(int id);
+        public Task<IEnumerable<UserResponse>> GetAll();
+        public Task<bool> Update(UpdateUserRequest user);
     }
 }

@@ -73,5 +73,15 @@ namespace Infrastructure.Repositories.InMemoryRepositories
             _deals.Remove(deal);
             return Task.FromResult(true);
         }
+
+        public Task DeleteByUserId(int user_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteByApartmentId(int apartment_id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

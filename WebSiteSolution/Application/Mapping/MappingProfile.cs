@@ -1,4 +1,8 @@
-﻿using Application.DTO;
+﻿using Application.Requests.ApartmentRequests;
+using Application.Requests.DealRequests;
+using Application.Requests.ReviewRequests;
+using Application.Requests.UserRequests;
+using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
 
@@ -8,10 +12,21 @@ namespace Application.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<User, UserDTO>().ReverseMap();
-            CreateMap<Apartment, ApartmentDTO>().ReverseMap();
-            CreateMap<Deal, DealDTO>().ReverseMap();
-            CreateMap<Review, ReviewDTO>().ReverseMap();
+            CreateMap<CreateUserRequest, User>();
+            CreateMap<UpdateUserRequest, User>();
+            CreateMap<User, UserResponse>();
+
+            CreateMap<CreateReviewRequest, Review>();
+            CreateMap<UpdateReviewRequest, Review>();
+            CreateMap<Review, ReviewResponse>();
+
+            CreateMap<CreateDealRequest, Deal>();
+            CreateMap<UpdateDealRequest, Deal>();
+            CreateMap<Deal, DealResponse>();
+
+            CreateMap<CreateApartmentRequest, Apartment>();
+            CreateMap<UpdateApartmentRequest, Apartment>();
+            CreateMap<Apartment, ApartmentResponse>();
         }
     }
 }
