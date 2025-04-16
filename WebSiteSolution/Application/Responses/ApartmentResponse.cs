@@ -1,10 +1,9 @@
-﻿namespace Application.DTO
+﻿namespace Application.Responses
 {
-    public class ApartmentDTO
+    public class ApartmentResponse
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public UserDTO Apartment_user { get; set; }
+        public int Owner_id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }

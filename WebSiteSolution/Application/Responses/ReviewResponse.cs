@@ -1,12 +1,16 @@
 ﻿using Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Application.DTO
+namespace Application.Responses
 {
-    public class ReviewDTO
+    public class ReviewResponse
     {
         public int Id { get; set; }
         public int ApartmentId { get; set; }
-        public Apartment Apartment { get; set; }
         public int UserId { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }

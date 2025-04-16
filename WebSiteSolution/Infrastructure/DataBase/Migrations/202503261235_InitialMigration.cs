@@ -18,6 +18,7 @@ namespace Infrastructure.DataBase.Migrations
 
             Create.Table("apartments")
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("owner_id").AsInt32().ForeignKey("users", "id")
                 .WithColumn("title").AsString(100).NotNullable()
                 .WithColumn("description").AsString(500).NotNullable()
                 .WithColumn("address").AsString(150).NotNullable()
@@ -59,6 +60,7 @@ namespace Infrastructure.DataBase.Migrations
             Insert.IntoTable("apartments")
                 .Row(new
                 {
+                    owner_id = 1,
                     title = "Luxe Apartment",
                     description = "No description",
                     address = "Russia, Yaroslavl",
