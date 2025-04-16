@@ -15,18 +15,14 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<int> Create(Deal deal)
         {
+            deal.CreatedAt = DateTime.Now;
             var dealId = await _connection.QuerySingleAsync<int>(
                     @"INSERT INTO deals (user_id, apartment_id, check_in_date, check_out_date, total_price, created_at)
                       VAlUES (@UserId, @ApartmentId, @CheckInDate, @CheckOutDate, @TotalPrice, @CreatedAt)
                       RETURNING Id",
                     new
                     {
-                        deal.UserId,
-                        deal.ApartmentId,
-                        deal.CheckInDate,
-                        deal.CheckOutDate,
-                        deal.TotalPrice,
-                        CreatedAt = DateTime.Now
+                        deal
                     });
 
             return dealId;
