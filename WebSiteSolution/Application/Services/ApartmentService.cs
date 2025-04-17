@@ -62,11 +62,12 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateApartmentRequest apartment)
         {
-            if (apartment == null)
-                throw new NotFoundApplicationException($"Apartment not found!");
-
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            return await _apartmentRepository.Update(mappedApartment);
+
+            if (!await _apartmentRepository.Update(mappedApartment))
+                throw new EntityUpdateException("Apartment wasn't updated!");
+
+            return true;
         }
     }
 }

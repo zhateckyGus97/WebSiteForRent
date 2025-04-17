@@ -19,13 +19,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth)
                       VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth)
                       RETURNING Id",
-                    new { user.FullName, 
-                        user.Email, 
-                        user.PhoneNumber, 
-                        user.Role, 
-                        user.Passport, 
-                        user.DateOfBirth 
-                    });
+                    user);
             
             return userId;
         }
@@ -88,16 +82,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
                                       passport = @Passport,
                                       date_of_birth = @DateOfBirth
                     WHERE id = @Id",
-                    new
-                    {
-                        Id = user.Id,
-                        user.FullName,
-                        user.Email,
-                        user.PhoneNumber,
-                        user.Role,
-                        user.Passport,
-                        user.DateOfBirth
-                    });
+                    user);
 
             return affectedRows > 0;
         }

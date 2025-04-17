@@ -1,12 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "H:\\ASP\\WebSiteSolution\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\tests\\applicationintegrationtests\\services\\dealserviceintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|solutionrelative:tests\\applicationintegrationtests\\services\\dealserviceintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\tests\\applicationintegrationtests\\testingfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|solutionrelative:tests\\applicationintegrationtests\\testingfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DealServiceIntegrationTests.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\Services\\DealServiceIntegrationTests.cs",
+              "RelativeDocumentMoniker": "tests\\ApplicationIntegrationTests\\Services\\DealServiceIntegrationTests.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\Services\\DealServiceIntegrationTests.cs",
+              "RelativeToolTip": "tests\\ApplicationIntegrationTests\\Services\\DealServiceIntegrationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T12:50:11.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TestingFixture.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "RelativeDocumentMoniker": "tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "RelativeToolTip": "tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T12:42:47.91Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

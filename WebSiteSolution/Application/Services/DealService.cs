@@ -54,11 +54,12 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateDealRequest deal)
         {
-            if (deal == null)
-                throw new NotFoundApplicationException($"Deal not found!");
-
             var mappedDeal = _mapper.Map<Deal>(deal);
-            return await _dealRepository.Update(mappedDeal);
+
+            if (!await _dealRepository.Update(mappedDeal))
+                throw new EntityUpdateException("Deal wasn't updated!");
+
+            return true;
         }
     }
 }

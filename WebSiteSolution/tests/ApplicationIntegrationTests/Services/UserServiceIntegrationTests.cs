@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ApplicationIntegrationTests.Services
 {
-    public class UserServiceTests : IClassFixture<TestingFixture>
+    public class UserServiceIntegrationTests : IClassFixture<TestingFixture>
     {
         private TestingFixture _fixture;
-        public UserServiceTests(TestingFixture fixture)
+        public UserServiceIntegrationTests(TestingFixture fixture)
         {
             _fixture = fixture;
         }

@@ -54,11 +54,12 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateReviewRequest review)
         {
-            if (review == null)
-                throw new NotFoundApplicationException($"Review not found!");
-
             var mappedReview = _mapper.Map<Review>(review);
-            return await _reviewRepository.Update(mappedReview);
+
+            if (!await _reviewRepository.Update(mappedReview))
+                throw new EntityUpdateException("Review wasn't updated!");
+
+            return true;
         }
     }
 }

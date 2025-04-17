@@ -65,11 +65,12 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateUserRequest user)
         {
-            if (user == null)
-                throw new NotFoundApplicationException($"User not found!");
-
             var mappedUser = _mapper.Map<User>(user);
-            return await _userRepository.Update(mappedUser);
+
+            if (!await _userRepository.Update(mappedUser))
+                throw new EntityUpdateException("User wasn't updated!");
+
+            return true;
         }
     }
 }

@@ -19,8 +19,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     @"INSERT INTO apartments (owner_id, title, description, address, price_per_day, num_of_floor, square, capacity)
                       VAlUES (@OwnerId, @Title, @Description, @Address, @PricePerDay, @NumOfFloor, @Square, @Capacity)
                       RETURNING Id",
-                    apartment
-                    );
+                    apartment);
 
             return apartmentId;
         }
@@ -93,17 +92,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
                                            square = @Square, 
                                            capacity = @Capacity 
                     WHERE id = @Id",
-                    new
-                    {
-                        Id = apartment.Id,
-                        apartment.Title,
-                        apartment.Description,
-                        apartment.Address,
-                        apartment.PricePerDay,
-                        apartment.NumOfFloor,
-                        apartment.Square,
-                        apartment.Capacity
-                    });
+                    apartment);
 
             return affectedRows > 0;
         }
