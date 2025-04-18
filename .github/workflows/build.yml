@@ -62,7 +62,6 @@ jobs:
       with:
           name: code-coverage-report
           path: coverage
-      working-directory: WebSiteSolution/
 
     - name: Publish Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
@@ -76,7 +75,6 @@ jobs:
           indicators: true
           output: both
           thresholds: '80'
-      working-directory: WebSiteSolution/
 
     - name: Add Coverage PR Comment
       if: github.event_name == 'pull_request'
@@ -85,18 +83,15 @@ jobs:
         recreate: true
         path: coverage/Summary.md
         header: code-coverage
-      working-directory: WebSiteSolution/
 
     - name: Upload Test Results
       uses: actions/upload-artifact@v4
       with:
         name: test-results
         path: "**/TestResults/**/*.trx"
-      working-directory: WebSiteSolution/
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
         trx_files: "**/TestResults/**/*.trx"
-      working-directory: WebSiteSolution/
