@@ -5,6 +5,8 @@ using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Services
 {
@@ -14,20 +16,24 @@ namespace Application.Services
         private readonly IDealRepository _dealRepository;
         private readonly IReviewRepository _reviewRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<IApartmentService> _logger;
 
         public ApartmentService(IApartmentRepository apartRepository, IReviewRepository reviewRepository, 
-            IDealRepository dealRepository, IMapper mapper)
+            IDealRepository dealRepository, IMapper mapper, ILogger<IApartmentService> logger)
         {
             _apartmentRepository = apartRepository;
             _reviewRepository = reviewRepository;
             _dealRepository = dealRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<int> Add(CreateApartmentRequest apartment)
         {
             var mappedApartment = _mapper.Map<Apartment>(apartment);
-            return await _apartmentRepository.Create(mappedApartment);
+            var result = await _apartmentRepository.Create(mappedApartment);
+            _logger.LogInformation($"Apartment was created with id: {result}");
+            return result;
         }
 
         public async Task<bool> Delete(int id)
@@ -39,6 +45,7 @@ namespace Application.Services
             await _reviewRepository.DeleteByApartmentId(id);
             await _dealRepository.DeleteByApartmentId(id);
 
+            _logger.LogInformation($"Apartment with id: {id} was deleted");
             return await _apartmentRepository.Delete(id);
         }
 
@@ -67,6 +74,7 @@ namespace Application.Services
             if (!await _apartmentRepository.Update(mappedApartment))
                 throw new EntityUpdateException("Apartment wasn't updated!");
 
+            _logger.LogInformation($"Apartment with id: {apartment.Id} was updated");
             return true;
         }
     }

@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 ﻿using Application;
 using Bogus;
 using Domain.Entities;
+=======
+﻿using System.Reflection;
+using Application;
+using Bogus;
+using Infrastructure;
+>>>>>>> a8c63b247bcbec1422d763623dbc6929dd1f3d28
 using FluentMigrator.Runner;
 using FluentMigrator.Runner.Processors;
 using Infrastructure;
@@ -9,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Npgsql;
 using Respawn;
+<<<<<<< HEAD
 using System.Reflection;
 using Bogus.Extensions;
 using Infrastructure.Interfaces;
@@ -167,5 +175,85 @@ namespace ApplicationIntegrationTests
             await connection.OpenAsync();
             await _respawner.ResetAsync(connection);
         }
+=======
+using MigrationRunner = Infrastructure.DataBase.MigrationRunner;
+
+namespace ApplicationIntegrationTests;
+
+// ReSharper disable once ClassNeverInstantiated.Global
+public sealed class TestingFixture : IAsyncLifetime
+{
+    private readonly Faker _faker;
+
+    private Respawner _respawner = null!;
+
+    public TestingFixture()
+    {
+        var host = Host.CreateDefaultBuilder()
+            .ConfigureAppConfiguration((context, config) => { config.AddJsonFile("appsettings.json"); })
+            .ConfigureServices((context, services) =>
+            {
+                services.AddInfrastructure();
+                services.AddApplication();
+
+                var connectionString = context.Configuration.GetConnectionString("PostgresDBIntegration");
+                if (string.IsNullOrWhiteSpace(connectionString))
+                    throw new ApplicationException("PostgresDBIntegration connection string is empty");
+
+                services.AddSingleton(_ => new NpgsqlDataSourceBuilder(connectionString).Build());
+
+                services.AddTransient(sp =>
+                {
+                    var dataSource = sp.GetRequiredService<NpgsqlDataSource>();
+                    return dataSource.CreateConnection();
+                });
+
+                services
+                    .AddFluentMigratorCore()
+                    .ConfigureRunner(rb => rb
+                        .AddPostgres()
+                        .WithGlobalConnectionString(connectionString)
+                        .ScanIn(Assembly.GetExecutingAssembly()).For.Migrations())
+                    .Configure<SelectingProcessorAccessorOptions>(options => { options.ProcessorId = "Postgres"; });
+            })
+            .Build();
+
+        ServiceProvider = host.Services;
+
+        _faker = new Faker();
+    }
+
+    public IServiceProvider ServiceProvider { get; }
+
+    public async Task InitializeAsync()
+    {
+        using var scope = ServiceProvider.CreateScope();
+        var connection = scope.ServiceProvider.GetRequiredService<NpgsqlConnection>();
+        await connection.OpenAsync();
+
+        var migrationRunner = scope.ServiceProvider.GetRequiredService<MigrationRunner>();
+        migrationRunner.Run();
+
+        _respawner = await Respawner.CreateAsync(connection, new RespawnerOptions
+        {
+            DbAdapter = DbAdapter.Postgres,
+            SchemasToInclude = ["public"],
+            TablesToIgnore = ["VersionInfo"]
+        });
+    }
+
+    public async Task DisposeAsync()
+    {
+        await ResetDatabase();
+    }
+
+    private async Task ResetDatabase()
+    {
+        using var scope = ServiceProvider.CreateScope();
+        var connection = scope.ServiceProvider.GetRequiredService<NpgsqlConnection>();
+        await connection.OpenAsync();
+
+        await _respawner.ResetAsync(connection);
+>>>>>>> a8c63b247bcbec1422d763623dbc6929dd1f3d28
     }
 }
