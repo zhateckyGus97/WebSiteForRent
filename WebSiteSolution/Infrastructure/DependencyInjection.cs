@@ -24,10 +24,10 @@ namespace Infrastructure
                 return datasource.CreateConnection();
             });
 
-            services.AddTransient<IUserRepository, UserPostgresRepository>();
-            services.AddTransient<IDealRepository, DealPostgresRepository>();
-            services.AddTransient<IApartmentRepository, ApartmentPostgresRepository>();
-            services.AddTransient<IReviewRepository, ReviewPostgresRepository>();
+            services.AddScoped<IUserRepository, UserPostgresRepository>();
+            services.AddScoped<IDealRepository, DealPostgresRepository>();
+            services.AddScoped<IApartmentRepository, ApartmentPostgresRepository>();
+            services.AddScoped<IReviewRepository, ReviewPostgresRepository>();
 
             DapperConfig.Configure();
             services.AddFluentMigratorCore()

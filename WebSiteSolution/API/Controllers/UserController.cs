@@ -1,3 +1,4 @@
+using Application.Interfaces;
 using Application.Requests.UserRequests;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -8,8 +9,8 @@ namespace API.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private UserService _userService;
-        public UserController(UserService userService)
+        private IUserService _userService;
+        public UserController(IUserService userService)
         {
             _userService = userService;
         }

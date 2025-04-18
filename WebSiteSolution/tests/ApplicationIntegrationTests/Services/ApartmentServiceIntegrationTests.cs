@@ -1,12 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Interfaces;
+using Application.Requests.ApartmentRequests;
+using ApplicationIntegrationTests;
+using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace ApplicationIntegrationTests.Services
+public class ApartmentServiceTests : IClassFixture<TestingFixture>
 {
-    internal class ApartmentServiceIntegrationTests
+    private readonly TestingFixture _fixture;
+    private readonly IApartmentService _apartmentService;
+
+    public ApartmentServiceTests(TestingFixture fixture)
     {
+        _fixture = fixture;
+        _apartmentService = fixture.ServiceProvider.GetRequiredService<IApartmentService>();
+    }
+
+    [Fact]
+    public async Task Add_ShouldCreateApartment_AndReturnId()
+    {
+        var user = await _fixture.CreateUser();
+        var request = new CreateApartmentRequest
+        {
+            OwnerId = user.Id,
+            Title = "Test Apartment",
+            Description = "Test Description",
+            Address = "Test Address",
+            PricePerDay = 100,
+            NumOfFloor = 2,
+            Square = 50,
+            Capacity = 4
+        };
+
+        var apartmentId = await _apartmentService.Add(request);
+        apartmentId.Should().BeGreaterThan(0);
+    }
+
+    [Fact]
+    public async Task GetById_ShouldReturnApartment_WhenExists()
+    {
+        var apartment = await _fixture.CreateApartment();
+        var result = await _apartmentService.GetById(apartment.Id);
+
+        result.Should().NotBeNull();
+        result.Id.Should().Be(apartment.Id);
+    }
+
+    [Fact]
+    public async Task GetAll_ShouldReturnAllApartments()
+    {
+        await _fixture.CreateApartment();
+        await _fixture.CreateApartment();
+
+        var result = await _apartmentService.GetAll();
+        result.Count().Should().BeGreaterThanOrEqualTo(2);
+    }
+
+    [Fact]
+    public async Task Update_ShouldModifyApartment()
+    {
+        var apartment = await _fixture.CreateApartment();
+        var request = new UpdateApartmentRequest
+        {
+            Id = apartment.Id,
+            Title = "Updated Title",
+            Description = "Updated Description",
+            Address = "Updated Address",
+            PricePerDay = 150,
+            NumOfFloor = 3,
+            Square = 60,
+            Capacity = 5
+        };
+
+        var result = await _apartmentService.Update(request);
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public async Task Delete_ShouldRemoveApartment_AndRelatedEntities()
+    {
+        var apartment = await _fixture.CreateApartment();
+        var result = await _apartmentService.Delete(apartment.Id);
+        result.Should().BeTrue();
     }
 }

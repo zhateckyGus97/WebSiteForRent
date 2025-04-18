@@ -1,9 +1,11 @@
 ﻿using Domain.Entities;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Infrastructure.Repositories.InMemoryRepositories
 {
+    [ExcludeFromCodeCoverage]
     public class ApartmentInMemoryRepository : IApartmentRepository
     {
         private readonly List<Apartment> _apartments;

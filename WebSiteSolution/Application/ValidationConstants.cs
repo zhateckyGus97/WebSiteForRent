@@ -4,8 +4,8 @@
     {
         public const int MaxFullNameLength = 100;
         public const int MaxEmailLength = 50;
-        public const int MaxPhoneNumberLength = 20;
-        public const int MaxRoleLength = 15;
+        public const int MaxPhoneNumberLength = 50;
+        public const int MaxRoleLength = 30;
 
         public const int MaxTitleLength = 100;
         public const int MaxDescriptionLength = 1000;

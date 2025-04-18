@@ -1,6 +1,5 @@
-﻿using Application.Requests.ApartmentRequests;
-using Application.Services;
-using Domain.Entities;
+﻿using Application.Interfaces;
+using Application.Requests.ApartmentRequests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -9,9 +8,9 @@ namespace API.Controllers
     [Route("[controller]")]
     public class ApartmentController : ControllerBase
     {
-        private ApartmentService _apartmentService;
+        private IApartmentService _apartmentService;
 
-        public ApartmentController(ApartmentService apartmentService)
+        public ApartmentController(IApartmentService apartmentService)
         {
             _apartmentService = apartmentService;
         }

@@ -30,10 +30,10 @@ namespace Application.Requests.UserRequests
                 .EmailAddress().WithMessage("Enter the correct email.");
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxPhoneNumberLength).WithMessage("{PropertyName} must be at most 20 characters long.");
+                .MaximumLength(ValidationConstants.MaxPhoneNumberLength).WithMessage("{PropertyName} must be at most 50 characters long.");
             RuleFor(x => x.Role)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxRoleLength).WithMessage("{PropertyName} must be at most 15 characters long.");
+                .MaximumLength(ValidationConstants.MaxRoleLength).WithMessage("{PropertyName} must be at most 30 characters long.");
             RuleFor(x => x.Passport)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .Matches(ValidationConstants.PassportPattern).WithMessage("{PropertyName} must be as xxxx-xxxxxx format.");
