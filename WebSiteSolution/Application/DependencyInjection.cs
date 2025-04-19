@@ -13,10 +13,12 @@ namespace Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfile));
-            services.AddScoped<UserService, UserService>();
-            services.AddScoped<DealService, DealService>();
-            services.AddScoped<ReviewService, ReviewService>();
-            services.AddScoped<ApartmentService, ApartmentService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDealService, DealService>();
+            services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IApartmentService, ApartmentService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IPasswordHasher, BCryptHasher>();
 
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();

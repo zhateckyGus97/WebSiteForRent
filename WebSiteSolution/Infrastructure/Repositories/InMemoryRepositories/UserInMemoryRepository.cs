@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Enums;
 using Infrastructure.Interfaces;
 
 namespace Infrastructure.Repositories.InMemoryRepositories
@@ -11,9 +12,9 @@ namespace Infrastructure.Repositories.InMemoryRepositories
         {
             _users = new List<User>()
             {
-                new User{Id = 1, FullName = "Ilya Gusev", Email = "www@123", PhoneNumber = "22-22-22", Role = "admin", Passport = "77-123", DateOfBirth = DateTime.Now},
-                new User{Id = 2, FullName = "Alex Levshinsky", Email = "www@456", PhoneNumber = "33-33-33", Role ="admin", Passport = "76-123", DateOfBirth = DateTime.Now},
-                new User{Id = 3, FullName = "Vladimir Putin", Email = "putin@777", PhoneNumber = "44-44-44", Role = "user", Passport = "77-777", DateOfBirth = DateTime.Now}
+                new User{Id = 1, FullName = "Ilya Gusev", Email = "www@123", PhoneNumber = "22-22-22", Role = UserRoles.User, Passport = "77-123", DateOfBirth = DateTime.Now},
+                new User{Id = 2, FullName = "Alex Levshinsky", Email = "www@456", PhoneNumber = "33-33-33", Role = UserRoles.User, Passport = "76-123", DateOfBirth = DateTime.Now},
+                new User{Id = 3, FullName = "Vladimir Putin", Email = "putin@777", PhoneNumber = "44-44-44", Role = UserRoles.Admin, Passport = "77-777", DateOfBirth = DateTime.Now}
             };
         }
 
@@ -64,6 +65,11 @@ namespace Infrastructure.Repositories.InMemoryRepositories
 
             _users.Remove(user);
             return Task.FromResult(true);
+        }
+
+        public Task<User?> GetByEmail(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

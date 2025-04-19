@@ -2,6 +2,7 @@
 using Infrastructure.Interfaces;
 using Npgsql;
 using Dapper;
+using Infrastructure.Database.TypeMappings;
 
 namespace Infrastructure.Repositories.PostgresRepositories
 {
@@ -15,10 +16,10 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<int> Create(User user)
         {
-            var userId = await _connection.QuerySingleAsync<int>(
+            const string query = 
                     @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth, password_hash)
-                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth, @PasswordHash)
-                      RETURNING Id",
+                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth, @PasswordHash, @Role::user_role)
+                      RETURNING Id"/*,
                     new { 
                         user.FullName, 
                         user.Email, 
@@ -27,9 +28,9 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         user.Passport, 
                         user.DateOfBirth,
                         user.PasswordHash
-                    });
-            
-            return userId;
+                    }*/;
+
+            return await _connection.ExecuteScalarAsync<int>(query, user.AsDapperParams());
         }
 
         public async Task<bool> Delete(int id)
@@ -43,6 +44,21 @@ namespace Infrastructure.Repositories.PostgresRepositories
                     });
 
             return affectedRows > 0;
+        }
+
+        public async Task<User?> GetByEmail(string email)
+        {
+            const string query = @"SELECT 
+                        id, 
+                        full_name,  
+                        email,  
+                        phone_number,  
+                        role, passport,  
+                        date_of_birth  
+                      FROM users
+                      WHERE Email = @Email";
+
+            return await _connection.QuerySingleOrDefaultAsync<User>(query, new { Email = email });
         }
 
         public async Task<IEnumerable<User>> GetAll()
@@ -82,15 +98,15 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<bool> Update(User user)
         {
-            var affectedRows = await _connection.ExecuteAsync(
-                    @"UPDATE Users SET full_name = @FullName,
+            const string query =  @"UPDATE Users SET full_name = @FullName,
                                       email = @Email,
                                       phone_number = @PhoneNumber, 
                                       role = @Role,
                                       passport = @Passport,
                                       date_of_birth = @DateOfBirth,
                                       password_hash = @PasswordHash
-                    WHERE id = @Id",
+                    WHERE id = @Id";
+                /*,
                     new
                     {
                         Id = user.Id,
@@ -101,8 +117,9 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         user.Passport,
                         user.DateOfBirth,
                         user.PasswordHash
-                    });
+                    }*/
 
+            var affectedRows = await _connection.ExecuteAsync(query, user.AsDapperParams());
             return affectedRows > 0;
         }
     }

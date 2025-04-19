@@ -1,9 +1,12 @@
+using Api.Extensions;
 using Application.Requests.UserRequests;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
@@ -22,6 +25,18 @@ namespace API.Controllers
                 return Ok(user);
 
             return NotFound();
+        }
+
+        [HttpGet("UserInfo")]
+        public async Task<IActionResult> GetUserInfo()
+        {
+            var userId = User.GetUserId();
+            if(!userId.HasValue)
+            {
+                return NotFound();
+            }
+            var user = await _userService.GetById(userId.Value);
+            return Ok(user);
         }
 
         [HttpGet]
