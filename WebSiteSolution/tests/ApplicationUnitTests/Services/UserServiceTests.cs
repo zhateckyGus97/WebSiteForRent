@@ -10,6 +10,7 @@ using Bogus;
 using Bogus.Extensions.Sweden;
 using Application.Exceptions;
 using Application.Requests.UserRequests;
+using Microsoft.Extensions.Logging;
 
 namespace ApplicationUnitTests.Services
 {
@@ -22,6 +23,7 @@ namespace ApplicationUnitTests.Services
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
         private Mock<IUserRepository> _userRepositoryMock;
+        private readonly ILogger<IUserService> _logger;
         private Faker _faker;
 
         public UserServiceTests()
@@ -34,7 +36,9 @@ namespace ApplicationUnitTests.Services
             var mappingConfig = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = mappingConfig.CreateMapper();
 
-            _userService = new UserService(_userRepository, _apartmentRepository, _dealRepository, _reviewRepository, _mapper);
+            _logger = Microsoft.Extensions.Logging.Abstractions.NullLogger<IUserService>.Instance;
+
+            _userService = new UserService(_userRepository, _apartmentRepository, _dealRepository, _reviewRepository, _mapper, _logger);
         }
 
         [Fact] //(Skip = "Integration is not working now") можно скипнуть тест

@@ -10,6 +10,7 @@ using Application.Exceptions;
 using Application.Requests.ApartmentRequests;
 using Application.Responses;
 using Application.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace ApplicationUnitTests.Services
 {
@@ -21,6 +22,7 @@ namespace ApplicationUnitTests.Services
         private readonly IMapper _mapper;
         private readonly IApartmentService _apartmentService;
         private Mock<IApartmentRepository> _apartmentRepositoryMock;
+        private readonly ILogger<IApartmentService> _logger;
         private Faker _faker;
 
         public ApartmentServiceTests()
@@ -39,7 +41,9 @@ namespace ApplicationUnitTests.Services
             var mappingConfig = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = mappingConfig.CreateMapper();
 
-            _apartmentService = new ApartmentService(_apartmentRepository, _reviewRepository, _dealRepository, _mapper);
+            _logger = Microsoft.Extensions.Logging.Abstractions.NullLogger<IApartmentService>.Instance;
+
+            _apartmentService = new ApartmentService(_apartmentRepository, _reviewRepository, _dealRepository, _mapper, _logger);
         }
 
         [Fact]

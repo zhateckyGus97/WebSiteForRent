@@ -5,6 +5,7 @@ using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Services
 {
@@ -12,17 +13,21 @@ namespace Application.Services
     {
         private readonly IDealRepository _dealRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<IDealService> _logger;
 
-        public DealService(IDealRepository dealRepository, IMapper mapper)
+        public DealService(IDealRepository dealRepository, IMapper mapper, ILogger<IDealService> logger)
         {
             _dealRepository = dealRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<int> Add(CreateDealRequest deal)
         {
             var mappedDeal = _mapper.Map<Deal>(deal);
-            return await _dealRepository.Create(mappedDeal);
+            var result = await _dealRepository.Create(mappedDeal);
+            _logger.LogInformation("Deal was created with id: {DealId}", result);
+            return result;
         }
 
         public async Task<bool> Delete(int id)
@@ -31,6 +36,7 @@ namespace Application.Services
             if (deal == null)
                 throw new NotFoundApplicationException($"Deal with id {id} not found!");
 
+            _logger.LogInformation("Deal with id: {DealId} was deleted", id);
             return await _dealRepository.Delete(id);
         }
 
@@ -48,7 +54,7 @@ namespace Application.Services
             {
                 throw new NotFoundApplicationException($"Deal with id {id} not found!");
             }
-            
+
             return _mapper.Map<DealResponse>(deal);
         }
 
@@ -59,6 +65,7 @@ namespace Application.Services
             if (!await _dealRepository.Update(mappedDeal))
                 throw new EntityUpdateException("Deal wasn't updated!");
 
+            _logger.LogInformation("Deal with id: {DealId} was updated", deal.Id);
             return true;
         }
     }

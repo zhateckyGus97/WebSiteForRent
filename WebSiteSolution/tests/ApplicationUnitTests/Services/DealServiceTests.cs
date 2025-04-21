@@ -10,6 +10,7 @@ using Application.Exceptions;
 using Application.Requests.DealRequests;
 using Application.Responses;
 using Application.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace ApplicationUnitTests.Services
 {
@@ -19,6 +20,7 @@ namespace ApplicationUnitTests.Services
         private readonly IMapper _mapper;
         private readonly IDealService _dealService;
         private Mock<IDealRepository> _dealRepositoryMock;
+        private readonly ILogger<IDealService> _logger;
         private Faker _faker;
 
         public DealServiceTests()
@@ -31,7 +33,9 @@ namespace ApplicationUnitTests.Services
             var mappingConfig = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = mappingConfig.CreateMapper();
 
-            _dealService = new DealService(_dealRepository, _mapper);
+            _logger = Microsoft.Extensions.Logging.Abstractions.NullLogger<IDealService>.Instance;
+
+            _dealService = new DealService(_dealRepository, _mapper, _logger);
         }
 
         [Fact]

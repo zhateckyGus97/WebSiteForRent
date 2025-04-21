@@ -10,6 +10,7 @@ using Application.Exceptions;
 using Application.Requests.ReviewRequests;
 using Application.Responses;
 using Application.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace ApplicationUnitTests.Services
 {
@@ -19,6 +20,7 @@ namespace ApplicationUnitTests.Services
         private readonly IMapper _mapper;
         private readonly IReviewService _reviewService;
         private Mock<IReviewRepository> _reviewRepositoryMock;
+        private readonly ILogger<IReviewService> _logger;
         private Faker _faker;
 
         public ReviewServiceTests()
@@ -31,7 +33,9 @@ namespace ApplicationUnitTests.Services
             var mappingConfig = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = mappingConfig.CreateMapper();
 
-            _reviewService = new ReviewService(_reviewRepository, _mapper);
+            _logger = Microsoft.Extensions.Logging.Abstractions.NullLogger<IReviewService>.Instance;
+
+            _reviewService = new ReviewService(_reviewRepository, _mapper, _logger);
         }
 
         [Fact]
@@ -47,8 +51,8 @@ namespace ApplicationUnitTests.Services
             var reviewId = _faker.Random.Int(1, 100);
             var request = new CreateReviewRequest
             {
-                UserId = _faker.Random.Int(1, 100),
-                ApartmentId = _faker.Random.Int(1, 100),
+                UserId = 1233,//_faker.Random.Int(1, 100),
+                ApartmentId = 600,//_faker.Random.Int(1, 100),
                 Rating = _faker.Random.Int(1, 5),
                 Comment = _faker.Lorem.Sentence()
             };
@@ -116,23 +120,35 @@ namespace ApplicationUnitTests.Services
         public async void Update_ValidRequest_UpdateReview()
         {
             // Arrange
-            var request = new UpdateReviewRequest
+            var existingReview = new Review()
             {
-                Id = 1,
-                Rating = _faker.Random.Int(1, 5),
-                Comment = _faker.Lorem.Sentence()
+                Id = 1, // Явно задаём Id
+                UserId = _faker.Random.Int(1, 100),
+                ApartmentId = _faker.Random.Int(1, 100),
+                Rating = 3,
+                Comment = "Original comment",
+                CreatedAt = DateTime.Now
             };
 
-            _reviewRepositoryMock.Setup(x => x.Update(It.IsAny<Review>())).ReturnsAsync(true);
+            var request = new UpdateReviewRequest
+            {
+                Id = existingReview.Id, // Используем тот же Id
+                Rating = 5, // Фиксируем значение для точной проверки
+                Comment = "Updated comment"
+            };
+
+            _reviewRepositoryMock.Setup(x => x.Update(It.IsAny<Review>()))
+                .ReturnsAsync(true);
 
             // Act
             await _reviewService.Update(request);
 
             // Assert
             _reviewRepositoryMock.Verify(x => x.Update(It.Is<Review>(r =>
-                    r.Id == request.Id &&
-                    r.Rating == request.Rating &&
-                    r.Comment == request.Comment)), Times.Once);
+                r.Id == existingReview.Id &&
+                r.Rating == request.Rating &&
+                r.Comment == request.Comment)),
+            Times.Once);
         }
 
         [Fact]

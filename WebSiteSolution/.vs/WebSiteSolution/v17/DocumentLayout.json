@@ -1,12 +1,88 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\tests\\applicationintegrationtests\\testingfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|solutionrelative:tests\\applicationintegrationtests\\testingfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\tests\\applicationintegrationtests\\services\\userserviceintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|solutionrelative:tests\\applicationintegrationtests\\services\\userserviceintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7289C1F5-C2CC-4A76-ACE3-FDF8E117D5EE}|Application\\Application.csproj|solutionrelative:application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|c:\\users\\\u0438\u043B\u044C\u044F\\source\\repos\\website\\websitesolution\\tests\\applicationintegrationtests\\services\\reviewserviceintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF7B362-0189-4BBA-B5E8-4AAEAA8BE749}|tests\\ApplicationIntegrationTests\\ApplicationIntegrationTests.csproj|solutionrelative:tests\\applicationintegrationtests\\services\\reviewserviceintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserServiceIntegrationTests.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\Services\\UserServiceIntegrationTests.cs",
+              "RelativeDocumentMoniker": "tests\\ApplicationIntegrationTests\\Services\\UserServiceIntegrationTests.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\Services\\UserServiceIntegrationTests.cs",
+              "RelativeToolTip": "tests\\ApplicationIntegrationTests\\Services\\UserServiceIntegrationTests.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAawGgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T11:41:45.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Application\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\Application\\DependencyInjection.cs",
+              "RelativeToolTip": "Application\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T11:37:31.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReviewServiceIntegrationTests.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\Services\\ReviewServiceIntegrationTests.cs",
+              "RelativeDocumentMoniker": "tests\\ApplicationIntegrationTests\\Services\\ReviewServiceIntegrationTests.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\Services\\ReviewServiceIntegrationTests.cs",
+              "RelativeToolTip": "tests\\ApplicationIntegrationTests\\Services\\ReviewServiceIntegrationTests.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwEkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T11:33:58.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TestingFixture.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "RelativeDocumentMoniker": "tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "ToolTip": "C:\\Users\\\u0418\u043B\u044C\u044F\\source\\repos\\WebSite\\WebSiteSolution\\tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "RelativeToolTip": "tests\\ApplicationIntegrationTests\\TestingFixture.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAEwKAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T11:31:37.387Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

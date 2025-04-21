@@ -85,7 +85,7 @@ namespace ApplicationIntegrationTests
                 Email = _faker.Person.Email,
                 PhoneNumber = _faker.Phone.PhoneNumber(),
                 Role = "User",
-                Passport = _faker.Random.String2(10),
+                Passport = "1234-567890",
                 DateOfBirth = DateTime.Now.AddDays(-10)
             });
 
@@ -107,7 +107,7 @@ namespace ApplicationIntegrationTests
                 Description = _faker.Lorem.Paragraph(),
                 Address = _faker.Address.FullAddress(),
                 PricePerDay = _faker.Random.Double(50, 500),
-                NumOfFloor = _faker.Random.Int(1, 20),
+                NumOfFloor = _faker.Random.Int(1, 5),
                 Square = _faker.Random.Double(30, 200),
                 Capacity = _faker.Random.Int(1, 10)
             });

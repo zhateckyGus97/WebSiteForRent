@@ -2,8 +2,25 @@ using API.ExceptionHandlers;
 using Application;
 using Infrastructure;
 using Infrastructure.DataBase;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var logPattern = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [ClientIp = {ClientIp}] {Message:lj} {NewLine} {Exception}";
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+    .Enrich.WithClientIp()
+    .WriteTo.Console()
+    .WriteTo.File(Path.Combine("logs", "website-backend-.log"),
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: 7,
+        rollOnFileSizeLimit: true,
+        outputTemplate: logPattern)
+    .CreateLogger();
+
+builder.Services.AddSerilog();
 
 // Add services to the container.
 
@@ -34,6 +51,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 

@@ -5,6 +5,7 @@ using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Services
 {
@@ -12,17 +13,21 @@ namespace Application.Services
     {
         private readonly IReviewRepository _reviewRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<IReviewService> _logger;
 
-        public ReviewService(IReviewRepository reviewRepository, IMapper mapper)
+        public ReviewService(IReviewRepository reviewRepository, IMapper mapper, ILogger<IReviewService> logger)
         {
             _reviewRepository = reviewRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<int> Add(CreateReviewRequest review)
         {
             var mappedReview = _mapper.Map<Review>(review);
-            return await _reviewRepository.Create(mappedReview);
+            var result = await _reviewRepository.Create(mappedReview);
+            _logger.LogInformation("Review was created with id: {ReviewId}", result);
+            return result;
         }
 
         public async Task<bool> Delete(int id)
@@ -31,6 +36,7 @@ namespace Application.Services
             if (review == null)
                 throw new NotFoundApplicationException($"Review with id {id} not found!");
 
+            _logger.LogInformation("Review with id: {ReviewId} was deleted", id);
             return await _reviewRepository.Delete(id);
         }
 
@@ -48,7 +54,7 @@ namespace Application.Services
             {
                 throw new NotFoundApplicationException($"Review with id {id} not found!");
             }
-            
+
             return _mapper.Map<ReviewResponse>(review);
         }
 
@@ -59,6 +65,7 @@ namespace Application.Services
             if (!await _reviewRepository.Update(mappedReview))
                 throw new EntityUpdateException("Review wasn't updated!");
 
+            _logger.LogInformation("Review with id: {ReviewId} was updated", review.Id);
             return true;
         }
     }
