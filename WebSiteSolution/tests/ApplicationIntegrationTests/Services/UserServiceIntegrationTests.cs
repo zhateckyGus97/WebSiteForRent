@@ -54,10 +54,10 @@ public class UserServiceTests : IClassFixture<TestingFixture>
     [Fact]
     public async Task GetById_ShouldThrow_WhenUserNotExists()
     {
-        //Arrange
+        //Act
         Func<Task> act = async () => await _userService.GetById(-1);
 
-        //Act + Assert
+        //Assert
         await act.Should().ThrowAsync<NotFoundApplicationException>();
     }
 

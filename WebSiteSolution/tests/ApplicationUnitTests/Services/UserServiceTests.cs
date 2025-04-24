@@ -41,7 +41,7 @@ namespace ApplicationUnitTests.Services
             _userService = new UserService(_userRepository, _apartmentRepository, _dealRepository, _reviewRepository, _mapper, _logger);
         }
 
-        [Fact] //(Skip = "Integration is not working now") можно скипнуть тест
+        [Fact]
         public void ShouldBeAvailableToCreate()
         {
             // Assert

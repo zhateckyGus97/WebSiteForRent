@@ -1,22 +1,81 @@
-# IDE и конфигурационные файлы
+### IDE и редакторы ###
+# Visual Studio
 .vs/
-.idea/
 .vscode/
-/.vs/
-/.idea/
-/.vscode/
-
-# Общие для всех проектов временные файлы
-**/bin/
-**/obj/
-**/logs/
-**/secrets.json
-
-# Debug-версии
-**/Debug/
-
-# Temporary files
 *.user
 *.suo
-*.log
+*.userprefs
+*.vspscc
+*.vssscc
+*.sln.iml
+
+# JetBrains Rider/ReSharper
+.idea/
+*.DotSettings
+*.dotCover
+
+# VS Code
+.history/
+*.code-workspace
+
+### Сборки и временные файлы .NET ###
+# Бинарные и объектные файлы
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/publish/
+*.exe
+*.dll
+*.pdb
 *.cache
+*.lib
+*.exp
+*.ilk
+*.nupkg
+
+# Кэш компилятора и тестов
+**/.vs/
+**/TestResults/
+**/artifacts/
+*.trx
+*.VisualState.xml
+
+# Файлы проектов и пакетов
+*.csproj.user
+*.pubxml
+*.ncrunchproject
+*.dotCover
+
+### Логи и кэши ###
+**/logs/
+*.log
+*.binlog
+
+### Конфигурации и секреты ###
+# Файлы с чувствительными данными
+**/secrets.json
+**/appsettings.Development.json
+**/appsettings.Local.json
+**/appsettings.Staging.json
+**/connectionstrings.*.json
+**/launchSettings.json
+
+### Системные файлы ###
+# Временные файлы ОС
+Thumbs.db
+.DS_Store
+*.tmp
+*.temp
+
+### Зависимости .NET ###
+# NuGet
+**/packages/
+*.nupkg
+nuget.exe
+
+# Тестовые покрытия и инструменты
+**/coverage/
+**/.sonar/
+*.coverage
+*.opencover.xml

@@ -51,8 +51,8 @@ namespace ApplicationUnitTests.Services
             var reviewId = _faker.Random.Int(1, 100);
             var request = new CreateReviewRequest
             {
-                UserId = 1233,//_faker.Random.Int(1, 100),
-                ApartmentId = 600,//_faker.Random.Int(1, 100),
+                UserId = 1233,
+                ApartmentId = 600,
                 Rating = _faker.Random.Int(1, 5),
                 Comment = _faker.Lorem.Sentence()
             };
@@ -122,7 +122,7 @@ namespace ApplicationUnitTests.Services
             // Arrange
             var existingReview = new Review()
             {
-                Id = 1, // Явно задаём Id
+                Id = 1,
                 UserId = _faker.Random.Int(1, 100),
                 ApartmentId = _faker.Random.Int(1, 100),
                 Rating = 3,
@@ -132,8 +132,8 @@ namespace ApplicationUnitTests.Services
 
             var request = new UpdateReviewRequest
             {
-                Id = existingReview.Id, // Используем тот же Id
-                Rating = 5, // Фиксируем значение для точной проверки
+                Id = existingReview.Id,
+                Rating = new Random().Next(1, 6),
                 Comment = "Updated comment"
             };
 

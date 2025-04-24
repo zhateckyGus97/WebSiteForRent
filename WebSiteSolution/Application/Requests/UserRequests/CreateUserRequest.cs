@@ -23,17 +23,17 @@ namespace Application.Requests.UserRequests
         {
             RuleFor(x => x.FullName)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxFullNameLength).WithMessage("{PropertyName} must be at most 100 characters long.");
+                .MaximumLength(ValidationConstants.MaxFullNameLength).WithMessage($"{0} must be at most {ValidationConstants.MaxFullNameLength} characters long.");
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxEmailLength).WithMessage("{PropertyName} must be at most 50 characters long.")
+                .MaximumLength(ValidationConstants.MaxEmailLength).WithMessage($"{0} must be at most {ValidationConstants.MaxEmailLength} characters long.")
                 .EmailAddress().WithMessage("Enter the correct email.");
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxPhoneNumberLength).WithMessage("{PropertyName} must be at most 50 characters long.");
+                .MaximumLength(ValidationConstants.MaxPhoneNumberLength).WithMessage($"{0} must be at most {ValidationConstants.MaxPhoneNumberLength} characters long.");
             RuleFor(x => x.Role)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxRoleLength).WithMessage("{PropertyName} must be at most 30 characters long.");
+                .MaximumLength(ValidationConstants.MaxRoleLength).WithMessage($"{0} must be at most {ValidationConstants.MaxRoleLength} characters long.");
             RuleFor(x => x.Passport)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .Matches(ValidationConstants.PassportPattern).WithMessage("{PropertyName} must be as xxxx-xxxxxx format.");

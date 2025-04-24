@@ -22,13 +22,13 @@ namespace Application.Requests.ApartmentRequests
             .NotEmpty().WithMessage("{PropertyName} is required.");
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxTitleLength).WithMessage("{PropertyName} must be at most 100 characters long.");
+                .MaximumLength(ValidationConstants.MaxTitleLength).WithMessage($"{0} must be at most {ValidationConstants.MaxTitleLength} characters long.");
             RuleFor(x => x.Description)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxDescriptionLength).WithMessage("{PropertyName} must be at most 1000 characters long.");
+                .MaximumLength(ValidationConstants.MaxDescriptionLength).WithMessage($"{0} must be at most {ValidationConstants.MaxDescriptionLength} characters long.");
             RuleFor(x => x.Address)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(ValidationConstants.MaxAddressLength).WithMessage("{PropertyName} must be at most 150 characters long.");
+                .MaximumLength(ValidationConstants.MaxAddressLength).WithMessage($"{0} must be at most {ValidationConstants.MaxAddressLength} characters long.");
             RuleFor(x => x.PricePerDay)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");

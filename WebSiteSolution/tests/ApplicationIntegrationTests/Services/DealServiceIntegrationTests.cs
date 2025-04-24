@@ -48,6 +48,11 @@ public class DealServiceIntegrationTests : IClassFixture<TestingFixture>
         //Assert
         result.Should().NotBeNull();
         result.Id.Should().Be(deal.Id);
+        result.UserId.Should().Be(deal.UserId);
+        result.CheckInDate.Should().Be(deal.CheckInDate);
+        result.CheckOutDate.Should().Be(deal.CheckOutDate);
+        result.ApartmentId.Should().Be(deal.ApartmentId);
+        result.TotalPrice.Should().Be(deal.TotalPrice);
     }
 
     [Fact]
@@ -84,6 +89,9 @@ public class DealServiceIntegrationTests : IClassFixture<TestingFixture>
 
         //Assert
         result.Should().BeTrue();
+        request.CheckInDate.Should().NotBe(deal.CheckInDate);
+        request.CheckOutDate.Should().NotBe(deal.CheckOutDate);
+        request.TotalPrice.Should().NotBe(deal.TotalPrice);
     }
 
     [Fact]
