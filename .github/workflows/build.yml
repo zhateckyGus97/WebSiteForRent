@@ -54,7 +54,7 @@ jobs:
       working-directory: WebSiteSolution/
 
     - name: Generate Coverage Report
-      run: reportgenerator -reports:"tests/*/TestResults/*/coverage.cobertura.xml" -targetdir:coverage -reporttypes:HtmlInline,Cobertura,MarkdownSummary
+      run: reportgenerator -reports:"**/TestResults/*/coverage.cobertura.xml" -targetdir:coverage -reporttypes:HtmlInline,Cobertura,MarkdownSummary
       working-directory: WebSiteSolution/
 
     - name: Upload Coverage Report as Artifact
