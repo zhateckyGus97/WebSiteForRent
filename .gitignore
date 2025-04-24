@@ -1,22 +1,22 @@
 ### IDE и редакторы ###
 # Visual Studio
-.vs/
-.vscode/
-*.user
-*.suo
-*.userprefs
-*.vspscc
-*.vssscc
-*.sln.iml
+**/.vs/
+**/.vscode/
+**/*.user
+**/*.suo
+**/*.userprefs
+**/*.vspscc
+**/*.vssscc
+**/*.sln.iml
 
 # JetBrains Rider/ReSharper
-.idea/
-*.DotSettings
-*.dotCover
+**/.idea/
+**/*.DotSettings
+**/*.dotCover
 
 # VS Code
-.history/
-*.code-workspace
+**/.history/
+**/*.code-workspace
 
 ### Сборки и временные файлы .NET ###
 # Бинарные и объектные файлы
@@ -25,32 +25,32 @@
 **/[Dd]ebug/
 **/[Rr]elease/
 **/publish/
-*.exe
-*.dll
-*.pdb
-*.cache
-*.lib
-*.exp
-*.ilk
-*.nupkg
+**/*.exe
+**/*.dll
+**/*.pdb
+**/*.cache
+**/*.lib
+**/*.exp
+**/*.ilk
+**/*.nupkg
 
 # Кэш компилятора и тестов
 **/.vs/
 **/TestResults/
 **/artifacts/
-*.trx
-*.VisualState.xml
+**/*.trx
+**/*.VisualState.xml
 
 # Файлы проектов и пакетов
-*.csproj.user
-*.pubxml
-*.ncrunchproject
-*.dotCover
+**/*.csproj.user
+**/*.pubxml
+**/*.ncrunchproject
+**/*.dotCover
 
 ### Логи и кэши ###
 **/logs/
-*.log
-*.binlog
+**/*.log
+**/*.binlog
 
 ### Конфигурации и секреты ###
 # Файлы с чувствительными данными
@@ -63,19 +63,19 @@
 
 ### Системные файлы ###
 # Временные файлы ОС
-Thumbs.db
-.DS_Store
-*.tmp
-*.temp
+**/Thumbs.db
+**/.DS_Store
+**/*.tmp
+**/*.temp
 
 ### Зависимости .NET ###
 # NuGet
 **/packages/
-*.nupkg
-nuget.exe
+**/*.nupkg
+**/nuget.exe
 
 # Тестовые покрытия и инструменты
 **/coverage/
 **/.sonar/
-*.coverage
-*.opencover.xml
+**/*.coverage
+**/*.opencover.xml
