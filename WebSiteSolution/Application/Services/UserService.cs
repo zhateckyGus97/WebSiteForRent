@@ -17,17 +17,20 @@ namespace Application.Services
         private readonly IApartmentRepository _apartmentRepository;
         private readonly IDealRepository _dealRepository;
         private readonly IReviewRepository _reviewRepository;
+        private readonly IAttachmentService _attachmentService;
         private readonly IMapper _mapper;
         private IPasswordHasher _hasher;
 
         public UserService(IUserRepository userRepository, IApartmentRepository apartmentRepository, IDealRepository dealRepository,
             IReviewRepository reviewRepository, IMapper mapper,
+             IAttachmentService attachmentService,
             IPasswordHasher hasher)
         {
             _userRepository = userRepository;
             _apartmentRepository = apartmentRepository;
             _dealRepository = dealRepository;
             _reviewRepository = reviewRepository;
+            _attachmentService = attachmentService;
             _mapper = mapper;
             _hasher = hasher;
         }
@@ -69,7 +72,16 @@ namespace Application.Services
                 throw new NotFoundApplicationException($"User with id {id} not found!");
             }
 
-            return _mapper.Map<UserResponse>(user);
+            var mappedUser = _mapper.Map<UserResponse>(user);
+
+            if (mappedUser.LogoAttachmentId.HasValue)
+            {
+                var attachmentUrl = await _attachmentService
+                    .GetPublicLinkAsync(mappedUser.LogoAttachmentId.Value);
+                mappedUser.LogoAttachmentUrl = attachmentUrl;
+            }
+
+            return mappedUser;
         }
 
         public async Task<bool> Update(UpdateUserRequest user)

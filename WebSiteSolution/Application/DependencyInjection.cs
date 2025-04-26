@@ -19,6 +19,8 @@ namespace Application
             services.AddScoped<IApartmentService, ApartmentService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IPasswordHasher, BCryptHasher>();
+            services.AddScoped<IAttachmentService, AttachmentService>();
+            services.AddScoped<IFileStorageService, FileStorageService>();
 
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();

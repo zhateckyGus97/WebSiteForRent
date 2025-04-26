@@ -11,6 +11,7 @@ namespace Domain.Entities
         public UserRoles Role { get; set; }
         public string Passport { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public int? LogoAttacmentId { get; set; }
         public string? PasswordHash { get; set; }
     }
 }

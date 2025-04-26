@@ -15,6 +15,7 @@ namespace Application.Requests.UserRequests
         public string PhoneNumber { get; set; } = null!;
         public string Passport { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
+        public string AttachmentUrl { get; set; }
         public string? Password { get; set; }
     }
 
