@@ -32,7 +32,7 @@ namespace ApplicationIntegrationTests
 
                     var connectionString = context.Configuration.GetConnectionString("PostgresDBIntegration");
                     if (string.IsNullOrWhiteSpace(connectionString))
-                        throw new ApplicationException("PostgresDB connection string is empty");
+                        throw new ApplicationException("PostgresDBIntegration connection string is empty");
 
                     services.AddSingleton(_ => new NpgsqlDataSourceBuilder(connectionString).Build());
                     services.AddTransient(sp =>

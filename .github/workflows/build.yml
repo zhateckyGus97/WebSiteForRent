@@ -16,7 +16,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: Admin97
-          POSTGRES_DB: WebsiteForRent
+          POSTGRES_DB: WebsiteForRentIntegration
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
