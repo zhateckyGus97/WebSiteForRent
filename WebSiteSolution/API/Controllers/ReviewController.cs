@@ -1,5 +1,5 @@
-﻿using Application.Requests.ReviewRequests;
-using Application.Services;
+﻿using Application.Interfaces;
+using Application.Requests.ReviewRequests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -8,9 +8,9 @@ namespace API.Controllers
     [Route("[controller]")]
     public class ReviewController : ControllerBase
     {
-        private ReviewService _reviewService;
+        private IReviewService _reviewService;
 
-        public ReviewController(ReviewService reviewService)
+        public ReviewController(IReviewService reviewService)
         {
             _reviewService = reviewService;
         }

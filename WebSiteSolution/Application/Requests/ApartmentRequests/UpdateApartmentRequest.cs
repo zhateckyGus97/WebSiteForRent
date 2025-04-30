@@ -5,7 +5,7 @@ namespace Application.Requests.ApartmentRequests
     public class UpdateApartmentRequest
     {
         public int Id { get; set; }
-        public int Owner_id { get; set; }
+        public int OwnerId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
@@ -22,18 +22,18 @@ namespace Application.Requests.ApartmentRequests
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
-            RuleFor(x => x.Owner_id)
+            RuleFor(x => x.OwnerId)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(100).WithMessage("{PropertyName} must be at most 100 characters long.");
+                .MaximumLength(ValidationConstants.MaxTitleLength).WithMessage($"{0} must be at most {ValidationConstants.MaxTitleLength} characters long.");
             RuleFor(x => x.Description)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(500).WithMessage("{PropertyName} must be at most 500 characters long.");
+                .MaximumLength(ValidationConstants.MaxDescriptionLength).WithMessage($"{0} must be at most {ValidationConstants.MaxDescriptionLength} characters long.");
             RuleFor(x => x.Address)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(150).WithMessage("{PropertyName} must be at most 150 characters long.");
+                .MaximumLength(ValidationConstants.MaxAddressLength).WithMessage($"{0} must be at most {ValidationConstants.MaxAddressLength} characters long.");
             RuleFor(x => x.PricePerDay)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");

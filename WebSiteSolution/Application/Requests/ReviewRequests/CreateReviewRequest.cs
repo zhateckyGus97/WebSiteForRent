@@ -24,7 +24,7 @@ namespace Application.Requests.ReviewRequests
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .InclusiveBetween(0, 6).WithMessage("{PropertyName} must be from 1 to 5.");
             RuleFor(x => x.Comment)
-                .MaximumLength(ValidationConstants.MaxCommentLength).WithMessage("{PropertyName} must be at most 500 characters long.");
+                .MaximumLength(ValidationConstants.MaxCommentLength).WithMessage($"{0} must be at most {ValidationConstants.MaxCommentLength} characters long.");
         }
     }
 }
