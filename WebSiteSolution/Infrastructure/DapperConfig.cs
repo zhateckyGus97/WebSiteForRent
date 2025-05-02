@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Domain.Enums;
 using Infrastructure.DataBase.TypeMappings;
 
 namespace Infrastructure

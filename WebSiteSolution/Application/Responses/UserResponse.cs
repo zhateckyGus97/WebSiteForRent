@@ -14,7 +14,8 @@ namespace Application.Responses
         public string PhoneNumber { get; set; }
         public string Role { get; set; }
         public string Passport { get; set; }
-        public string AttachmentUrl { get; set; }
+        public int LogoAttachmentId { get; set; }
+        public string LogoAttachmentUrl { get; set; }
         public DateTime DateOfBirth { get; set; }
     }
 }

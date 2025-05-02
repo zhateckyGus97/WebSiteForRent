@@ -12,18 +12,15 @@
     <PackageReference Include="FluentMigrator.Runner" Version="7.1.0" />
     <PackageReference Include="FluentMigrator.Runner.Postgres" Version="7.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
     <PackageReference Include="Npgsql" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Application">
-      <HintPath>..\Application\bin\Debug\net8.0\Application.dll</HintPath>
+    <Reference Include="Domain">
+      <HintPath>..\Domain\bin\Debug\net8.0\Domain.dll</HintPath>
     </Reference>
   </ItemGroup>
 

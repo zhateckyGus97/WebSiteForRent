@@ -7,14 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentMigrator.Runner" Version="7.1.0" />
     <PackageReference Include="jose-jwt" Version="5.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
+    <Reference Include="Application">
+      <HintPath>..\Application\bin\Debug\net8.0\Application.dll</HintPath>
+    </Reference>
+    <Reference Include="Domain">
+      <HintPath>..\Domain\bin\Debug\net8.0\Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Infrastructure">
+      <HintPath>..\Infrastructure\bin\Debug\net8.0\Infrastructure.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
