@@ -17,15 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Application">
-      <HintPath>..\Application\bin\Debug\net8.0\Application.dll</HintPath>
-    </Reference>
-    <Reference Include="Domain">
-      <HintPath>..\Domain\bin\Debug\net8.0\Domain.dll</HintPath>
-    </Reference>
-    <Reference Include="Infrastructure">
-      <HintPath>..\Infrastructure\bin\Debug\net8.0\Infrastructure.dll</HintPath>
-    </Reference>
+	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj"/>
+	  <ProjectReference Include="..\Application\Application.csproj"/>
+	  <ProjectReference Include="..\Domain\Domain.csproj"/>
   </ItemGroup>
 
 </Project>

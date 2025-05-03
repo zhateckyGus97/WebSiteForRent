@@ -1,5 +1,4 @@
 ﻿using FluentMigrator;
-using FluentMigrator;
 using FluentMigrator.Expressions;
 using System;
 using System.Collections.Generic;
@@ -16,9 +15,12 @@ namespace Infrastructure.DataBase.Migrations
         {
             Execute.Sql("CREATE TYPE user_role AS ENUM ('User', 'Admin')");
 
+            Delete.Column("role")
+                .FromTable("users");
+
             Alter.Table("users")
                 .AddColumn("password_hash").AsString(255).Nullable()
-                .AlterColumn("Role").AsCustom("user_role").WithDefaultValue("User");
+                .AddColumn("role").AsCustom("user_role").WithDefaultValue("User");
         }
 
         public override void Down()

@@ -19,7 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Quiz API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "ApartmentRent API", Version = "v1" });
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -60,7 +60,7 @@ builder.Services.Configure<JwtSettings>(jwtSettings);
 var secret = jwtSettings["Secret"] ?? throw new ArgumentNullException("JwtSettings:Secret");
 
 // Add JWT Authentication
-builder.Services.AddAuthentication(options =>
+/*builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -77,7 +77,7 @@ builder.Services.AddAuthentication(options =>
             ValidAudience = jwtSettings["Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret))
         };
-    });
+    });*/
 
 builder.Services.AddRateLimiter(options =>
 {

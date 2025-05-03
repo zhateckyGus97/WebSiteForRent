@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Infrastructure.DataBase.TypeMappings;
 
 namespace Infrastructure
 {
@@ -8,7 +7,7 @@ namespace Infrastructure
         public static void Configure()
         {
             DefaultTypeMap.MatchNamesWithUnderscores = true;
-            SqlMapper.AddTypeHandler(new UserRolesTypeHandler());
+            //SqlMapper.AddTypeHandler(new UserRolesTypeHandler());
         }
     }
 }
