@@ -14,7 +14,7 @@ namespace API.Controllers
     public class AuthController(IAuthService authService) : ControllerBase
     {
         [EnableRateLimiting("login")]
-        [HttpPost(Name = "register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationUserRequest request)
         {
             await authService.Register(request);
@@ -22,11 +22,11 @@ namespace API.Controllers
         }
 
         [EnableRateLimiting("login")]
-        [HttpPost(Name = "login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var responce = await authService.Login(request);
-            return Ok(responce);
+            var response = await authService.Login(request);
+            return Ok(response);
         }
     }
 }

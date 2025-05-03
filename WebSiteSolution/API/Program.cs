@@ -60,7 +60,7 @@ builder.Services.Configure<JwtSettings>(jwtSettings);
 var secret = jwtSettings["Secret"] ?? throw new ArgumentNullException("JwtSettings:Secret");
 
 // Add JWT Authentication
-/*builder.Services.AddAuthentication(options =>
+builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -77,7 +77,7 @@ var secret = jwtSettings["Secret"] ?? throw new ArgumentNullException("JwtSettin
             ValidAudience = jwtSettings["Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret))
         };
-    });*/
+    });
 
 builder.Services.AddRateLimiter(options =>
 {

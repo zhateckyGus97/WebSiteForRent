@@ -16,9 +16,9 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<int> Create(User user)
         {
-            const string query = 
+            const string query =
                     @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth, password_hash)
-                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role, @Passport, @DateOfBirth, @PasswordHash, @Role::user_role)
+                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role::user_role, @Passport, @DateOfBirth, @PasswordHash)
                       RETURNING Id"/*,
                     new { 
                         user.FullName, 
@@ -53,8 +53,10 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         full_name,  
                         email,  
                         phone_number,  
-                        role, passport,  
-                        date_of_birth  
+                        role, 
+                        passport,  
+                        date_of_birth,
+                        password_hash
                       FROM users
                       WHERE Email = @Email";
 
