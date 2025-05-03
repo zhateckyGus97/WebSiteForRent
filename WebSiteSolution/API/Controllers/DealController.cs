@@ -1,4 +1,5 @@
-﻿using Application.Requests.DealRequests;
+﻿using Application.Interfaces;
+using Application.Requests.DealRequests;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +9,8 @@ namespace API.Controllers
     [Route("[controller]")]
     public class DealController : ControllerBase
     {
-        private DealService _dealService;
-        public DealController(DealService dealService)
+        private IDealService _dealService;
+        public DealController(IDealService dealService)
         {
             _dealService = dealService;
         }
