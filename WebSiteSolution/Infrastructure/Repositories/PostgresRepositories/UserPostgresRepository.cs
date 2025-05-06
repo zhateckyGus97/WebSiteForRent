@@ -19,16 +19,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
             const string query =
                     @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth, password_hash)
                       VAlUES (@Fullname, @Email, @PhoneNumber, @Role::user_role, @Passport, @DateOfBirth, @PasswordHash)
-                      RETURNING Id"/*,
-                    new { 
-                        user.FullName, 
-                        user.Email, 
-                        user.PhoneNumber, 
-                        user.Role, 
-                        user.Passport, 
-                        user.DateOfBirth,
-                        user.PasswordHash
-                    }*/;
+                      RETURNING Id";
 
             return await _connection.ExecuteScalarAsync<int>(query, user.AsDapperParams());
         }
@@ -108,18 +99,6 @@ namespace Infrastructure.Repositories.PostgresRepositories
                                       date_of_birth = @DateOfBirth,
                                       password_hash = @PasswordHash
                     WHERE id = @Id";
-                /*,
-                    new
-                    {
-                        Id = user.Id,
-                        user.FullName,
-                        user.Email,
-                        user.PhoneNumber,
-                        user.Role,
-                        user.Passport,
-                        user.DateOfBirth,
-                        user.PasswordHash
-                    }*/
 
             var affectedRows = await _connection.ExecuteAsync(query, user.AsDapperParams());
             return affectedRows > 0;

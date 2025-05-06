@@ -7,7 +7,6 @@ namespace Infrastructure
         public static void Configure()
         {
             DefaultTypeMap.MatchNamesWithUnderscores = true;
-            //SqlMapper.AddTypeHandler(new UserRolesTypeHandler());
         }
     }
 }

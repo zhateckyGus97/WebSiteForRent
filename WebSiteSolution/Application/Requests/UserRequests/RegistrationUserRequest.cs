@@ -33,9 +33,6 @@ namespace Application.Requests.UserRequests
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .MaximumLength(ValidationConstants.MaxPhoneNumberLength).WithMessage("{PropertyName} must be at most 20 characters long.");
-            //RuleFor(x => x.Role)
-            //    .NotEmpty().WithMessage("{PropertyName} is required.")
-            //    .MaximumLength(ValidationConstants.MaxRoleLength).WithMessage("{PropertyName} must be at most 15 characters long.");
             RuleFor(x => x.Passport)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .Matches(ValidationConstants.PassportPattern).WithMessage("{PropertyName} must be as xxxx-xxxxxx format.");
@@ -43,7 +40,7 @@ namespace Application.Requests.UserRequests
                 .NotEmpty().WithMessage("{PropertyName} is required.");
             RuleFor(x => x.Password)
                 .NotEmpty()
-                .MinimumLength(8); // добавить условий
+                .MinimumLength(ValidationConstants.MinPasswordLength); // добавить условий
         }
     }
 }

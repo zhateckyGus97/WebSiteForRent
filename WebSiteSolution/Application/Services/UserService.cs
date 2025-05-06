@@ -73,14 +73,6 @@ namespace Application.Services
             }
 
             var mappedUser = _mapper.Map<UserResponse>(user);
-
-            /*if (mappedUser.LogoAttachmentId.HasValue)
-            {
-                var attachmentUrl = await _attachmentService
-                    .GetPublicLinkAsync(mappedUser.LogoAttachmentId.Value);
-                mappedUser.LogoAttachmentUrl = attachmentUrl;
-            }*/
-
             return mappedUser;
         }
 

@@ -19,7 +19,6 @@ using Application.Responses;
 
 namespace Application.Services
 {
-
     public class AuthService(IConfiguration configuration, IMapper mapper,
         IUserRepository userRepository, IPasswordHasher hasher) : IAuthService
     {

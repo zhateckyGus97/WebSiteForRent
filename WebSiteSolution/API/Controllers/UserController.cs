@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
@@ -35,6 +34,7 @@ namespace API.Controllers
             return Ok(users);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] RegistrationUserRequest user)
         {
@@ -49,6 +49,7 @@ namespace API.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
