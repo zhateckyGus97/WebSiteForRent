@@ -36,7 +36,7 @@ namespace Application.Services
         public async Task<LoginResponse> Login(LoginRequest request)
         {
             var user = await userRepository.GetByEmail(request.Email);
-            var passwordVerified = hasher.VerifyPassword(request.Password, user.PasswordHash);
+            var passwordVerified = hasher.VerifyPassword(request.Password, user?.PasswordHash);
             if((user == null || !passwordVerified))
             {
                 throw new UnauthorizedAccessException();

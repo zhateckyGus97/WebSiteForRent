@@ -47,6 +47,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<UnauthorizedExceptionHandler>();
 builder.Services.AddExceptionHandler<ApplicationExceptionHandler>();
 builder.Services.AddExceptionHandler<DatabaseExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
