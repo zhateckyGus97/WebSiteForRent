@@ -128,13 +128,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-<<<<<<< HEAD
 app.UseRateLimiter();
 
 app.UseExceptionHandler();
-=======
 app.UseSerilogRequestLogging();
->>>>>>> develop
 
 app.UseHttpsRedirection();
 
@@ -143,9 +140,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-<<<<<<< HEAD
 app.Run();
-
-=======
-app.Run();
->>>>>>> develop

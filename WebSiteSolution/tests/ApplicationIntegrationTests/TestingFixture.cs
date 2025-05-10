@@ -84,7 +84,6 @@ namespace ApplicationIntegrationTests
                 FullName = _faker.Name.FullName(),
                 Email = _faker.Person.Email,
                 PhoneNumber = _faker.Phone.PhoneNumber(),
-                Role = "User",
                 Passport = "1234-567890",
                 DateOfBirth = DateTime.Now.AddDays(-10)
             });

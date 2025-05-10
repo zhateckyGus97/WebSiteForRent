@@ -13,19 +13,19 @@ public class UserServiceTests : IClassFixture<TestingFixture>
     public UserServiceTests(TestingFixture fixture)
     {
         _fixture = fixture;
-        _userService = fixture.ServiceProvider.GetRequiredService<IUserService>();
+        var scope = fixture.ServiceProvider.CreateScope();
+        _userService = scope.ServiceProvider.GetRequiredService<IUserService>();
     }
 
     [Fact]
     public async Task Add_ShouldCreateUser_AndReturnId()
     {
         //Arrange
-        var request = new CreateUserRequest
+        var request = new RegistrationUserRequest
         {
             FullName = "Test User",
             Email = "test@example.com",
             PhoneNumber = "1234567890",
-            Role = "User",
             Passport = "AB1234567",
             DateOfBirth = new DateTime(1990, 1, 1)
         };
@@ -86,7 +86,6 @@ public class UserServiceTests : IClassFixture<TestingFixture>
             FullName = "Updated Name",
             Email = "updated@example.com",
             PhoneNumber = "0987654321",
-            Role = "Admin",
             Passport = "XY9876543",
             DateOfBirth = new DateTime(1985, 5, 15)
         };
