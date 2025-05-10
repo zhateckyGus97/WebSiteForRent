@@ -9,8 +9,25 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Net;
 using System.Text;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var logPattern = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [ClientIp = {ClientIp}] {Message:lj} {NewLine} {Exception}";
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+    .Enrich.WithClientIp()
+    .WriteTo.Console()
+    .WriteTo.File(Path.Combine("logs", "website-backend-.log"),
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: 7,
+        rollOnFileSizeLimit: true,
+        outputTemplate: logPattern)
+    .CreateLogger();
+
+builder.Services.AddSerilog();
 
 // Add services to the container.
 
@@ -111,9 +128,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+<<<<<<< HEAD
 app.UseRateLimiter();
 
 app.UseExceptionHandler();
+=======
+app.UseSerilogRequestLogging();
+>>>>>>> develop
 
 app.UseHttpsRedirection();
 
@@ -122,5 +143,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+<<<<<<< HEAD
 app.Run();
 
+=======
+app.Run();
+>>>>>>> develop

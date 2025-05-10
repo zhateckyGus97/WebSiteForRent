@@ -11,9 +11,9 @@ namespace Infrastructure.DataBase.Migrations
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("full_name").AsString(100).NotNullable()
                 .WithColumn("email").AsString(50).NotNullable()
-                .WithColumn("phone_number").AsString(20).NotNullable()
-                .WithColumn("role").AsString(20).NotNullable()
-                .WithColumn("passport").AsString(20).NotNullable()
+                .WithColumn("phone_number").AsString(50).NotNullable()
+                .WithColumn("role").AsString(30).NotNullable()
+                .WithColumn("passport").AsString(50).NotNullable()
                 .WithColumn("date_of_birth").AsDate().NotNullable();
 
             Create.Table("apartments")

@@ -23,14 +23,14 @@ namespace Application.Requests.UserRequests
                 .GreaterThan(0).WithMessage("Id must be greater than 0.");
             RuleFor(x => x.FullName)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(100).WithMessage("{PropertyName} must be at most 100 characters long.");
+                .MaximumLength(ValidationConstants.MaxFullNameLength).WithMessage($"{0} must be at most {ValidationConstants.MaxFullNameLength} characters long.");
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(50).WithMessage("{PropertyName} must be at most 50 characters long.")
+                .MaximumLength(ValidationConstants.MaxEmailLength).WithMessage($"{0} must be at most {ValidationConstants.MaxEmailLength} characters long.")
                 .EmailAddress().WithMessage("Enter the correct email.");
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .MaximumLength(20).WithMessage("{PropertyName} must be at most 20 characters long.");
+                .MaximumLength(ValidationConstants.MaxPhoneNumberLength).WithMessage($"{0} must be at most {ValidationConstants.MaxPhoneNumberLength} characters long.");
             RuleFor(x => x.Passport)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .Matches("^\\d{4}-\\d{6}$").WithMessage("{PropertyName} must be as xxxx-xxxxxx format.");

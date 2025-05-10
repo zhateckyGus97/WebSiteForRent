@@ -6,6 +6,7 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
 using Infrastructure.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Services
 {
@@ -17,12 +18,13 @@ namespace Application.Services
         private readonly IReviewRepository _reviewRepository;
         private readonly IAttachmentService _attachmentService;
         private readonly IMapper _mapper;
+        private readonly ILogger<IUserService> _logger;
         private readonly IPasswordHasher _hasher;
 
         public UserService(IUserRepository userRepository, IApartmentRepository apartmentRepository, IDealRepository dealRepository,
             IReviewRepository reviewRepository, IMapper mapper,
              IAttachmentService attachmentService,
-            IPasswordHasher hasher)
+            IPasswordHasher hasher, ILogger<IUserService> logger)
         {
             _userRepository = userRepository;
             _apartmentRepository = apartmentRepository;
@@ -31,6 +33,7 @@ namespace Application.Services
             _attachmentService = attachmentService;
             _mapper = mapper;
             _hasher = hasher;
+            _logger = logger;
         }
      
         public async Task<int> Add(RegistrationUserRequest user)
@@ -39,7 +42,9 @@ namespace Application.Services
             mappedUser.PasswordHash = _hasher.HashPassword(user.Password);
             mappedUser.Role = UserRoles.User;
 
-            return await _userRepository.Create(mappedUser);
+            var result = await _userRepository.Create(mappedUser);
+            _logger.LogInformation("User was created with id: {UserId}", result);
+            return result;
         }
 
         public async Task<bool> Delete(int id)
@@ -52,6 +57,7 @@ namespace Application.Services
             await _reviewRepository.DeleteByUserId(id);
             await _dealRepository.DeleteByUserId(id);
 
+            _logger.LogInformation("User with id: {UserId} was deleted", id);
             return await _userRepository.Delete(id);
         }
 
@@ -76,12 +82,15 @@ namespace Application.Services
 
         public async Task<bool> Update(UpdateUserRequest user)
         {
-            if (user == null)
-                throw new NotFoundApplicationException($"User not found!");
-
             var mappedUser = _mapper.Map<User>(user);
             mappedUser.PasswordHash = _hasher.HashPassword(user.Password);
-            return await _userRepository.Update(mappedUser);
+
+            if (!await _userRepository.Update(mappedUser))
+                throw new EntityUpdateException("User wasn't updated!");
+
+            _logger.LogInformation("User with id: {UserId} was updated", user.Id);
+
+            return true;
         }
     }
 }

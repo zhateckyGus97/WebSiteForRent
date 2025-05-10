@@ -29,7 +29,7 @@ namespace Application.Requests.ReviewRequests
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .ExclusiveBetween(0, 6).WithMessage("{PropertyName} must be from 1 to 5.");
             RuleFor(x => x.Comment)
-                .MaximumLength(300).WithMessage("{PropertyName} must be at most 300 characters long.");
+                .MaximumLength(ValidationConstants.MaxCommentLength).WithMessage($"{0} must be at most {ValidationConstants.MaxCommentLength} characters long.");
         }
     }
 }

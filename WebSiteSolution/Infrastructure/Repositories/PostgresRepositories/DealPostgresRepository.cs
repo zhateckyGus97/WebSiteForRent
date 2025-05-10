@@ -15,19 +15,13 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<int> Create(Deal deal)
         {
+            deal.CreatedAt = DateTime.Now;
+            deal.UpdatedAt = DateTime.Now;
             var dealId = await _connection.QuerySingleAsync<int>(
                     @"INSERT INTO deals (user_id, apartment_id, check_in_date, check_out_date, total_price, created_at)
                       VAlUES (@UserId, @ApartmentId, @CheckInDate, @CheckOutDate, @TotalPrice, @CreatedAt)
                       RETURNING Id",
-                    new
-                    {
-                        deal.UserId,
-                        deal.ApartmentId,
-                        deal.CheckInDate,
-                        deal.CheckOutDate,
-                        deal.TotalPrice,
-                        CreatedAt = DateTime.Now
-                    });
+                    deal);
 
             return dealId;
         }
@@ -98,6 +92,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<bool> Update(Deal deal)
         {
+            deal.UpdatedAt = DateTime.Now;
             var affectedRows = await _connection.ExecuteAsync(
                     @"UPDATE deals SET user_id = @UserId,
                                       apartment_id = @ApartmentId, 
@@ -106,16 +101,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
                                       total_price = @TotalPrice, 
                                       updated_at = @UpdatedAt
                     WHERE id = @Id",
-                    new
-                    {
-                        deal.UserId,
-                        deal.ApartmentId,
-                        deal.CheckInDate,
-                        deal.CheckOutDate,
-                        deal.TotalPrice,
-                        UpdatedAt = DateTime.Now,
-                        deal.Id
-                    });
+                    deal);
 
             return affectedRows > 0;
         }

@@ -15,17 +15,13 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<int> Create(Review review)
         {
+            review.CreatedAt = DateTime.Now;
+            review.UpdatedAt = DateTime.Now;
             var reviewId = await _connection.QuerySingleAsync<int>(
                     @"INSERT INTO reviews (user_id, apartment_id, rating, comment, created_at)
                       VAlUES (@UserId, @ApartmentId, @Rating, @Comment, @CreatedAt)
                       RETURNING Id",
-                    new { 
-                        review.ApartmentId, 
-                        review.UserId, 
-                        review.Rating, 
-                        review.Comment,
-                        CreatedAt = DateTime.Now
-                    });
+                    review);
             
             return reviewId;
         }
@@ -92,6 +88,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<bool> Update(Review review)
         {
+            review.UpdatedAt = DateTime.Now;
             var affectedRows = await _connection.ExecuteAsync(
                     @"UPDATE reviews SET apartment_id = @ApartmentId,
                                       user_id = @UserId,
@@ -99,15 +96,7 @@ namespace Infrastructure.Repositories.PostgresRepositories
                                       comment = @Comment,
                                       updated_at = @UpdatedAt
                     WHERE id = @Id",
-                    new
-                    {
-                        review.ApartmentId,
-                        review.UserId,
-                        review.Rating,
-                        review.Comment,
-                        UpdatedAt = DateTime.Now,
-                        review.Id
-                    });
+                    review);
 
             return affectedRows > 0;
         }
