@@ -9,6 +9,7 @@ namespace Application.Requests.ReviewRequests
         public int UserId { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }
+        public List<int>? ReviewAttacmentsId { get; set; }
     }
 
     public class UpdateReviewRequestValidator : AbstractValidator<UpdateReviewRequest>

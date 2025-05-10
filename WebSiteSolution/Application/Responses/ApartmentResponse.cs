@@ -11,5 +11,6 @@
         public int NumOfFloor { get; set; }
         public double Square { get; set; }
         public int Capacity { get; set; }
+        public List<int>? ApartmentAttacmentsId { get; set; }
     }
 }

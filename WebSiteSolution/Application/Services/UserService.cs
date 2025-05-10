@@ -6,8 +6,6 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
 using Infrastructure.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 
 namespace Application.Services
 {
@@ -19,7 +17,7 @@ namespace Application.Services
         private readonly IReviewRepository _reviewRepository;
         private readonly IAttachmentService _attachmentService;
         private readonly IMapper _mapper;
-        private IPasswordHasher _hasher;
+        private readonly IPasswordHasher _hasher;
 
         public UserService(IUserRepository userRepository, IApartmentRepository apartmentRepository, IDealRepository dealRepository,
             IReviewRepository reviewRepository, IMapper mapper,

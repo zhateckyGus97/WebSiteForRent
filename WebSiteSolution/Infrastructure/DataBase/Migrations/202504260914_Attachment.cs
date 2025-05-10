@@ -3,7 +3,8 @@ using FluentMigrator;
 
 namespace Infrastructure.DataBase.Migrations
 {
-    public class _202504260914_Attachment: Migration
+    [Migration(202505102114)]
+    public class _202505102114_Attachment: Migration
     {
         public override void Up()
         {

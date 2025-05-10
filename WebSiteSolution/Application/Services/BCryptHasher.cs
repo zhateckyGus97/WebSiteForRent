@@ -19,6 +19,5 @@ namespace Application.Services
 
             return BCrypt.Net.BCrypt.Verify(password, storedHash);
         }
-
     }
 }

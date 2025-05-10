@@ -1,7 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Requests;
 using Application.Requests.UserRequests;
-using Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;

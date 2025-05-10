@@ -13,7 +13,8 @@ namespace Application.Requests
         public LoginRequestValidator()
         {
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
-            RuleFor(x => x.Password).NotEmpty().MinimumLength(ValidationConstants.MinPasswordLength);
+            RuleFor(x => x.Password)
+                .NotEmpty().WithMessage("{PropertyName} is required.");
         }
     }
 }

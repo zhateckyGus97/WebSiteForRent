@@ -17,8 +17,8 @@ namespace Infrastructure.Repositories.PostgresRepositories
         public async Task<int> Create(User user)
         {
             const string query =
-                    @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth, password_hash)
-                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role::user_role, @Passport, @DateOfBirth, @PasswordHash)
+                    @"INSERT INTO users (full_name, email, phone_number, role, passport, date_of_birth, password_hash, logo_attachment_id)
+                      VAlUES (@Fullname, @Email, @PhoneNumber, @Role::user_role, @Passport, @DateOfBirth, @PasswordHash, @LogoAttacmentId)
                       RETURNING Id";
 
             return await _connection.ExecuteScalarAsync<int>(query, user.AsDapperParams());
@@ -47,7 +47,8 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         role, 
                         passport,  
                         date_of_birth,
-                        password_hash
+                        password_hash,
+                        logo_attachment_id
                       FROM users
                       WHERE Email = @Email";
 
@@ -63,7 +64,8 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         email,  
                         phone_number,  
                         role, passport,  
-                        date_of_birth  
+                        date_of_birth,
+                        logo_attachment_id
                       FROM users"
                     );
 
@@ -79,7 +81,8 @@ namespace Infrastructure.Repositories.PostgresRepositories
                         email,  
                         phone_number,  
                         role, passport,  
-                        date_of_birth  
+                        date_of_birth,
+                        logo_attachment_id
                       FROM users
                       WHERE id = @Id", 
                     new { 
@@ -91,13 +94,14 @@ namespace Infrastructure.Repositories.PostgresRepositories
 
         public async Task<bool> Update(User user)
         {
-            const string query =  @"UPDATE Users SET full_name = @FullName,
+            const string query = @"UPDATE Users SET full_name = @FullName,
                                       email = @Email,
                                       phone_number = @PhoneNumber, 
                                       role = @Role,
                                       passport = @Passport,
                                       date_of_birth = @DateOfBirth,
-                                      password_hash = @PasswordHash
+                                      password_hash = @PasswordHash,
+                                      logo_attachment_id = @@LogoAttacmentId
                     WHERE id = @Id";
 
             var affectedRows = await _connection.ExecuteAsync(query, user.AsDapperParams());

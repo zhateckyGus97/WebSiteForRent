@@ -8,14 +8,14 @@ public class AttachmentPostgresRepository(NpgsqlConnection connection) : IAttach
 {
     public async Task Delete(int id)
     {
-        var sql = "DELETE FROM attachments WHERE id = @id";
+        var sql = @"DELETE FROM attachments WHERE id = @id";
         await connection.ExecuteAsync(sql, new { id });
     }
 
     public async Task<Attachment?> Get(int id)
     {
-        var sql = "SELECT Id, FileName, StoredPath, ContentType, Size, CreatedAt " +
-                  "FROM attachments WHERE id = @id";
+        var sql = @"SELECT Id, FileName, StoredPath, ContentType, Size, CreatedAt
+                  FROM attachments WHERE id = @id";
         return await connection.QueryFirstOrDefaultAsync<Attachment>(sql, new { id });
     }
 

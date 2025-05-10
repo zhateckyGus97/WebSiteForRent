@@ -1,16 +1,11 @@
 ﻿using Application.Requests.UserRequests;
 using Application.Interfaces;
 using Domain.Enums;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using Domain.Entities;
 using Infrastructure.Interfaces;
 using Application.Requests;
@@ -37,7 +32,7 @@ namespace Application.Services
         {
             var user = await userRepository.GetByEmail(request.Email);
             var passwordVerified = hasher.VerifyPassword(request.Password, user?.PasswordHash);
-            if((user == null || !passwordVerified))
+            if ((user == null || !passwordVerified))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -62,7 +57,6 @@ namespace Application.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                 new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
-                new Claim(ClaimTypes.GivenName, user.FullName ?? string.Empty),
                 new Claim(ClaimTypes.Role, user.Role.ToString() ?? UserRoles.User.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
             }),

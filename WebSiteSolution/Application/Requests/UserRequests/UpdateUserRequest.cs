@@ -1,10 +1,4 @@
-﻿using Domain.Enums;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Application.Requests.UserRequests
 {
@@ -16,7 +10,7 @@ namespace Application.Requests.UserRequests
         public string PhoneNumber { get; set; }
         public string Passport { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string AttachmentUrl { get; set; }
+        public string? AttachmentUrl { get; set; }
         public string? Password { get; set; }
     }
 
@@ -43,8 +37,14 @@ namespace Application.Requests.UserRequests
             RuleFor(x => x.DateOfBirth)
                 .NotEmpty().WithMessage("{PropertyName} is required.");
             RuleFor(x => x.Password)
-                .NotEmpty()
-                .MinimumLength(ValidationConstants.MinPasswordLength); // добавить условий
+                .NotEmpty().WithMessage("Password is required")
+                .MinimumLength(ValidationConstants.MinPasswordLength).WithMessage($"Password must be at least {ValidationConstants.MinPasswordLength} characters long")
+                .MaximumLength(ValidationConstants.MaxPasswordLength).WithMessage($"Password cannot exceed {ValidationConstants.MaxPasswordLength} characters")
+                .Matches("[A-Z]").WithMessage("Password must contain at least one uppercase letter")
+                .Matches("[a-z]").WithMessage("Password must contain at least one lowercase letter")
+                .Matches("[0-9]").WithMessage("Password must contain at least one number")
+                .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character")
+                .Must(x => !x.Contains(" ")).WithMessage("Password cannot contain whitespace");
         }
     }
 }
