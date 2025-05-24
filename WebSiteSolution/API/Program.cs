@@ -113,6 +113,17 @@ builder.Services.AddRateLimiter(options =>
     });
 });
 
+builder.Services.AddCors(
+    (options) =>
+    {
+        options.AddPolicy("AllowLocalHost", policy =>
+        {
+            policy.WithOrigins("localhost", "http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        });
+    });
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -129,6 +140,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRateLimiter();
+app.UseCors("AllowLocalhost");
 
 app.UseExceptionHandler();
 app.UseSerilogRequestLogging();
