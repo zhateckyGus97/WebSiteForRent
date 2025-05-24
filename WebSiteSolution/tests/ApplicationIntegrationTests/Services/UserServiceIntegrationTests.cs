@@ -27,7 +27,8 @@ public class UserServiceTests : IClassFixture<TestingFixture>
             Email = "test@example.com",
             PhoneNumber = "1234567890",
             Passport = "AB1234567",
-            DateOfBirth = new DateTime(1990, 1, 1)
+            DateOfBirth = new DateTime(1990, 1, 1),
+            Password = "NewPassword"
         };
 
         //Act
@@ -87,7 +88,8 @@ public class UserServiceTests : IClassFixture<TestingFixture>
             Email = "updated@example.com",
             PhoneNumber = "0987654321",
             Passport = "XY9876543",
-            DateOfBirth = new DateTime(1985, 5, 15)
+            DateOfBirth = new DateTime(1985, 5, 15),
+            Password = "NewPassword"
         };
 
         //Act

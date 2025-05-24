@@ -10,7 +10,7 @@ namespace Application.Requests.UserRequests
         public string PhoneNumber { get; set; }
         public string Passport { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string? AttachmentUrl { get; set; }
+        public int? LogoAttacmentId { get; set; }
         public string? Password { get; set; }
     }
 

@@ -97,11 +97,10 @@ namespace Infrastructure.Repositories.PostgresRepositories
             const string query = @"UPDATE Users SET full_name = @FullName,
                                       email = @Email,
                                       phone_number = @PhoneNumber, 
-                                      role = @Role,
                                       passport = @Passport,
                                       date_of_birth = @DateOfBirth,
                                       password_hash = @PasswordHash,
-                                      logo_attachment_id = @@LogoAttacmentId
+                                      logo_attachment_id = @LogoAttacmentId
                     WHERE id = @Id";
 
             var affectedRows = await _connection.ExecuteAsync(query, user.AsDapperParams());

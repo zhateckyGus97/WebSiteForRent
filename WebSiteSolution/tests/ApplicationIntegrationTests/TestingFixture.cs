@@ -13,6 +13,7 @@ using System.Reflection;
 using Bogus.Extensions;
 using Infrastructure.Interfaces;
 using MigrationRunner = Infrastructure.DataBase.MigrationRunner;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ApplicationIntegrationTests
 {
@@ -29,6 +30,8 @@ namespace ApplicationIntegrationTests
                 {
                     services.AddInfrastructure();
                     services.AddApplication();
+
+                    services.AddSingleton<IWebHostEnvironment>(new TestHostEnvironment());
 
                     var connectionString = context.Configuration.GetConnectionString("PostgresDBIntegration");
                     if (string.IsNullOrWhiteSpace(connectionString))
