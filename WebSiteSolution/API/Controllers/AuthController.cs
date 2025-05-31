@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.Requests;
 using Application.Requests.UserRequests;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -16,8 +17,9 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationUserRequest request)
         {
-            await authService.Register(request);
-            return Created();
+            var principal = await authService.Register(request);
+            await HttpContext.SignInAsync(principal);
+            return Ok();
         }
 
         [EnableRateLimiting("login")]
@@ -26,6 +28,14 @@ namespace API.Controllers
         {
             var response = await authService.Login(request);
             return Ok(response);
+        }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Ok();
         }
     }
 }

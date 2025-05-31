@@ -2,12 +2,13 @@
 using Application.Requests.UserRequests;
 using Application.Responses;
 using Domain.Entities;
+using System.Security.Claims;
 
 namespace Application.Interfaces
 {
     public interface IAuthService
     {
-        Task<LoginResponse> Login(LoginRequest request);
-        Task<int> Register(RegistrationUserRequest request);
+        Task<ClaimsPrincipal> Login(LoginRequest request);
+        Task<ClaimsPrincipal> Register(RegistrationUserRequest request);
     }
 }
