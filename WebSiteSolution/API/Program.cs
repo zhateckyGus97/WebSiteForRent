@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using System.Net;
 using System.Text;
 using Serilog;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,7 +79,7 @@ builder.Services.Configure<JwtSettings>(jwtSettings);
 var secret = jwtSettings["Secret"] ?? throw new ArgumentNullException("JwtSettings:Secret");
 
 // Add JWT Authentication
-builder.Services.AddAuthentication(options =>
+/*builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -95,7 +96,17 @@ builder.Services.AddAuthentication(options =>
             ValidAudience = jwtSettings["Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret))
         };
-    });
+    });*/
+
+builder.Services.AddAuthentication("HttponlyAuth")
+    .AddCookie("HttponlyAuth", options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        options.Cookie.SameSite = SameSiteMode.Strict;
+        options.Cookie.Name = "auth_token";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    })
 
 builder.Services.AddRateLimiter(options =>
 {
