@@ -124,6 +124,19 @@ builder.Services.AddCors(
         });
     });
 
+builder.Services.AddCors(
+    (options) =>
+    {
+        options.AddPolicy("AllowLocalhost", policy =>
+        {
+            policy.WithOrigins("localhost", "http://localhost:3000")
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        });
+    }
+);
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
