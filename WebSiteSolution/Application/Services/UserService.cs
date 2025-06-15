@@ -4,6 +4,7 @@ using Application.Requests.UserRequests;
 using Application.Responses;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Enums;
 using Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
 
@@ -15,23 +16,32 @@ namespace Application.Services
         private readonly IApartmentRepository _apartmentRepository;
         private readonly IDealRepository _dealRepository;
         private readonly IReviewRepository _reviewRepository;
+        private readonly IAttachmentService _attachmentService;
         private readonly IMapper _mapper;
         private readonly ILogger<IUserService> _logger;
+        private readonly IPasswordHasher _hasher;
 
         public UserService(IUserRepository userRepository, IApartmentRepository apartmentRepository, IDealRepository dealRepository,
-            IReviewRepository reviewRepository, IMapper mapper, ILogger<IUserService> logger)
+            IReviewRepository reviewRepository, IMapper mapper,
+             IAttachmentService attachmentService,
+            IPasswordHasher hasher, ILogger<IUserService> logger)
         {
             _userRepository = userRepository;
             _apartmentRepository = apartmentRepository;
             _dealRepository = dealRepository;
             _reviewRepository = reviewRepository;
+            _attachmentService = attachmentService;
             _mapper = mapper;
+            _hasher = hasher;
             _logger = logger;
         }
-
-        public async Task<int> Add(CreateUserRequest user)
+     
+        public async Task<int> Add(RegistrationUserRequest user)
         {
             var mappedUser = _mapper.Map<User>(user);
+            mappedUser.PasswordHash = _hasher.HashPassword(user.Password);
+            mappedUser.Role = UserRoles.User;
+
             var result = await _userRepository.Create(mappedUser);
             _logger.LogInformation("User was created with id: {UserId}", result);
             return result;
@@ -66,12 +76,14 @@ namespace Application.Services
                 throw new NotFoundApplicationException($"User with id {id} not found!");
             }
 
-            return _mapper.Map<UserResponse>(user);
+            var mappedUser = _mapper.Map<UserResponse>(user);
+            return mappedUser;
         }
 
         public async Task<bool> Update(UpdateUserRequest user)
         {
             var mappedUser = _mapper.Map<User>(user);
+            mappedUser.PasswordHash = _hasher.HashPassword(user.Password);
 
             if (!await _userRepository.Update(mappedUser))
                 throw new EntityUpdateException("User wasn't updated!");

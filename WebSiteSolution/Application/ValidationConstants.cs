@@ -4,6 +4,8 @@
     {
         public const int MaxFullNameLength = 100;
         public const int MaxEmailLength = 50;
+        public const int MinPasswordLength = 8;
+        public const int MaxPasswordLength = 64;
         public const int MaxPhoneNumberLength = 50;
         public const int MaxRoleLength = 30;
 

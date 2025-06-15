@@ -1,10 +1,12 @@
 ﻿using FluentMigrator.Runner;
 using Infrastructure.Interfaces;
+using Infrastructure.Repositories;
 using Infrastructure.Repositories.PostgresRepositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using System.Reflection;
+
 namespace Infrastructure
 {
     public static class DependencyInjection
@@ -24,10 +26,11 @@ namespace Infrastructure
                 return datasource.CreateConnection();
             });
 
-            services.AddScoped<IUserRepository, UserPostgresRepository>();
-            services.AddScoped<IDealRepository, DealPostgresRepository>();
-            services.AddScoped<IApartmentRepository, ApartmentPostgresRepository>();
-            services.AddScoped<IReviewRepository, ReviewPostgresRepository>();
+            services.AddTransient<IUserRepository, UserPostgresRepository>();
+            services.AddTransient<IDealRepository, DealPostgresRepository>();
+            services.AddTransient<IApartmentRepository, ApartmentPostgresRepository>();
+            services.AddTransient<IReviewRepository, ReviewPostgresRepository>();
+            services.AddTransient<IAttachmentRepository, AttachmentPostgresRepository>();
 
             DapperConfig.Configure();
             services.AddFluentMigratorCore()

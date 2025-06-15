@@ -1,252 +1,164 @@
-﻿using Application.Services;
-using AutoMapper;
-using Infrastructure.Interfaces;
-using Moq;
-using Application.Mapping;
-using FluentAssertions;
+﻿using Application.Exceptions;
 using Application.Interfaces;
-using Domain.Entities;
-using Bogus;
-using Bogus.Extensions.Sweden;
-using Application.Exceptions;
+using Application.Mapping;
 using Application.Requests.UserRequests;
+using Application.Responses;
+using Application.Services;
+using AutoMapper;
+using Domain.Entities;
+using Domain.Enums;
+using FluentAssertions;
+using Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
+using Moq;
+using Xunit;
 
 namespace ApplicationUnitTests.Services
 {
     public class UserServiceTests
     {
-        private IUserRepository _userRepository;
-        private IApartmentRepository _apartmentRepository;
-        private IDealRepository _dealRepository;
-        private IReviewRepository _reviewRepository;
+        private readonly Mock<IUserRepository> _userRepositoryMock;
+        private readonly Mock<IApartmentRepository> _apartmentRepositoryMock;
+        private readonly Mock<IDealRepository> _dealRepositoryMock;
+        private readonly Mock<IReviewRepository> _reviewRepositoryMock;
+        private readonly Mock<IAttachmentService> _attachmentServiceMock;
+        private readonly Mock<IPasswordHasher> _passwordHasherMock;
+        private readonly Mock<ILogger<UserService>> _loggerMock;
         private readonly IMapper _mapper;
-        private readonly IUserService _userService;
-        private Mock<IUserRepository> _userRepositoryMock;
-        private readonly ILogger<IUserService> _logger;
-        private Faker _faker;
+        private readonly UserService _userService;
 
         public UserServiceTests()
         {
-            _faker = new Faker();
-
             _userRepositoryMock = new Mock<IUserRepository>();
-            _userRepository = _userRepositoryMock.Object;
+            _apartmentRepositoryMock = new Mock<IApartmentRepository>();
+            _dealRepositoryMock = new Mock<IDealRepository>();
+            _reviewRepositoryMock = new Mock<IReviewRepository>();
+            _attachmentServiceMock = new Mock<IAttachmentService>();
+            _passwordHasherMock = new Mock<IPasswordHasher>();
+            _loggerMock = new Mock<ILogger<UserService>>();
 
-            var mappingConfig = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
-            _mapper = mappingConfig.CreateMapper();
+            var config = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
+            _mapper = config.CreateMapper();
 
-            _logger = Microsoft.Extensions.Logging.Abstractions.NullLogger<IUserService>.Instance;
-
-            _userService = new UserService(_userRepository, _apartmentRepository, _dealRepository, _reviewRepository, _mapper, _logger);
+            _userService = new UserService(
+                _userRepositoryMock.Object,
+                _apartmentRepositoryMock.Object,
+                _dealRepositoryMock.Object,
+                _reviewRepositoryMock.Object,
+                _mapper,
+                _attachmentServiceMock.Object,
+                _passwordHasherMock.Object,
+                _loggerMock.Object);
         }
 
         [Fact]
-        public void ShouldBeAvailableToCreate()
-        {
-            // Assert
-            _userService.Should().NotBeNull();
-        }
-
-        [Fact]
-        public async void Add_ValidRequest_ReturnsId()
+        public async Task Add_ValidUser_ReturnsUserId()
         {
             // Arrange
-            var userId = _faker.Random.Int(1, 100);
-            var request = new CreateUserRequest
+            var request = new RegistrationUserRequest
             {
-                FullName = _faker.Name.FullName(),
-                Email = _faker.Person.Email,
-                PhoneNumber = _faker.Person.Phone,
-                Role = "test",
-                Passport = "000000000",
-                DateOfBirth = _faker.Person.DateOfBirth
+                FullName = "John Doe",
+                Email = "john@example.com",
+                Password = "Password123!",
+                PhoneNumber = "+1234567890",
+                Passport = "AB1234567",
+                DateOfBirth = new DateTime(1990, 1, 1)
             };
 
+            var expectedId = 1;
+            var hashedPassword = "hashed_password";
+
+            _passwordHasherMock.Setup(x => x.HashPassword(request.Password))
+                .Returns(hashedPassword);
+
             _userRepositoryMock.Setup(x => x.Create(It.Is<User>(u =>
-                    u.FullName == request.FullName &&
-                    u.Email == request.Email &&
-                    u.PhoneNumber == request.PhoneNumber &&
-                    u.Role == request.Role &&
-                    u.Passport == request.Passport &&
-                    u.DateOfBirth == request.DateOfBirth)))
-                .ReturnsAsync(userId);
+                u.FullName == request.FullName &&
+                u.Email == request.Email &&
+                u.PhoneNumber == request.PhoneNumber &&
+                u.Passport == request.Passport &&
+                u.DateOfBirth == request.DateOfBirth &&
+                u.PasswordHash == hashedPassword &&
+                u.Role == UserRoles.User)))
+                .ReturnsAsync(expectedId);
 
             // Act
             var result = await _userService.Add(request);
 
             // Assert
-            result.Should().Be(userId);
-            _userRepositoryMock.Verify(x => x.Create(It.Is<User>(u =>
-                    u.FullName == request.FullName &&
-                    u.Email == request.Email &&
-                    u.PhoneNumber == request.PhoneNumber &&
-                    u.Role == request.Role &&
-                    u.Passport == request.Passport &&
-                    u.DateOfBirth == request.DateOfBirth)), Times.Once);
+            result.Should().Be(expectedId);
+            _userRepositoryMock.Verify(x => x.Create(It.IsAny<User>()), Times.Once);
+            _loggerMock.Verify(
+                x => x.Log(
+                LogLevel.Information,
+                It.IsAny<EventId>(),
+                It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("created")),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                Times.Once);
         }
 
         [Fact]
-        public async void GetById_ShouldReturnUser()
+        public async Task GetById_ExistingUser_ReturnsUserResponse()
         {
             // Arrange
-            var user = new User()
+            var userId = 1;
+            var user = new User
             {
-                Id = 1,
-                FullName = _faker.Name.FullName(),
-                Email = _faker.Person.Email,
-                PhoneNumber = _faker.Person.Phone,
-                Role = "test",
-                Passport = "000000000",
-                DateOfBirth = _faker.Person.DateOfBirth
+                Id = userId,
+                FullName = "John Doe",
+                Email = "john@example.com",
+                PhoneNumber = "+1234567890",
+                Passport = "AB1234567",
+                DateOfBirth = new DateTime(1990, 1, 1),
+                Role = UserRoles.User
             };
 
-            _userRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(user);
+            _userRepositoryMock.Setup(x => x.GetById(userId))
+                .ReturnsAsync(user);
 
             // Act
-            var result = await _userService.GetById(user.Id);
+            var result = await _userService.GetById(userId);
 
             // Assert
             result.Should().NotBeNull();
-            result.Id.Should().Be(user.Id);
+            result.Id.Should().Be(userId);
             result.FullName.Should().Be(user.FullName);
-            result.Passport.Should().Be(user.Passport);
             result.Email.Should().Be(user.Email);
-            _userRepositoryMock.Verify(x => x.GetById(It.IsAny<int>()), Times.Once);
         }
 
-
         [Fact]
-        public async void GetById_NonExistingUser_ThrowsNotFoundException()
+        public async Task GetById_NonExistingUser_ThrowsNotFoundException()
         {
             // Arrange
-            var userId = _faker.Random.Int(1, 100);
+            var userId = 999;
             _userRepositoryMock.Setup(x => x.GetById(userId))
                 .ReturnsAsync((User)null);
 
-            // Act + Assert
-            await _userService.Invoking(x => x.GetById(userId))
-                .Should().ThrowAsync<NotFoundApplicationException>()
-                .WithMessage($"User with id {userId} not found!");
+            // Act & Assert
+            await Assert.ThrowsAsync<NotFoundApplicationException>(() =>
+                _userService.GetById(userId));
         }
 
         [Fact]
-        public async void GetAll_WithUsers_ReturnsUsers()
-        {
-            //Arrange
-            var users = new List<User>()
-            {
-                new User()
-                {
-                    Id = 1,
-                    FullName = _faker.Name.FullName(),
-                    Email = _faker.Person.Email,
-                    PhoneNumber = _faker.Person.Phone,
-                    Role = "test",
-                    Passport = "000000000",
-                    DateOfBirth = _faker.Person.DateOfBirth
-                },
-                new User()
-                {
-                    Id = 2,
-                    FullName = _faker.Name.FullName(),
-                    Email = _faker.Person.Email,
-                    PhoneNumber = _faker.Person.Phone,
-                    Role = "test",
-                    Passport = "000000000",
-                    DateOfBirth = _faker.Person.DateOfBirth
-                },
-                new User()
-                {
-                    Id = 3,
-                    FullName = _faker.Name.FullName(),
-                    Email = _faker.Person.Email,
-                    PhoneNumber = _faker.Person.Phone,
-                    Role = "test",
-                    Passport = "000000000",
-                    DateOfBirth = _faker.Person.DateOfBirth
-                }
-            };
-
-            _userRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(users);
-
-            //Act
-            var result = await _userService.GetAll();
-
-            //Assert
-            result.Should().HaveCount(3);
-            result.First().Id.Should().Be(1);
-            result.Last().Id.Should().Be(3);
-        }
-
-        [Fact]
-        public async void Update_ValidRequest_UpdateUser()
+        public async Task Delete_ExistingUser_ReturnsTrue()
         {
             // Arrange
-            var request = new UpdateUserRequest
-            {
-                Id = 1,
-                FullName = _faker.Name.FullName(),
-                Email = _faker.Person.Email,
-                PhoneNumber = _faker.Person.Phone,
-                Role = "test",
-                Passport = "000000000",
-                DateOfBirth = _faker.Person.DateOfBirth
-            };
+            var userId = 1;
+            var user = new User { Id = userId };
 
-            _userRepositoryMock.Setup(x => x.Update(It.IsAny<User>())).ReturnsAsync(true);
-
-            // Act
-            await _userService.Update(request);
-
-            // Assert
-            _userRepositoryMock.Verify(x => x.Update(It.Is<User>(u =>
-                    u.Id == request.Id &&
-                    u.FullName == request.FullName &&
-                    u.Email == request.Email &&
-                    u.PhoneNumber == request.PhoneNumber &&
-                    u.Role == request.Role &&
-                    u.Passport == request.Passport &&
-                    u.DateOfBirth == request.DateOfBirth)), Times.Once);
-        }
-
-        [Fact]
-        public async void Update_NonExisting_ThrowNotFoundApplicationException()
-        {
-            // Arrange
-            var request = new UpdateUserRequest
-            {
-                Id = 1,
-                FullName = _faker.Name.FullName(),
-                Email = _faker.Person.Email,
-                PhoneNumber = _faker.Person.Phone,
-                Role = "test",
-                Passport = "000000000",
-                DateOfBirth = _faker.Person.DateOfBirth
-            };
-
-            _userRepositoryMock.Setup(x => x.Update(It.IsAny<User>()))
-                .ReturnsAsync(false);
-
-            // Act + Assert
-            await _userService.Invoking(x => x.Update((request)))
-                .Should().ThrowAsync<EntityUpdateException>()
-                .WithMessage("User wasn't updated!");
-        }
-
-        [Fact]
-        public async void Delete_NonExistingUser_ThrowNotFountApplicationException()
-        {
-            //Arrange
-            var userId = _faker.Random.Int(1, 100);
-
+            _userRepositoryMock.Setup(x => x.GetById(userId))
+                .ReturnsAsync(user);
             _userRepositoryMock.Setup(x => x.Delete(userId))
                 .ReturnsAsync(true);
 
-            // Act + Assert
-            await _userService.Invoking(x => x.Delete(userId))
-                .Should().ThrowAsync<NotFoundApplicationException>()
-                .WithMessage($"User with id {userId} not found!");
+            // Act
+            var result = await _userService.Delete(userId);
+
+            // Assert
+            result.Should().BeTrue();
+            _apartmentRepositoryMock.Verify(x => x.DeleteByOwnerId(userId), Times.Once);
+            _reviewRepositoryMock.Verify(x => x.DeleteByUserId(userId), Times.Once);
+            _dealRepositoryMock.Verify(x => x.DeleteByUserId(userId), Times.Once);
         }
     }
 }

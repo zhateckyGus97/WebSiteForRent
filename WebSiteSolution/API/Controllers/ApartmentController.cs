@@ -1,5 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.Requests.ApartmentRequests;
+using Application.Services;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

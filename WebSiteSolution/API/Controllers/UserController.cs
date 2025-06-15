@@ -1,6 +1,8 @@
+using Api.Extensions;
 using Application.Interfaces;
 using Application.Requests.UserRequests;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -32,8 +34,9 @@ namespace API.Controllers
             return Ok(users);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateUserRequest user)
+        public async Task<IActionResult> Add([FromBody] RegistrationUserRequest user)
         {
             var userId = await _userService.Add(user);
             return Created($"/user/{userId}", new {Id = userId});
@@ -46,6 +49,7 @@ namespace API.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

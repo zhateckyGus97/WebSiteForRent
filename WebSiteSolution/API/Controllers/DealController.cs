@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Requests.DealRequests;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

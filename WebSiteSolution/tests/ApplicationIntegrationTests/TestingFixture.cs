@@ -13,6 +13,7 @@ using System.Reflection;
 using Bogus.Extensions;
 using Infrastructure.Interfaces;
 using MigrationRunner = Infrastructure.DataBase.MigrationRunner;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ApplicationIntegrationTests
 {
@@ -29,6 +30,8 @@ namespace ApplicationIntegrationTests
                 {
                     services.AddInfrastructure();
                     services.AddApplication();
+
+                    services.AddSingleton<IWebHostEnvironment>(new TestHostEnvironment());
 
                     var connectionString = context.Configuration.GetConnectionString("PostgresDBIntegration");
                     if (string.IsNullOrWhiteSpace(connectionString))
@@ -47,7 +50,7 @@ namespace ApplicationIntegrationTests
                             .AddPostgres()
                             .WithGlobalConnectionString(connectionString)
                             .ScanIn(Assembly.GetExecutingAssembly()).For.Migrations())
-                        .Configure<SelectingProcessorAccessorOptions>(options => { options.ProcessorId = "Postgres"; });
+                        .Configure<SelectingProcessorAccessorOptions>(options => { options.ProcessorId = "PostgreSQL"; });
                 })
                 .Build();
 
@@ -84,7 +87,6 @@ namespace ApplicationIntegrationTests
                 FullName = _faker.Name.FullName(),
                 Email = _faker.Person.Email,
                 PhoneNumber = _faker.Phone.PhoneNumber(),
-                Role = "User",
                 Passport = "1234-567890",
                 DateOfBirth = DateTime.Now.AddDays(-10)
             });
