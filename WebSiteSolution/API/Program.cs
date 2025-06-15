@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Net;
-using System.Text;
 using Serilog;
-using System.Reflection;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -106,7 +105,7 @@ builder.Services.AddAuthentication("HttponlyAuth")
         options.Cookie.SameSite = SameSiteMode.Strict;
         options.Cookie.Name = "auth_token";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-    })
+    });
 
 builder.Services.AddRateLimiter(options =>
 {
@@ -147,6 +146,10 @@ builder.Services.AddCors(
         });
     }
 );
+
+builder.Services.Configure<FormOptions>(options => {
+    options.MultipartBodyLengthLimit = long.MaxValue;
+});
 
 var app = builder.Build();
 

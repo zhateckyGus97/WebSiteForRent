@@ -80,6 +80,18 @@ namespace Application.Services
             return mappedUser;
         }
 
+        public async Task<UserResponse> GetByEmail(string email)
+        {
+            var user = await _userRepository.GetByEmail(email);
+            if (user == null)
+            {
+                throw new NotFoundApplicationException($"User with email {email} not found!");
+            }
+
+            var mappedUser = _mapper.Map<UserResponse>(user);
+            return mappedUser;
+        }
+
         public async Task<bool> Update(UpdateUserRequest user)
         {
             var mappedUser = _mapper.Map<User>(user);

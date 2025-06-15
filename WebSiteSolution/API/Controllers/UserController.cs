@@ -27,6 +27,16 @@ namespace API.Controllers
             return NotFound();
         }
 
+        [HttpGet("email")]
+        public async Task<IActionResult> GetByEmail(string email)
+        {
+            var user = await _userService.GetByEmail(email);
+            if (user != null)
+                return Ok(user);
+
+            return NotFound();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
