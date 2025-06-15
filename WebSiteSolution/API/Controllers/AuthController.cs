@@ -27,7 +27,8 @@ namespace API.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             var response = await authService.Login(request);
-            return Ok(response);
+            await HttpContext.SignInAsync(response);
+            return Ok();
         }
 
         [Authorize]
